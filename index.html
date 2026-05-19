@@ -1,695 +1,614 @@
 <!DOCTYPE html>
-<html class="light" lang="es">
+<html lang="es" class="bg-[#0a0908]">
 <head>
 <meta charset="utf-8" />
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-<title>CLICKICLICK | Automatización e IA para Clínicas Estéticas</title>
-<meta name="description" content="Transformamos clínicas de medicina estética y odontología en máquinas de captación y fidelización con Inteligencia Artificial y automatización en Latinoamérica." />
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=DM+Serif+Display&family=Hanken+Grotesk:wght@300;400;600;800&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-<script>
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "on-primary": "#ffffff",
-          "inverse-primary": "#c8c6c5",
-          "on-primary-fixed": "#1b1c1c",
-          "secondary-fixed": "#e6e2d9",
-          "surface-variant": "#e5e2e1",
-          "secondary-container": "#e3dfd6",
-          "on-primary-container": "#949393",
-          "on-tertiary-container": "#969390",
-          "surface-container-lowest": "#ffffff",
-          "outline-variant": "#c4c7c7",
-          "surface": "#fdf8f8",
-          "surface-tint": "#5f5e5e",
-          "surface-container-low": "#f7f3f2",
-          "inverse-surface": "#313030",
-          "inverse-on-surface": "#f4f0ef",
-          "primary-fixed": "#e4e2e1",
-          "primary-fixed-dim": "#c8c6c5",
-          "on-surface": "#1c1b1b",
-          "primary": "#171818",
-          "background": "#fdf8f8",
-          "surface-container-high": "#ebe7e7",
-          "surface-bright": "#fdf8f8",
-          "on-secondary-container": "#64635b",
-          "primary-container": "#2c2c2c",
-          "surface-dim": "#ddd9d8",
-          "surface-container": "#f1edec",
-          "outline": "#747878",
-          "on-surface-variant": "#444748",
-          "tertiary": "#181816"
-        },
-        spacing: {
-          "gutter": "24px",
-          "max-width": "1440px",
-          "margin-desktop": "64px",
-          "unit": "8px",
-          "margin-mobile": "24px"
-        },
-        fontFamily: {
-          "label-sm": ["Hanken Grotesk"],
-          "display-lg": ["Bodoni Moda"],
-          "headline-lg": ["Bodoni Moda"],
-          "headline-lg-mobile": ["Bodoni Moda"],
-          "display-lg-mobile": ["Bodoni Moda"],
-          "body-md": ["Hanken Grotesk"],
-          "headline-md": ["Bodoni Moda"],
-          "body-lg": ["Hanken Grotesk"]
-        },
-        fontSize: {
-          "label-sm": ["12px", { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "600" }],
-          "display-lg": ["84px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "400" }],
-          "headline-lg": ["48px", { lineHeight: "1.2", fontWeight: "400" }],
-          "headline-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "400" }],
-          "display-lg-mobile": ["48px", { lineHeight: "1.1", fontWeight: "400" }],
-          "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
-          "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "400" }],
-          "body-lg": ["18px", { lineHeight: "1.6", letterSpacing: "0.01em", fontWeight: "400" }]
-        }
-      }
-    }
-  }
-</script>
+<meta name="theme-color" content="#0a0908" />
+<title>CLICKICLICK.studio | Automatizacion e IA para Clinicas Esteticas</title>
+<meta name="description" content="Sistemas de captacion, seguimiento y fidelizacion con IA para clinicas de medicina estetica y odontologia de alto valor en Latinoamerica." />
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@200,300,400,500,600,700,800,900&f[]=gambarino@400,400i&f[]=editorial-new@200,200i,300,300i,400,400i,500,500i&f[]=jetbrains-mono@400,500&display=swap" />
 <style>
-  html { scroll-behavior: smooth; }
+/* ═══════════ DESIGN TOKENS ═══════════ */
+:root {
+  --ink: #0a0908;
+  --ink-soft: #15120f;
+  --ink-deep: #050403;
+  --cream: #f3ecde;
+  --cream-soft: #b8af9a;
+  --cream-mute: #5a5046;
+  --body: #d6cfbb;
+  --body-muted: #a89e8c;
+  --accent: #a31e38;
+  --accent-deep: #6e1425;
+  --cool: #8eb7b5;
+  --gold: #b88746;
+  --line: rgba(243,236,222,0.12);
+  --line-strong: rgba(243,236,222,0.28);
+  --font-display: "Editorial New", "Times New Roman", serif;
+  --font-italic: "Gambarino", "Editorial New", serif;
+  --font-sans: "Switzer", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --grain-opacity: 0.06;
+  color-scheme: dark;
+}
 
-  .film-grain {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 9999; opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  }
+/* ═══════════ RESET & BASE ═══════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: var(--ink); color: var(--cream); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; font-feature-settings: "ss01","ss02","kern","liga"; scrollbar-color: var(--cream-mute) var(--ink); scroll-behavior: smooth; }
+body { font-family: var(--font-sans); font-weight: 300; letter-spacing: -0.005em; overflow-x: hidden; background: var(--ink); min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+::selection { background: var(--accent); color: var(--ink); }
 
-  .material-symbols-outlined {
-    font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
-  }
+/* ═══════════ GRAIN ═══════════ */
+.grain::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: var(--grain-opacity); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>"); mix-blend-mode: overlay; }
 
-  .serif-italic { font-family: "Bodoni Moda"; font-style: italic; }
-  .border-thin { border-width: 0.5px; }
+/* ═══════════ TYPOGRAPHY ═══════════ */
+.font-display { font-family: var(--font-display); font-weight: 300; letter-spacing: -0.04em; line-height: 1.02; }
+.font-italic-display { font-family: var(--font-italic); font-style: italic; font-weight: 400; }
+.font-mono-meta { font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.7rem; }
+.text-display-xl { font-size: clamp(2.6rem, 12.5vw, 13rem); }
+.text-display-lg { font-size: clamp(2.4rem, 9vw, 9rem); }
+.text-display-md { font-size: clamp(2rem, 6vw, 5.25rem); }
+.text-display-sm { font-size: clamp(1.55rem, 4vw, 3rem); }
 
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: #fdf8f8; }
-  ::-webkit-scrollbar-thumb { background: #171818; }
+/* ═══════════ LAYOUT ═══════════ */
+.container-wide { max-width: 1600px; margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 3rem); }
+.section-pad { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(5rem, 10vw, 9rem); }
+.line-thin { display: block; width: 100%; height: 1px; background: var(--line); }
+.idx-num { font-family: var(--font-mono); color: var(--gold); font-weight: 500; letter-spacing: 0.12em; font-size: 0.72rem; }
 
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  .animate-marquee {
-    animation: marquee 20s linear infinite;
-    display: flex; width: max-content;
-  }
+/* ═══════════ BUTTONS ═══════════ */
+.btn-press { transition: transform 160ms var(--ease), background 220ms var(--ease), color 220ms var(--ease), border-color 220ms var(--ease); }
+.btn-press:active { transform: scale(0.97); }
 
-  .mobile-menu {
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .mobile-menu.open { transform: translateX(0); }
+.btn-glass-primary { position: relative; isolation: isolate; background: linear-gradient(180deg, rgba(193,50,80,0.96) 0%, rgba(163,30,56,0.95) 100%); backdrop-filter: blur(14px) saturate(1.2); border: 1px solid rgba(255,196,196,0.32); color: var(--cream); letter-spacing: 0.02em; font-weight: 500; border-radius: 4px; box-shadow: 0 1px 2px rgba(163,30,56,0.32), 0 4px 12px rgba(163,30,56,0.22), 0 8px 28px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(0,0,0,0.18); transition: background 240ms var(--ease), transform 240ms var(--ease), box-shadow 240ms var(--ease), border-color 240ms var(--ease); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-glass-primary:hover { background: linear-gradient(180deg, rgba(210,60,90,1) 0%, rgba(163,30,56,1) 100%); transform: translateY(-1px); border-color: rgba(255,196,196,0.5); box-shadow: 0 2px 4px rgba(163,30,56,0.4), 0 8px 22px rgba(163,30,56,0.32), 0 14px 40px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.28); }
+.btn-glass-primary:active { transform: translateY(0) scale(0.98); }
 
-  .service-expand {
-    max-height: 0; overflow: hidden; opacity: 0;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
-  }
-  .group:hover .service-expand { max-height: 240px; opacity: 1; }
+.btn-glass-secondary { background: linear-gradient(180deg, rgba(243,236,222,0.06) 0%, rgba(243,236,222,0.02) 100%); backdrop-filter: blur(10px) saturate(1.1); border: 1px solid rgba(243,236,222,0.28); color: var(--cream); letter-spacing: 0.02em; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.08); transition: background 240ms var(--ease), transform 240ms var(--ease), border-color 240ms var(--ease), box-shadow 240ms var(--ease); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-glass-secondary:hover { background: linear-gradient(180deg, rgba(243,236,222,0.12) 0%, rgba(243,236,222,0.06) 100%); border-color: rgba(243,236,222,0.5); transform: translateY(-1px); }
+.btn-glass-secondary:active { transform: translateY(0) scale(0.98); }
 
-  .fade-in {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+.btn-glass-ghost { background: transparent; color: var(--cream); border: 0; position: relative; transition: color 220ms var(--ease); cursor: pointer; }
+.btn-glass-ghost::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 420ms var(--ease); }
+.btn-glass-ghost:hover { color: var(--accent); }
+.btn-glass-ghost:hover::after { transform: scaleX(1); }
 
-  .whatsapp-float {
-    position: fixed; bottom: 28px; right: 28px;
-    width: 56px; height: 56px; background: #25D366;
-    border-radius: 50%; display: flex; align-items: center;
-    justify-content: center; z-index: 9998;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.3);
-    transition: all 0.3s ease;
-  }
-  .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.4); }
+/* ═══════════ HOVER LINE ═══════════ */
+.hover-line { position: relative; }
+.hover-line::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left center; transition: transform 400ms var(--ease); }
+.hover-line:hover::after { transform: scaleX(1); }
+
+/* ═══════════ CARDS ═══════════ */
+.card-editorial { background: var(--ink-soft); border: 1px solid var(--line); transition: border-color 320ms var(--ease), background-color 320ms var(--ease); }
+.card-editorial:hover { border-color: var(--line-strong); }
+.testimonial-card { background: rgba(243,236,222,0.04); backdrop-filter: blur(8px) saturate(1.05); border: 1px solid rgba(243,236,222,0.1); border-radius: 4px; }
+
+/* ═══════════ MARQUEE ═══════════ */
+@keyframes marqueeX { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
+.marquee-track { animation: marqueeX 50s linear infinite; will-change: transform; display: flex; width: max-content; }
+
+/* ═══════════ FADE IN ═══════════ */
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════ WORDMARK ═══════════ */
+.wordmark { display: inline-flex; align-items: baseline; font-family: var(--font-sans); font-weight: 800; letter-spacing: -0.035em; line-height: 1; white-space: nowrap; color: var(--cream); }
+.wordmark .dot { color: var(--accent); }
+.wordmark .sub { font-family: var(--font-italic); font-size: 0.55em; font-weight: 400; font-style: italic; transform: translateY(-0.18em); margin-left: 0.12em; color: var(--cream-soft); letter-spacing: normal; }
+
+/* ═══════════ WHATSAPP FLOAT ═══════════ */
+.whatsapp-float { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 99; box-shadow: 0 4px 20px rgba(37,211,102,0.3); transition: all 0.3s var(--ease); }
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.4); }
+
+/* ═══════════ FAQ ═══════════ */
+details summary { cursor: pointer; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details[open] .faq-icon { transform: rotate(45deg); }
+.faq-icon { transition: transform 300ms var(--ease); }
+
+/* ═══════════ FORM ═══════════ */
+input, select, textarea { font-family: var(--font-sans); }
+input::placeholder, textarea::placeholder { color: var(--cream-mute); }
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 768px) {
+  .grid-services { grid-template-columns: 1fr !important; }
+  .grid-results { grid-template-columns: 1fr !important; }
+  .grid-pricing { grid-template-columns: 1fr !important; }
+  .grid-contact { grid-template-columns: 1fr !important; }
+  .grid-footer { grid-template-columns: 1fr !important; }
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .nav-links { display: none !important; }
+  .mobile-trigger { display: flex !important; }
+  .process-timeline { padding-left: 1.5rem; }
+}
+@media (min-width: 769px) {
+  .mobile-trigger { display: none !important; }
+  .mobile-menu { display: none !important; }
+}
 </style>
 </head>
-<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
-<div class="film-grain"></div>
+<body class="grain" style="background: var(--ink); color: var(--cream); min-height: 100vh;">
 
-<!-- Header -->
-<header class="w-full top-0 sticky z-50 bg-background/90 backdrop-blur-sm border-b border-outline-variant">
-  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-6 md:px-[64px] h-20">
-    <div class="flex items-center">
-      <a href="#hero" class="font-display-lg text-[22px] text-primary uppercase" style="font-family: 'DM Serif Display', serif; font-weight: 400; letter-spacing: 0.02em;">CLICKICLICK</a>
-    </div>
-    <div class="flex items-center gap-6">
-      <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary hover:border-transparent transition-all duration-400 hidden sm:inline">
-        Hablemos
-      </a>
-      <button id="menu-toggle" class="flex flex-col justify-center items-center w-10 h-10 gap-[6px]" aria-label="Abrir menu">
-        <span class="block w-6 h-[0.5px] bg-primary transition-all duration-400 origin-center" id="bar1"></span>
-        <span class="block w-6 h-[0.5px] bg-primary transition-all duration-400 origin-center" id="bar2"></span>
-        <span class="block w-6 h-[0.5px] bg-primary transition-all duration-400 origin-center" id="bar3"></span>
-      </button>
-    </div>
+<!-- ═══════════ NAV ═══════════ -->
+<header id="nav-header" style="position:fixed;top:0;left:0;right:0;z-index:50;transition:all 300ms;border-bottom:1px solid rgba(243,236,222,0.05);background:rgba(10,9,8,0.1);backdrop-filter:blur(2px);">
+  <div class="container-wide" style="display:flex;height:80px;align-items:center;justify-content:space-between;gap:1rem;">
+    <a href="#hero" style="display:flex;align-items:center;gap:0.75rem;" aria-label="Inicio">
+      <span class="font-mono-meta" style="color:var(--cream-soft);display:none;" id="nav-year">MMXXVI</span>
+      <span class="wordmark" style="font-size:1.15rem;">
+        <span>CLICKICLICK</span><span class="dot">.</span><span class="sub">studio</span>
+      </span>
+    </a>
+    <nav class="nav-links" style="display:flex;align-items:center;gap:2rem;">
+      <a href="#services" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Servicios</a>
+      <a href="#results" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Resultados</a>
+      <a href="#process" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Proceso</a>
+      <a href="#pricing" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Precios</a>
+      <a href="#contact" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Contacto</a>
+    </nav>
+    <button class="mobile-trigger btn-press" id="burger" aria-label="Menu" style="display:none;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;gap:6px;background:none;border:none;cursor:pointer;">
+      <span id="b1" style="display:block;height:1px;width:24px;background:var(--cream);transition:transform 300ms ease;"></span>
+      <span id="b2" style="display:block;height:1px;width:24px;background:var(--cream);transition:transform 300ms ease;"></span>
+    </button>
   </div>
 </header>
 
-<!-- Full Menu Overlay -->
-<div id="mobile-menu" class="mobile-menu fixed inset-0 z-[9998] bg-[#fdf8f8] flex items-center justify-center overflow-y-auto">
-  <div class="flex flex-col md:flex-row gap-12 md:gap-24 px-6 py-20 max-w-[1440px] mx-auto">
-    <div class="flex flex-col space-y-6">
-      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#servicios" data-menu-link style="transition-delay: 80ms;">Servicios</a>
-      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#resultados" data-menu-link style="transition-delay: 140ms;">Resultados</a>
-      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#proceso" data-menu-link style="transition-delay: 200ms;">Proceso</a>
-      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#precios" data-menu-link style="transition-delay: 260ms;">Precios</a>
-      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="nosotros.html" data-menu-link style="transition-delay: 320ms;">Nosotros</a>
-      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="faq-contacto.html" data-menu-link style="transition-delay: 380ms;">FAQ</a>
-      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#contacto" data-menu-link style="transition-delay: 440ms;">Contacto</a>
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:40;background:var(--ink);flex-direction:column;opacity:0;transition:opacity 250ms ease;">
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:1.5rem;">
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <a href="#services" class="font-display text-display-md" data-mlink>Servicios</a>
+      <a href="#results" class="font-display text-display-md" data-mlink>Resultados</a>
+      <a href="#process" class="font-display text-display-md" data-mlink>Proceso</a>
+      <a href="#pricing" class="font-display text-display-md" data-mlink>Precios</a>
+      <a href="nosotros.html" class="font-display text-display-md" data-mlink>Nosotros</a>
+      <a href="faq-contacto.html" class="font-display text-display-md" data-mlink>FAQ</a>
+      <a href="#contact" class="font-display text-display-md" data-mlink>Contacto</a>
     </div>
-    <div class="flex flex-col space-y-4 md:pt-2">
-      <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-2 opacity-0 translate-y-4 transition-all duration-500" data-menu-link style="transition-delay: 300ms;">Servicios</span>
-      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/chatbot-ia.html" data-menu-link style="transition-delay: 360ms;">Chatbot IA 24/7</a>
-      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/automatizacion-citas.html" data-menu-link style="transition-delay: 400ms;">Automatizacion de Citas</a>
-      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/crm-ia.html" data-menu-link style="transition-delay: 440ms;">CRM con IA</a>
-      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/campanas-automatizadas.html" data-menu-link style="transition-delay: 480ms;">Campanas Automatizadas</a>
-      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/web-premium.html" data-menu-link style="transition-delay: 520ms;">Web Premium para Clinicas</a>
-      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/seguimiento-post.html" data-menu-link style="transition-delay: 560ms;">Seguimiento Post-Consulta</a>
-    </div>
-    <div class="flex flex-col justify-end">
-      <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block px-10 py-5 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest opacity-0 translate-y-4 transition-all duration-500" data-menu-link style="transition-delay: 620ms;">Agenda una llamada</a>
-    </div>
+  </div>
+  <div style="border-top:1px solid var(--line);padding:1.5rem;display:flex;justify-content:space-between;align-items:center;">
+    <span class="font-mono-meta" style="color:var(--cream-soft);">Barcelona &middot; Remoto</span>
+    <a href="mailto:clickiclickweb@gmail.com" class="font-mono-meta" style="color:var(--accent);">clickiclickweb@gmail.com</a>
   </div>
 </div>
 
-<main>
-  <!-- Hero Section -->
-  <section id="hero" class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-16 md:py-32 overflow-hidden">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-[24px] items-center">
-      <div class="md:col-span-7 space-y-8 md:space-y-10 fade-in">
-        <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-[1.05] max-w-2xl">
-          Tu clinica llena. <span class="serif-italic">Todos los dias.</span>
-        </h1>
-        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
-          Sistemas de captacion, seguimiento y fidelizacion con IA para clinicas de medicina estetica y odontologia de alto valor en Latinoamerica.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 pt-4 md:pt-6">
-          <a class="inline-block px-10 py-5 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest transition-opacity hover:opacity-90" href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener">
-            Agendar llamada estrategica
-          </a>
-          <a class="inline-block px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest text-primary border-thin border-primary hover:bg-primary hover:text-on-primary transition-all duration-400" href="#servicios">
-            Ver servicios
-          </a>
+<main style="position:relative;">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section id="hero" class="section-pad" style="min-height:100vh;display:flex;align-items:center;">
+    <div class="container-wide">
+      <div class="hero-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+        <div class="fade-in">
+          <p class="font-mono-meta" style="color:var(--gold);margin-bottom:2rem;">Automatizacion + Inteligencia Artificial</p>
+          <h1 class="font-display text-display-lg" style="margin-bottom:1.5rem;">
+            Tu clinica llena.<br><span class="font-italic-display" style="color:var(--accent);">Todos los dias.</span>
+          </h1>
+          <p style="font-size:1.125rem;color:var(--body);max-width:520px;line-height:1.7;margin-bottom:2.5rem;">
+            Sistemas de captacion, seguimiento y fidelizacion con IA para clinicas de medicina estetica y odontologia de alto valor en Latinoamerica.
+          </p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary btn-press font-mono-meta" style="padding:1rem 2rem;font-size:0.72rem;">Agendar llamada</a>
+            <a href="#services" class="btn-glass-secondary btn-press font-mono-meta" style="padding:1rem 2rem;font-size:0.72rem;">Ver servicios</a>
+          </div>
         </div>
-      </div>
-      <div class="md:col-span-5 fade-in">
-        <div class="grid grid-cols-3 gap-6 text-center pt-8 md:pt-0">
-          <div>
-            <span class="block font-display-lg text-[48px] md:text-[56px] text-primary hero-counter" data-target="147" style="font-family: 'Bodoni Moda';">0</span>
-            <span class="block font-label-sm text-label-sm text-primary -mt-1">%</span>
-            <p class="font-body-md text-[13px] text-on-surface-variant mt-2">Aumento en citas agendadas</p>
+        <div class="fade-in" style="display:flex;gap:2.5rem;justify-content:center;">
+          <div style="text-align:center;">
+            <span class="font-display hero-counter" data-target="147" style="font-size:clamp(3rem,6vw,4.5rem);color:var(--cream);display:block;">0</span>
+            <span class="font-mono-meta" style="color:var(--accent);margin-top:-0.25rem;display:block;">%</span>
+            <p style="font-size:0.8rem;color:var(--body-muted);margin-top:0.5rem;max-width:100px;">Aumento en citas</p>
           </div>
-          <div>
-            <span class="block font-display-lg text-[48px] md:text-[56px] text-primary hero-counter" data-target="38" style="font-family: 'Bodoni Moda';">0</span>
-            <span class="block font-label-sm text-label-sm text-primary -mt-1">%</span>
-            <p class="font-body-md text-[13px] text-on-surface-variant mt-2">Reduccion en no-shows</p>
+          <div style="text-align:center;">
+            <span class="font-display hero-counter" data-target="38" style="font-size:clamp(3rem,6vw,4.5rem);color:var(--cream);display:block;">0</span>
+            <span class="font-mono-meta" style="color:var(--accent);margin-top:-0.25rem;display:block;">%</span>
+            <p style="font-size:0.8rem;color:var(--body-muted);margin-top:0.5rem;max-width:100px;">Menos no-shows</p>
           </div>
-          <div>
-            <span class="block font-display-lg text-[48px] md:text-[56px] text-primary hero-counter" data-target="23" style="font-family: 'Bodoni Moda';">0</span>
-            <p class="font-body-md text-[13px] text-on-surface-variant mt-2">Clinicas en LATAM</p>
+          <div style="text-align:center;">
+            <span class="font-display hero-counter" data-target="23" style="font-size:clamp(3rem,6vw,4.5rem);color:var(--cream);display:block;">0</span>
+            <p style="font-size:0.8rem;color:var(--body-muted);margin-top:0.5rem;max-width:100px;">Clinicas LATAM</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Social Proof Marquee -->
-  <section class="w-full border-y border-outline-variant py-8 md:py-10 bg-surface overflow-hidden">
-    <div class="max-w-[1440px] mx-auto px-6 md:px-[64px]">
-      <div class="animate-marquee font-label-sm text-label-sm uppercase tracking-[0.2em] text-on-surface-variant items-center space-x-8 md:space-x-12">
-        <span>+23 clinicas automatizadas</span>
-        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
-        <span>Respuesta &lt;5 segundos</span>
-        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
-        <span>100% clinicas satisfechas</span>
-        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
-        <span>Resultados en 30 dias</span>
-        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
-        <span>Sin contratos de permanencia</span>
-        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
-        <span>+23 clinicas automatizadas</span>
-        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
-        <span>Respuesta &lt;5 segundos</span>
-        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
-        <span>100% clinicas satisfechas</span>
-        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
-        <span>Resultados en 30 dias</span>
-        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
-        <span>Sin contratos de permanencia</span>
-      </div>
+  <!-- ═══════════ MARQUEE ═══════════ -->
+  <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.25rem 0;overflow:hidden;">
+    <div class="marquee-track font-mono-meta" style="color:var(--cream-soft);gap:2.5rem;align-items:center;">
+      <span>+23 clinicas automatizadas</span><span style="color:var(--gold);">&bull;</span>
+      <span>Respuesta &lt;5 segundos</span><span style="color:var(--gold);">&bull;</span>
+      <span>100% satisfaccion</span><span style="color:var(--gold);">&bull;</span>
+      <span>Resultados en 30 dias</span><span style="color:var(--gold);">&bull;</span>
+      <span>Sin contratos de permanencia</span><span style="color:var(--gold);">&bull;</span>
+      <span>+23 clinicas automatizadas</span><span style="color:var(--gold);">&bull;</span>
+      <span>Respuesta &lt;5 segundos</span><span style="color:var(--gold);">&bull;</span>
+      <span>100% satisfaccion</span><span style="color:var(--gold);">&bull;</span>
+      <span>Resultados en 30 dias</span><span style="color:var(--gold);">&bull;</span>
+      <span>Sin contratos de permanencia</span><span style="color:var(--gold);">&bull;</span>
     </div>
-  </section>
+  </div>
 
-  <!-- Pain Points -->
-  <section id="problemas" class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-20 md:py-32 bg-background">
-    <div class="max-w-3xl mb-16 md:mb-24 fade-in">
-      <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">
-        68% de los pacientes potenciales contactan fuera de horario. Sin respuesta inmediata, eligen otra clinica.
-      </h2>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-[24px]">
-      <div class="p-6 md:p-8 border-thin border-outline-variant hover:bg-surface-container-low transition-colors duration-400 fade-in">
-        <span class="material-symbols-outlined text-primary mb-6 md:mb-8" style="font-size: 32px;">schedule</span>
-        <h3 class="font-headline-md text-[22px] md:text-[24px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Leads perdidos</h3>
-        <p class="text-on-surface-variant font-body-md">Tu recepcionista no puede contestar a las 2 AM. Cada mensaje sin respuesta es un paciente que se fue a la competencia.</p>
+  <!-- ═══════════ PAIN POINTS ═══════════ -->
+  <section class="section-pad">
+    <div class="container-wide">
+      <div style="max-width:800px;margin-bottom:4rem;" class="fade-in">
+        <span class="idx-num">01 — EL PROBLEMA</span>
+        <h2 class="font-display text-display-md" style="margin-top:1.5rem;">68% de los pacientes contactan <span class="font-italic-display">fuera de horario.</span></h2>
+        <p style="color:var(--body);margin-top:1.5rem;max-width:600px;line-height:1.7;">Sin respuesta inmediata, eligen otra clinica. Tu recepcionista no puede contestar a las 2 AM. Los leads se enfrian. La competencia ya automatizo.</p>
       </div>
-      <div class="p-6 md:p-8 border-thin border-outline-variant hover:bg-surface-container-low transition-colors duration-400 fade-in">
-        <span class="material-symbols-outlined text-primary mb-6 md:mb-8" style="font-size: 32px;">person_off</span>
-        <h3 class="font-headline-md text-[22px] md:text-[24px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Cero seguimiento</h3>
-        <p class="text-on-surface-variant font-body-md">El paciente sale de consulta y desaparece. Sin nurturing automatizado pierdes el 40% de los procedimientos de alto valor.</p>
-      </div>
-      <div class="p-6 md:p-8 border-thin border-outline-variant hover:bg-surface-container-low transition-colors duration-400 fade-in">
-        <span class="material-symbols-outlined text-primary mb-6 md:mb-8" style="font-size: 32px;">support_agent</span>
-        <h3 class="font-headline-md text-[22px] md:text-[24px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Recepcion saturada</h3>
-        <p class="text-on-surface-variant font-body-md">Tu equipo pierde 3+ horas diarias en tareas repetitivas: confirmar citas, responder las mismas preguntas, enviar recordatorios.</p>
-      </div>
-      <div class="p-6 md:p-8 border-thin border-outline-variant hover:bg-surface-container-low transition-colors duration-400 fade-in">
-        <span class="material-symbols-outlined text-primary mb-6 md:mb-8" style="font-size: 32px;">money_off</span>
-        <h3 class="font-headline-md text-[22px] md:text-[24px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Marketing sin retorno</h3>
-        <p class="text-on-surface-variant font-body-md">Inviertes en Meta Ads pero no tienes un sistema que convierta clics en citas reales y medibles.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="servicios" class="bg-surface py-20 md:py-32 border-y border-outline-variant">
-    <div class="max-w-[1440px] mx-auto px-6 md:px-[64px]">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-6 md:gap-[24px] fade-in">
-        <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary">Servicios</h2>
-        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm border-l border-outline-variant pl-6 md:pl-8">
-          Automatizacion, IA y estrategia digital para clinicas que quieren dominar su mercado en Latinoamerica.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 md:gap-y-20 gap-x-[24px]">
-        <div class="group fade-in">
-          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">01</span>
-          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Chatbot IA 24/7</h4>
-          <p class="text-on-surface-variant">Asistente inteligente que responde, agenda y califica pacientes en WhatsApp, Instagram y web.</p>
-          <div class="service-expand">
-            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Entrenado con el tono y protocolos de tu clinica. Respuesta en menos de 5 segundos. Integracion con tu agenda real. Escalamiento a humano inteligente.</p>
-            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN STARTER</p>
-            <a href="servicios/chatbot-ia.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
-          </div>
+      <div class="grid-services" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;">
+        <div class="card-editorial fade-in" style="padding:2rem;">
+          <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">01</span>
+          <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Leads perdidos</h3>
+          <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">Cada mensaje sin respuesta es un paciente que se fue a la competencia. El 68% contactan fuera de horario.</p>
         </div>
-        <div class="group fade-in">
-          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">02</span>
-          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Automatizacion de Citas</h4>
-          <p class="text-on-surface-variant">Sistema completo de agendamiento, confirmacion, recordatorios y re-agendamiento automatico.</p>
-          <div class="service-expand">
-            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Recordatorios WhatsApp + SMS. Re-agendamiento con un clic. Listas de espera inteligentes. Reduce no-shows hasta un 40%.</p>
-            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN STARTER</p>
-            <a href="servicios/automatizacion-citas.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
-          </div>
+        <div class="card-editorial fade-in" style="padding:2rem;">
+          <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">02</span>
+          <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Cero seguimiento</h3>
+          <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">El paciente sale de consulta y desaparece. Sin nurturing automatizado pierdes el 40% de procedimientos de alto valor.</p>
         </div>
-        <div class="group fade-in">
-          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">03</span>
-          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">CRM con IA</h4>
-          <p class="text-on-surface-variant">Centraliza pacientes con historial, scoring automatico, segmentacion inteligente y prediccion.</p>
-          <div class="service-expand">
-            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Scoring predictivo de pacientes. Segmentacion automatica por procedimiento. Pipeline visual de ventas. Todo en un solo lugar.</p>
-            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN GROWTH</p>
-            <a href="servicios/crm-ia.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
-          </div>
+        <div class="card-editorial fade-in" style="padding:2rem;">
+          <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">03</span>
+          <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Recepcion saturada</h3>
+          <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">Tu equipo pierde 3+ horas diarias en tareas repetitivas: confirmar citas, responder las mismas preguntas.</p>
         </div>
-        <div class="group fade-in">
-          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">04</span>
-          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Campanas Automatizadas</h4>
-          <p class="text-on-surface-variant">Meta Ads + email + WhatsApp marketing. Embudos completos del clic a la cita cerrada.</p>
-          <div class="service-expand">
-            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Embudos multi-canal. Nurturing por procedimiento. Retargeting automatizado. Metricas de conversion en tiempo real.</p>
-            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN GROWTH</p>
-            <a href="servicios/campanas-automatizadas.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
-          </div>
-        </div>
-        <div class="group fade-in">
-          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">05</span>
-          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Web Premium para Clinicas</h4>
-          <p class="text-on-surface-variant">Sitio web de alto rendimiento disenado para convertir visitantes en pacientes de alto valor.</p>
-          <div class="service-expand">
-            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Diseno a medida, no templates. SEO local optimizado. Integracion con chatbot, CRM y agenda. Velocidad de carga optimizada.</p>
-            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN PREMIUM</p>
-            <a href="servicios/web-premium.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
-          </div>
-        </div>
-        <div class="group fade-in">
-          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">06</span>
-          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Seguimiento Post-Consulta</h4>
-          <p class="text-on-surface-variant">Automatiza el seguimiento despues de cada procedimiento con flujos inteligentes.</p>
-          <div class="service-expand">
-            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Flujos post-procedimiento. Encuestas NPS automaticas. Recordatorios de control. Campanas de reactivacion de pacientes inactivos.</p>
-            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN GROWTH</p>
-            <a href="servicios/seguimiento-post.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
-          </div>
+        <div class="card-editorial fade-in" style="padding:2rem;">
+          <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">04</span>
+          <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Marketing sin retorno</h3>
+          <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">Inviertes en Meta Ads pero no tienes un sistema que convierta clics en citas reales y medibles.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Results / Case Studies -->
-  <section id="resultados" class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-20 md:py-32">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-6 fade-in">
-      <h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-primary">Resultados Reales</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm">Clinicas que ya transformaron su captacion con nuestros sistemas.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Dermavance -->
-      <div class="border-thin border-outline-variant p-6 md:p-8 hover:bg-surface-container-low transition-colors duration-400 fade-in">
-        <div class="flex justify-between items-start mb-6">
-          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Medicina Estetica</span>
-          <span class="font-label-sm text-[10px] text-on-surface-variant">Ciudad de Mexico</span>
+  <!-- ═══════════ SERVICES ═══════════ -->
+  <section id="services" class="section-pad" style="border-top:1px solid var(--line);">
+    <div class="container-wide">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem;flex-wrap:wrap;gap:2rem;" class="fade-in">
+        <div>
+          <span class="idx-num">02 — SERVICIOS</span>
+          <h2 class="font-display text-display-md" style="margin-top:1.5rem;">Todo lo que tu clinica <span class="font-italic-display">necesita.</span></h2>
         </div>
-        <h3 class="font-headline-md text-[26px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Clinica Dermavance</h3>
-        <p class="text-on-surface-variant font-body-md mb-6">Rejuvenecimiento facial y corporal, 3 sedes. Chatbot IA + CRM + campanas automatizadas.</p>
-        <div class="grid grid-cols-3 gap-4 py-6 border-y border-outline-variant mb-6">
-          <div>
-            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+312%</span>
-            <p class="text-[11px] text-on-surface-variant mt-1">Citas online</p>
-          </div>
-          <div>
-            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">-45%</span>
-            <p class="text-[11px] text-on-surface-variant mt-1">No-shows</p>
-          </div>
-          <div>
-            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+$127K</span>
-            <p class="text-[11px] text-on-surface-variant mt-1">Revenue 6 meses</p>
-          </div>
-        </div>
-        <blockquote class="serif-italic text-[15px] text-primary leading-relaxed">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos.&rdquo;</blockquote>
-        <p class="font-label-sm text-[11px] text-on-surface-variant mt-3 tracking-widest uppercase">Dra. Valentina Reyes, Directora Medica</p>
+        <p style="color:var(--body-muted);max-width:340px;line-height:1.7;border-left:1px solid var(--line);padding-left:1.5rem;">Automatizacion, IA y estrategia digital para clinicas que quieren dominar su mercado.</p>
       </div>
-      <!-- Sonrie Studio -->
-      <div class="border-thin border-outline-variant p-6 md:p-8 hover:bg-surface-container-low transition-colors duration-400 fade-in">
-        <div class="flex justify-between items-start mb-6">
-          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Odontologia</span>
-          <span class="font-label-sm text-[10px] text-on-surface-variant">Bogota, Colombia</span>
+      <div class="grid-services" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
+        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-right:0;transition:border-color 320ms;">
+          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">01</span>
+          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms;"></div>
+          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Chatbot IA 24/7</h3>
+          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Asistente inteligente que responde, agenda y califica pacientes en WhatsApp, Instagram y web.</p>
+          <div style="margin-top:1.25rem;"><a href="servicios/chatbot-ia.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
         </div>
-        <h3 class="font-headline-md text-[26px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Sonrie Studio Dental</h3>
-        <p class="text-on-surface-variant font-body-md mb-6">Diseno de sonrisa e implantes premium. Automatizacion completa + web premium.</p>
-        <div class="grid grid-cols-3 gap-4 py-6 border-y border-outline-variant mb-6">
-          <div>
-            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+189%</span>
-            <p class="text-[11px] text-on-surface-variant mt-1">Leads calificados</p>
-          </div>
-          <div>
-            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">-52%</span>
-            <p class="text-[11px] text-on-surface-variant mt-1">Tiempo recepcion</p>
-          </div>
-          <div>
-            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+$89K</span>
-            <p class="text-[11px] text-on-surface-variant mt-1">Revenue 4 meses</p>
-          </div>
+        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-right:0;transition:border-color 320ms;">
+          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">02</span>
+          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
+          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Automatizacion de Citas</h3>
+          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Agendamiento, confirmacion, recordatorios y re-agendamiento automatico. Reduce no-shows un 40%.</p>
+          <div style="margin-top:1.25rem;"><a href="servicios/automatizacion-citas.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
         </div>
-        <blockquote class="serif-italic text-[15px] text-primary leading-relaxed">&ldquo;Antes perdiamos el 60% de leads de Instagram. Ahora el sistema los captura y les agenda cita.&rdquo;</blockquote>
-        <p class="font-label-sm text-[11px] text-on-surface-variant mt-3 tracking-widest uppercase">Dr. Andres Camacho, Fundador</p>
-      </div>
-      <!-- Instituto Belleza -->
-      <div class="border-thin border-outline-variant p-6 md:p-8 hover:bg-surface-container-low transition-colors duration-400 fade-in">
-        <div class="flex justify-between items-start mb-6">
-          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Cirugia Plastica</span>
-          <span class="font-label-sm text-[10px] text-on-surface-variant">Lima, Peru</span>
+        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);transition:border-color 320ms;">
+          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">03</span>
+          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
+          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">CRM con IA</h3>
+          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Centraliza pacientes. Scoring predictivo, segmentacion inteligente y pipeline visual de ventas.</p>
+          <div style="margin-top:1.25rem;"><a href="servicios/crm-ia.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
         </div>
-        <h3 class="font-headline-md text-[26px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Instituto Belleza Peru</h3>
-        <p class="text-on-surface-variant font-body-md mb-6">Cirugia plastica de alta gama. CRM con IA + seguimiento post-operatorio + retencion.</p>
-        <div class="grid grid-cols-3 gap-4 py-6 border-y border-outline-variant mb-6">
-          <div>
-            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+95%</span>
-            <p class="text-[11px] text-on-surface-variant mt-1">Retencion</p>
-          </div>
-          <div>
-            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+67%</span>
-            <p class="text-[11px] text-on-surface-variant mt-1">Referidos</p>
-          </div>
-          <div>
-            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+$203K</span>
-            <p class="text-[11px] text-on-surface-variant mt-1">Revenue 8 meses</p>
-          </div>
+        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-top:0;border-right:0;">
+          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">04</span>
+          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
+          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Campanas Automatizadas</h3>
+          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Meta Ads + email + WhatsApp marketing. Embudos completos del clic a la cita cerrada.</p>
+          <div style="margin-top:1.25rem;"><a href="servicios/campanas-automatizadas.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
         </div>
-        <blockquote class="serif-italic text-[15px] text-primary leading-relaxed">&ldquo;El seguimiento post-operatorio automatizado cambio todo. Los pacientes vuelven para mas procedimientos.&rdquo;</blockquote>
-        <p class="font-label-sm text-[11px] text-on-surface-variant mt-3 tracking-widest uppercase">Dr. Ricardo Mendieta, Director</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process -->
-  <section id="proceso" class="bg-primary text-on-primary py-20 md:py-32 overflow-hidden">
-    <div class="max-w-[1440px] mx-auto px-6 md:px-[64px]">
-      <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-16 md:mb-24 fade-in">Proceso</h2>
-      <div class="relative flex flex-col space-y-0">
-        <div class="absolute left-4 top-0 h-full w-px bg-on-primary/20"></div>
-        <div class="relative pl-12 md:pl-16 py-8 md:py-12 group fade-in">
-          <div class="absolute left-3 top-8 md:top-12 w-2 h-2 rounded-full bg-on-primary group-hover:scale-150 transition-transform"></div>
-          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary/40 block mb-2">Semana 1</span>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Diagnostico y Estrategia</h4>
-          <p class="font-body-lg text-on-primary/60 max-w-lg">Analizamos tu clinica, competencia local, flujo de pacientes actual y oportunidades. Disenamos un plan de automatizacion a medida.</p>
+        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-top:0;border-right:0;">
+          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">05</span>
+          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
+          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Web Premium</h3>
+          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Sitio web de alto rendimiento disenado para convertir visitantes en pacientes de alto valor.</p>
+          <div style="margin-top:1.25rem;"><a href="servicios/web-premium.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
         </div>
-        <div class="relative pl-12 md:pl-16 py-8 md:py-12 group fade-in">
-          <div class="absolute left-3 top-8 md:top-12 w-2 h-2 rounded-full bg-on-primary group-hover:scale-150 transition-transform"></div>
-          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary/40 block mb-2">Semana 2-3</span>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Implementacion</h4>
-          <p class="font-body-lg text-on-primary/60 max-w-lg">Configuramos chatbot entrenado con tu clinica, CRM, automatizaciones, integraciones con tu agenda y canales de comunicacion.</p>
-        </div>
-        <div class="relative pl-12 md:pl-16 py-8 md:py-12 group fade-in">
-          <div class="absolute left-3 top-8 md:top-12 w-2 h-2 rounded-full bg-on-primary group-hover:scale-150 transition-transform"></div>
-          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary/40 block mb-2">Semana 4</span>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Lanzamiento</h4>
-          <p class="font-body-lg text-on-primary/60 max-w-lg">Activamos todo, monitorizamos en tiempo real y ajustamos. Tu equipo recibe capacitacion completa para operar el sistema.</p>
-        </div>
-        <div class="relative pl-12 md:pl-16 py-8 md:py-12 group fade-in">
-          <div class="absolute left-3 top-8 md:top-12 w-2 h-2 rounded-full bg-on-primary group-hover:scale-150 transition-transform"></div>
-          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary/40 block mb-2">Continuo</span>
-          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Soporte y Evolucion</h4>
-          <p class="font-body-lg text-on-primary/60 max-w-lg">Soporte prioritario, reportes mensuales, optimizacion continua. Tu sistema evoluciona con tu clinica.</p>
+        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-top:0;">
+          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">06</span>
+          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
+          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Seguimiento Post-Consulta</h3>
+          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Automatiza el seguimiento despues de cada procedimiento. Encuestas NPS y reactivacion.</p>
+          <div style="margin-top:1.25rem;"><a href="servicios/seguimiento-post.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Carousel -->
-  <section class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-20 md:py-32 text-center overflow-hidden">
-    <div id="testimonial-carousel" class="max-w-4xl mx-auto relative fade-in">
-      <div class="testimonial-track relative">
-        <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none" data-slide="0" style="opacity:1; position:relative; pointer-events:auto;">
-          <blockquote class="serif-italic text-headline-lg-mobile md:text-headline-lg leading-tight text-primary mb-8 md:mb-10">
-            &ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos. No sabiamos que esto era posible.&rdquo;
-          </blockquote>
-          <cite class="not-italic">
-            <span class="font-label-sm text-label-sm uppercase tracking-widest block text-primary">Dra. Valentina Reyes</span>
-            <span class="font-body-md text-on-surface-variant">Directora Medica, Clinica Dermavance &mdash; Mexico</span>
-          </cite>
-        </div>
-        <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none" data-slide="1">
-          <blockquote class="serif-italic text-headline-lg-mobile md:text-headline-lg leading-tight text-primary mb-8 md:mb-10">
-            &ldquo;Antes perdiamos el 60% de leads de Instagram. Ahora el sistema los captura, los califica y les agenda cita. Nuestro cierre de implantes subio un 34%.&rdquo;
-          </blockquote>
-          <cite class="not-italic">
-            <span class="font-label-sm text-label-sm uppercase tracking-widest block text-primary">Dr. Andres Camacho</span>
-            <span class="font-body-md text-on-surface-variant">Fundador, Sonrie Studio Dental &mdash; Colombia</span>
-          </cite>
-        </div>
-        <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none" data-slide="2">
-          <blockquote class="serif-italic text-headline-lg-mobile md:text-headline-lg leading-tight text-primary mb-8 md:mb-10">
-            &ldquo;El seguimiento post-operatorio automatizado cambio todo. Los pacientes se sienten cuidados y vuelven para mas procedimientos. Nuestra reputacion se disparo.&rdquo;
-          </blockquote>
-          <cite class="not-italic">
-            <span class="font-label-sm text-label-sm uppercase tracking-widest block text-primary">Dr. Ricardo Mendieta</span>
-            <span class="font-body-md text-on-surface-variant">Director, Instituto Belleza Peru &mdash; Lima</span>
-          </cite>
-        </div>
+  <!-- ═══════════ RESULTS ═══════════ -->
+  <section id="results" class="section-pad" style="border-top:1px solid var(--line);">
+    <div class="container-wide">
+      <div style="margin-bottom:5rem;" class="fade-in">
+        <span class="idx-num">03 — RESULTADOS</span>
+        <h2 class="font-display text-display-md" style="margin-top:1.5rem;">Clinicas que ya <span class="font-italic-display">transformaron</span> su captacion.</h2>
       </div>
-      <div class="flex justify-center gap-3 mt-10">
-        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary transition-opacity" data-index="0"></button>
-        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary opacity-30 transition-opacity" data-index="1"></button>
-        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary opacity-30 transition-opacity" data-index="2"></button>
+      <div class="grid-results" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+        <div class="card-editorial fade-in" style="padding:2rem;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem;">
+            <span class="font-mono-meta" style="color:var(--gold);">Medicina Estetica</span>
+            <span class="font-mono-meta" style="color:var(--cream-mute);">Mexico</span>
+          </div>
+          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Clinica Dermavance</h3>
+          <p style="color:var(--body-muted);font-size:0.85rem;line-height:1.6;margin-bottom:1.5rem;">Rejuvenecimiento facial, 3 sedes. Chatbot IA + CRM + campanas automatizadas.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem;">
+            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+312%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Citas online</p></div>
+            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">-45%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">No-shows</p></div>
+            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+$127K</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Revenue 6m</p></div>
+          </div>
+          <blockquote class="font-italic-display" style="font-size:0.95rem;color:var(--cream);line-height:1.5;">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos.&rdquo;</blockquote>
+          <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:0.75rem;">Dra. Valentina Reyes</p>
+        </div>
+        <div class="card-editorial fade-in" style="padding:2rem;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem;">
+            <span class="font-mono-meta" style="color:var(--gold);">Odontologia</span>
+            <span class="font-mono-meta" style="color:var(--cream-mute);">Colombia</span>
+          </div>
+          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Sonrie Studio Dental</h3>
+          <p style="color:var(--body-muted);font-size:0.85rem;line-height:1.6;margin-bottom:1.5rem;">Diseno de sonrisa e implantes premium. Automatizacion completa + web.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem;">
+            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+189%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Leads</p></div>
+            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">-52%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Tiempo recepcion</p></div>
+            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+$89K</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Revenue 4m</p></div>
+          </div>
+          <blockquote class="font-italic-display" style="font-size:0.95rem;color:var(--cream);line-height:1.5;">&ldquo;Antes perdiamos el 60% de leads de Instagram. Ahora el sistema los captura y les agenda cita.&rdquo;</blockquote>
+          <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:0.75rem;">Dr. Andres Camacho</p>
+        </div>
+        <div class="card-editorial fade-in" style="padding:2rem;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem;">
+            <span class="font-mono-meta" style="color:var(--gold);">Cirugia Plastica</span>
+            <span class="font-mono-meta" style="color:var(--cream-mute);">Peru</span>
+          </div>
+          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Instituto Belleza Peru</h3>
+          <p style="color:var(--body-muted);font-size:0.85rem;line-height:1.6;margin-bottom:1.5rem;">Cirugia plastica de alta gama. CRM + seguimiento post-operatorio.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem;">
+            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+95%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Retencion</p></div>
+            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+67%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Referidos</p></div>
+            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+$203K</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Revenue 8m</p></div>
+          </div>
+          <blockquote class="font-italic-display" style="font-size:0.95rem;color:var(--cream);line-height:1.5;">&ldquo;El seguimiento post-operatorio automatizado cambio todo. Los pacientes vuelven.&rdquo;</blockquote>
+          <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:0.75rem;">Dr. Ricardo Mendieta</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section id="precios" class="bg-surface py-20 md:py-32 border-y border-outline-variant">
-    <div class="max-w-[1440px] mx-auto px-6 md:px-[64px]">
-      <div class="mb-16 md:mb-24 fade-in">
-        <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Inversion</h2>
-        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">Todos los precios en USD. Sin contratos de permanencia. Resultados desde el primer mes.</p>
+  <!-- ═══════════ PROCESS ═══════════ -->
+  <section id="process" class="section-pad" style="border-top:1px solid var(--line);">
+    <div class="container-wide">
+      <div class="fade-in" style="margin-bottom:5rem;">
+        <span class="idx-num">04 — PROCESO</span>
+        <h2 class="font-display text-display-lg" style="margin-top:1.5rem;">Proceso</h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Starter -->
-        <div class="border-thin border-outline-variant p-8 md:p-10 hover:bg-surface-container-low transition-colors duration-400 fade-in">
-          <h3 class="font-headline-md text-[28px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Starter</h3>
-          <p class="text-on-surface-variant font-body-md mb-8">Para clinicas que quieren empezar a automatizar</p>
-          <div class="mb-8 pb-8 border-b border-outline-variant">
-            <span class="font-display-lg text-[56px] text-primary" style="font-family: 'Bodoni Moda';">$497</span>
-            <span class="text-on-surface-variant font-body-md">/mes</span>
+      <div class="process-timeline" style="position:relative;padding-left:3rem;">
+        <div style="position:absolute;left:15px;top:0;bottom:0;width:1px;background:rgba(243,236,222,0.12);"></div>
+        <div class="fade-in" style="position:relative;padding:2rem 0;">
+          <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream);transition:transform 300ms;"></div>
+          <span class="font-mono-meta" style="color:var(--gold);">Semana 1</span>
+          <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Diagnostico y Estrategia</h3>
+          <p style="color:var(--body-muted);max-width:500px;margin-top:0.5rem;line-height:1.7;">Analizamos tu clinica, competencia, flujo de pacientes y oportunidades. Disenamos un plan a medida.</p>
+        </div>
+        <div class="fade-in" style="position:relative;padding:2rem 0;">
+          <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream);"></div>
+          <span class="font-mono-meta" style="color:var(--gold);">Semana 2-3</span>
+          <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Implementacion</h3>
+          <p style="color:var(--body-muted);max-width:500px;margin-top:0.5rem;line-height:1.7;">Configuramos chatbot, CRM, automatizaciones e integraciones con tu agenda y canales.</p>
+        </div>
+        <div class="fade-in" style="position:relative;padding:2rem 0;">
+          <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream);"></div>
+          <span class="font-mono-meta" style="color:var(--gold);">Semana 4</span>
+          <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Lanzamiento</h3>
+          <p style="color:var(--body-muted);max-width:500px;margin-top:0.5rem;line-height:1.7;">Activamos todo, monitorizamos en tiempo real y capacitamos a tu equipo.</p>
+        </div>
+        <div class="fade-in" style="position:relative;padding:2rem 0;">
+          <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--accent);"></div>
+          <span class="font-mono-meta" style="color:var(--gold);">Continuo</span>
+          <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Soporte y Evolucion</h3>
+          <p style="color:var(--body-muted);max-width:500px;margin-top:0.5rem;line-height:1.7;">Soporte prioritario, reportes mensuales, optimizacion continua. Tu sistema evoluciona contigo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TESTIMONIALS ═══════════ -->
+  <section class="section-pad" style="border-top:1px solid var(--line);text-align:center;">
+    <div class="container-wide" style="max-width:900px;">
+      <span class="idx-num fade-in">05 — TESTIMONIOS</span>
+      <div id="testimonial-carousel" style="margin-top:3rem;position:relative;" class="fade-in">
+        <div class="t-slide" data-slide="0" style="transition:opacity 700ms;">
+          <blockquote class="font-italic-display" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem;">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos. No sabiamos que esto era posible.&rdquo;</blockquote>
+          <span class="font-mono-meta" style="color:var(--cream);display:block;">Dra. Valentina Reyes</span>
+          <span style="color:var(--body-muted);font-size:0.9rem;">Directora Medica, Clinica Dermavance &mdash; Mexico</span>
+        </div>
+        <div class="t-slide" data-slide="1" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 700ms;">
+          <blockquote class="font-italic-display" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem;">&ldquo;Antes perdiamos el 60% de leads de Instagram. Ahora el sistema los captura, califica y agenda cita. Nuestro cierre subio un 34%.&rdquo;</blockquote>
+          <span class="font-mono-meta" style="color:var(--cream);display:block;">Dr. Andres Camacho</span>
+          <span style="color:var(--body-muted);font-size:0.9rem;">Fundador, Sonrie Studio Dental &mdash; Colombia</span>
+        </div>
+        <div class="t-slide" data-slide="2" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 700ms;">
+          <blockquote class="font-italic-display" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem;">&ldquo;El seguimiento post-operatorio automatizado cambio todo. Los pacientes se sienten cuidados y vuelven para mas procedimientos.&rdquo;</blockquote>
+          <span class="font-mono-meta" style="color:var(--cream);display:block;">Dr. Ricardo Mendieta</span>
+          <span style="color:var(--body-muted);font-size:0.9rem;">Director, Instituto Belleza Peru &mdash; Lima</span>
+        </div>
+        <div style="display:flex;justify-content:center;gap:0.75rem;margin-top:2.5rem;">
+          <button class="t-dot" data-index="0" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;opacity:1;transition:opacity 300ms;"></button>
+          <button class="t-dot" data-index="1" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;opacity:0.3;transition:opacity 300ms;"></button>
+          <button class="t-dot" data-index="2" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;opacity:0.3;transition:opacity 300ms;"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PRICING ═══════════ -->
+  <section id="pricing" class="section-pad" style="border-top:1px solid var(--line);">
+    <div class="container-wide">
+      <div class="fade-in" style="margin-bottom:5rem;">
+        <span class="idx-num">06 — INVERSION</span>
+        <h2 class="font-display text-display-md" style="margin-top:1.5rem;">Planes para clinicas que quieren <span class="font-italic-display">crecer en serio.</span></h2>
+        <p style="color:var(--body-muted);margin-top:1rem;">Precios en USD. Sin contratos de permanencia.</p>
+      </div>
+      <div class="grid-pricing" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+        <div class="card-editorial fade-in" style="padding:2.5rem;">
+          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Starter</h3>
+          <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:2rem;">Para clinicas que quieren empezar a automatizar</p>
+          <div style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line);">
+            <span class="font-display" style="font-size:3.5rem;">$497</span>
+            <span style="color:var(--cream-mute);font-size:0.9rem;">/mes</span>
           </div>
-          <ul class="space-y-3 mb-10">
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Chatbot IA para WhatsApp</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Agendamiento automatico</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Recordatorios de citas</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Hasta 200 conversaciones/mes</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Soporte por email</li>
+          <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Chatbot IA para WhatsApp</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Agendamiento automatico</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Recordatorios de citas</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> 200 conversaciones/mes</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Soporte por email</li>
           </ul>
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block w-full text-center px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest text-primary border-thin border-primary hover:bg-primary hover:text-on-primary transition-all duration-400">Agendar llamada</a>
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-secondary btn-press font-mono-meta" style="padding:0.875rem 2rem;font-size:0.72rem;width:100%;text-align:center;">Agendar llamada</a>
         </div>
-        <!-- Growth -->
-        <div class="border-2 border-primary p-8 md:p-10 relative bg-surface-container-low fade-in">
-          <span class="absolute -top-3 left-8 bg-primary text-on-primary font-label-sm text-[10px] uppercase tracking-widest px-4 py-1.5">Mas popular</span>
-          <h3 class="font-headline-md text-[28px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Growth</h3>
-          <p class="text-on-surface-variant font-body-md mb-8">Para clinicas listas para escalar su captacion</p>
-          <div class="mb-8 pb-8 border-b border-outline-variant">
-            <span class="font-display-lg text-[56px] text-primary" style="font-family: 'Bodoni Moda';">$997</span>
-            <span class="text-on-surface-variant font-body-md">/mes</span>
+        <div class="fade-in" style="padding:2.5rem;border:2px solid var(--accent);border-radius:4px;background:var(--ink-soft);position:relative;">
+          <span class="font-mono-meta" style="position:absolute;top:-10px;left:2rem;background:var(--accent);color:var(--cream);padding:0.25rem 0.75rem;font-size:0.6rem;">Mas popular</span>
+          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Growth</h3>
+          <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:2rem;">Para clinicas listas para escalar</p>
+          <div style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line);">
+            <span class="font-display" style="font-size:3.5rem;">$997</span>
+            <span style="color:var(--cream-mute);font-size:0.9rem;">/mes</span>
           </div>
-          <ul class="space-y-3 mb-10">
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Todo en Starter +</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> CRM con IA integrado</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Campanas automatizadas multi-canal</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Seguimiento post-consulta</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Hasta 1,000 conversaciones/mes</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Dashboard de metricas</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Soporte prioritario WhatsApp</li>
+          <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Todo en Starter +</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> CRM con IA integrado</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Campanas multi-canal</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Seguimiento post-consulta</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> 1,000 conversaciones/mes</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Dashboard de metricas</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Soporte WhatsApp</li>
           </ul>
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block w-full text-center px-10 py-5 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest transition-opacity hover:opacity-90">Agendar llamada</a>
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary btn-press font-mono-meta" style="padding:0.875rem 2rem;font-size:0.72rem;width:100%;text-align:center;">Agendar llamada</a>
         </div>
-        <!-- Premium -->
-        <div class="border-thin border-outline-variant p-8 md:p-10 hover:bg-surface-container-low transition-colors duration-400 fade-in">
-          <h3 class="font-headline-md text-[28px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Premium</h3>
-          <p class="text-on-surface-variant font-body-md mb-8">Para clinicas multi-sede y grupos medicos</p>
-          <div class="mb-8 pb-8 border-b border-outline-variant">
-            <span class="font-display-lg text-[56px] text-primary" style="font-family: 'Bodoni Moda';">$1,997</span>
-            <span class="text-on-surface-variant font-body-md">/mes</span>
+        <div class="card-editorial fade-in" style="padding:2.5rem;">
+          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Premium</h3>
+          <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:2rem;">Para multi-sede y grupos medicos</p>
+          <div style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line);">
+            <span class="font-display" style="font-size:3.5rem;">$1,997</span>
+            <span style="color:var(--cream-mute);font-size:0.9rem;">/mes</span>
           </div>
-          <ul class="space-y-3 mb-10">
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Todo en Growth +</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Web premium a medida</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Campanas Meta Ads gestionadas</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Conversaciones ilimitadas</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Multi-sede / multi-doctor</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Account manager dedicado</li>
-            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Reportes ejecutivos semanales</li>
+          <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Todo en Growth +</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Web premium a medida</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Meta Ads gestionadas</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Conversaciones ilimitadas</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Multi-sede / multi-doctor</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Account manager dedicado</li>
+            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Reportes semanales</li>
           </ul>
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block w-full text-center px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest text-primary border-thin border-primary hover:bg-primary hover:text-on-primary transition-all duration-400">Agendar llamada</a>
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-secondary btn-press font-mono-meta" style="padding:0.875rem 2rem;font-size:0.72rem;width:100%;text-align:center;">Agendar llamada</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Preview -->
-  <section id="faq" class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-20 md:py-32">
-    <div class="max-w-3xl fade-in">
-      <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-16 md:mb-20">Preguntas Frecuentes</h2>
-      <div class="divide-y divide-outline-variant">
-        <details class="group py-6" open>
-          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
-            <span>Cuanto tiempo toma ver resultados?</span>
-            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
-          </summary>
-          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">La mayoria de nuestras clinicas ven un incremento en citas agendadas en las primeras 2 semanas. Los resultados completos se consolidan entre el mes 1 y 3.</p>
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section id="faq" class="section-pad" style="border-top:1px solid var(--line);">
+    <div class="container-wide" style="max-width:800px;">
+      <span class="idx-num fade-in">07 — FAQ</span>
+      <h2 class="font-display text-display-md fade-in" style="margin-top:1.5rem;margin-bottom:3rem;">Preguntas <span class="font-italic-display">frecuentes.</span></h2>
+      <div style="border-top:1px solid var(--line);">
+        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>Cuanto tiempo toma ver resultados?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
+          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">La mayoria ven incremento en citas en las primeras 2 semanas. Resultados completos entre mes 1 y 3.</p>
         </details>
-        <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
-            <span>El chatbot reemplaza a mi recepcionista?</span>
-            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
-          </summary>
-          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">No, la complementa. El chatbot maneja consultas repetitivas y agendamientos 24/7. Tu recepcionista se enfoca en atencion presencial. Resultado: mas capacidad sin contratar mas personal.</p>
+        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>El chatbot reemplaza a mi recepcionista?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
+          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">No, la complementa. Maneja repetitivas 24/7. Tu recepcionista se enfoca en atencion presencial.</p>
         </details>
-        <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
-            <span>Funciona con mi sistema de agenda actual?</span>
-            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
-          </summary>
-          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">Si. Nos integramos con los principales sistemas de gestion clinica y agendas digitales. Si usas algo especifico, lo evaluamos en la llamada de diagnostico sin compromiso.</p>
+        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>Funciona con mi agenda actual?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
+          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">Si. Nos integramos con los principales sistemas de gestion clinica y agendas digitales.</p>
         </details>
-        <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
-            <span>Que pasa con la privacidad de datos de mis pacientes?</span>
-            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
-          </summary>
-          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">La seguridad es prioridad absoluta. Encriptacion de nivel bancario, servidores seguros y cumplimiento de normativas de proteccion de datos en cada pais de LATAM.</p>
+        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>Tienen contrato de permanencia?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
+          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">No. Mes a mes. Nuestros resultados son razon suficiente para que te quedes.</p>
         </details>
-        <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
-            <span>Tienen contrato de permanencia?</span>
-            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
-          </summary>
-          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">No. Trabajamos mes a mes. Nuestros resultados son razon suficiente para que te quedes. Si no estas satisfecho, cancelas sin penalizacion.</p>
-        </details>
-        <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
-            <span>En que paises de LATAM trabajan?</span>
-            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
-          </summary>
-          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">Operamos en toda Latinoamerica: Mexico, Colombia, Peru, Chile, Argentina, Ecuador, Republica Dominicana y mas. Nuestros sistemas se adaptan a cada mercado.</p>
+        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>En que paises trabajan?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
+          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">Toda Latinoamerica: Mexico, Colombia, Peru, Chile, Argentina, Ecuador, RD y mas.</p>
         </details>
       </div>
-      <div class="mt-10">
-        <a href="faq-contacto.html" class="inline-block font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Ver todas las preguntas</a>
+      <div style="margin-top:2rem;"><a href="faq-contacto.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Ver todas las preguntas</a></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section id="contact" class="section-pad" style="border-top:1px solid var(--line);">
+    <div class="container-wide">
+      <div class="grid-contact" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;">
+        <div class="fade-in">
+          <span class="idx-num">08 — CONTACTO</span>
+          <h2 class="font-display text-display-sm" style="margin-top:1.5rem;margin-bottom:1.5rem;">Tu competencia ya automatizo. <span class="font-italic-display">Vas a quedarte atras?</span></h2>
+          <p style="color:var(--body-muted);max-width:400px;line-height:1.7;margin-bottom:2.5rem;">30 minutos. Sin compromiso. Te mostramos como multiplicar tus citas.</p>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-ghost font-mono-meta" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 0;width:fit-content;">Agendar llamada</a>
+            <a href="https://wa.me/34722753559?text=Hola%2C%20quiero%20informacion%20sobre%20automatizacion%20para%20mi%20clinica" target="_blank" rel="noopener" class="btn-glass-ghost font-mono-meta" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 0;width:fit-content;">WhatsApp &middot; +34 722 753 559</a>
+            <a href="mailto:clickiclickweb@gmail.com" class="btn-glass-ghost font-mono-meta" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 0;width:fit-content;">clickiclickweb@gmail.com</a>
+          </div>
+        </div>
+        <div class="fade-in">
+          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" style="display:flex;flex-direction:column;gap:1rem;">
+            <input type="hidden" name="access_key" value="ff9e17a4-20d8-49d3-8319-3414194ec45a">
+            <input type="hidden" name="subject" value="Nuevo lead - CLICKICLICK Medical">
+            <input type="text" name="name" required placeholder="Nombre completo" style="background:transparent;border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream);font-size:0.9rem;border-radius:4px;outline:none;transition:border-color 300ms;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
+            <input type="text" name="clinic" required placeholder="Nombre de la clinica" style="background:transparent;border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream);font-size:0.9rem;border-radius:4px;outline:none;transition:border-color 300ms;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
+            <input type="email" name="email" required placeholder="Email" style="background:transparent;border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream);font-size:0.9rem;border-radius:4px;outline:none;transition:border-color 300ms;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
+            <select name="country" required style="background:var(--ink);border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream-mute);font-size:0.9rem;border-radius:4px;outline:none;">
+              <option value="" disabled selected>Pais</option>
+              <option>Mexico</option><option>Colombia</option><option>Peru</option><option>Chile</option><option>Argentina</option><option>Ecuador</option><option>Republica Dominicana</option><option>Costa Rica</option><option>Panama</option><option>Otro</option>
+            </select>
+            <button type="submit" class="btn-glass-primary btn-press font-mono-meta" style="padding:1rem 2rem;font-size:0.72rem;width:100%;">Enviar consulta</button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
-<!-- Footer / Contact -->
-<footer id="contacto" class="bg-surface-container-low border-t border-outline-variant py-16 md:py-20">
-  <div class="max-w-[1440px] mx-auto px-6 md:px-[64px] grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-[24px]">
-    <div class="md:col-span-5 space-y-6 md:space-y-8">
-      <h2 class="font-headline-md text-[26px] md:text-headline-md text-primary" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Tu competencia ya automatizo. Vas a quedarte atras?</h2>
-      <p class="font-body-md text-on-surface-variant max-w-sm">Agenda una llamada estrategica de 30 minutos. Sin compromiso. Te mostramos exactamente como multiplicar tus citas.</p>
-      <div class="flex flex-wrap gap-4 md:gap-6">
-        <a class="inline-block font-label-sm text-label-sm uppercase tracking-widest text-primary pb-1 border-b border-primary hover:border-transparent transition-colors duration-300" href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener">Calendly</a>
-        <a class="inline-block font-label-sm text-label-sm uppercase tracking-widest text-primary pb-1 border-b border-primary hover:border-transparent transition-colors duration-300" href="https://wa.me/34722753559?text=Hola%2C%20quiero%20informacion%20sobre%20automatizacion%20para%20mi%20clinica" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="inline-block font-label-sm text-label-sm uppercase tracking-widest text-primary pb-1 border-b border-primary hover:border-transparent transition-colors duration-300" href="mailto:clickiclickweb@gmail.com">Email</a>
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer style="border-top:1px solid var(--line);padding:3rem 0;">
+  <div class="container-wide">
+    <div class="grid-footer" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;">
+      <div>
+        <span class="wordmark" style="font-size:1rem;display:block;margin-bottom:1rem;">
+          <span>CLICKICLICK</span><span class="dot">.</span><span class="sub">studio</span>
+        </span>
+        <p style="color:var(--body-muted);font-size:0.85rem;max-width:280px;line-height:1.6;">Automatizacion e IA para clinicas de medicina estetica y odontologia en Latinoamerica.</p>
       </div>
-    </div>
-    <div class="md:col-span-3 md:col-start-7">
-      <!-- Contact Form -->
-      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
-        <input type="hidden" name="access_key" value="ff9e17a4-20d8-49d3-8319-3414194ec45a">
-        <input type="hidden" name="subject" value="Nuevo lead - CLICKICLICK Medical">
-        <input type="hidden" name="from_name" value="CLICKICLICK Medical Web">
-        <input type="text" name="name" required placeholder="Nombre completo" class="w-full bg-transparent border-thin border-outline-variant px-4 py-3 font-body-md text-primary placeholder:text-on-surface-variant/50 focus:border-primary focus:outline-none transition-colors">
-        <input type="text" name="clinic" required placeholder="Nombre de la clinica" class="w-full bg-transparent border-thin border-outline-variant px-4 py-3 font-body-md text-primary placeholder:text-on-surface-variant/50 focus:border-primary focus:outline-none transition-colors">
-        <input type="email" name="email" required placeholder="Email" class="w-full bg-transparent border-thin border-outline-variant px-4 py-3 font-body-md text-primary placeholder:text-on-surface-variant/50 focus:border-primary focus:outline-none transition-colors">
-        <select name="country" required class="w-full bg-transparent border-thin border-outline-variant px-4 py-3 font-body-md text-on-surface-variant focus:border-primary focus:outline-none transition-colors">
-          <option value="" disabled selected>Pais</option>
-          <option>Mexico</option><option>Colombia</option><option>Peru</option><option>Chile</option><option>Argentina</option><option>Ecuador</option><option>Republica Dominicana</option><option>Costa Rica</option><option>Panama</option><option>Otro</option>
-        </select>
-        <button type="submit" class="w-full px-10 py-4 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest transition-opacity hover:opacity-90">Enviar consulta</button>
-      </form>
-    </div>
-    <div class="md:col-span-2 space-y-4">
-      <h4 class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-on-surface-variant mb-6 md:mb-8">Navegacion</h4>
-      <ul class="space-y-3 font-body-md">
-        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="#servicios">Servicios</a></li>
-        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="#resultados">Resultados</a></li>
-        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="#proceso">Proceso</a></li>
-        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="#precios">Precios</a></li>
-        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="nosotros.html">Nosotros</a></li>
-        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="faq-contacto.html">FAQ</a></li>
-      </ul>
-    </div>
-    <div class="md:col-span-2 space-y-4">
-      <h4 class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-on-surface-variant mb-6 md:mb-8">Legal</h4>
-      <ul class="space-y-3 font-body-md">
-        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="privacidad.html">Politica de Privacidad</a></li>
-        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="terminos.html">Terminos de Servicio</a></li>
-      </ul>
-      <div class="pt-8 md:pt-12">
-        <p class="font-label-sm text-[10px] uppercase text-on-surface-variant">&copy; 2026 CLICKICLICK. Todos los derechos reservados.</p>
+      <div>
+        <h4 class="font-mono-meta" style="color:var(--cream-mute);margin-bottom:1.5rem;">Sitio</h4>
+        <ul style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.9rem;">
+          <li><a href="#services" class="hover-line" style="color:var(--body-muted);">Servicios</a></li>
+          <li><a href="#results" class="hover-line" style="color:var(--body-muted);">Resultados</a></li>
+          <li><a href="#process" class="hover-line" style="color:var(--body-muted);">Proceso</a></li>
+          <li><a href="nosotros.html" class="hover-line" style="color:var(--body-muted);">Nosotros</a></li>
+          <li><a href="faq-contacto.html" class="hover-line" style="color:var(--body-muted);">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-mono-meta" style="color:var(--cream-mute);margin-bottom:1.5rem;">Contacto</h4>
+        <ul style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.9rem;">
+          <li><a href="mailto:clickiclickweb@gmail.com" class="hover-line" style="color:var(--body-muted);">Email</a></li>
+          <li><a href="https://wa.me/34722753559" target="_blank" rel="noopener" class="hover-line" style="color:var(--body-muted);">WhatsApp</a></li>
+          <li><a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="hover-line" style="color:var(--body-muted);">Calendly</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-mono-meta" style="color:var(--cream-mute);margin-bottom:1.5rem;">Legal</h4>
+        <ul style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.9rem;">
+          <li><a href="privacidad.html" class="hover-line" style="color:var(--body-muted);">Privacidad</a></li>
+          <li><a href="terminos.html" class="hover-line" style="color:var(--body-muted);">Terminos</a></li>
+        </ul>
+        <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:2rem;font-size:0.6rem;">&copy; 2026 CLICKICLICK</p>
       </div>
     </div>
   </div>
@@ -701,131 +620,97 @@
 </a>
 
 <script>
-  // Menu
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuLinks = document.querySelectorAll('[data-menu-link]');
-  const bar1 = document.getElementById('bar1');
-  const bar2 = document.getElementById('bar2');
-  const bar3 = document.getElementById('bar3');
-  let menuOpen = false;
+// Nav scroll
+const navH = document.getElementById('nav-header');
+const navY = document.getElementById('nav-year');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY > 32;
+  navH.style.background = s ? 'rgba(10,9,8,0.75)' : 'rgba(10,9,8,0.1)';
+  navH.style.backdropFilter = s ? 'blur(12px) saturate(1.5)' : 'blur(2px)';
+  navH.style.borderBottomColor = s ? 'var(--line)' : 'rgba(243,236,222,0.05)';
+  if (navY) navY.style.display = s ? 'none' : '';
+}, { passive: true });
 
-  function toggleMenu() {
-    menuOpen = !menuOpen;
-    if (menuOpen) {
-      mobileMenu.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      bar1.style.transform = 'translateY(6.5px) rotate(45deg)';
-      bar2.style.opacity = '0';
-      bar3.style.transform = 'translateY(-6.5px) rotate(-45deg)';
-      setTimeout(() => {
-        mobileMenu.querySelectorAll('[data-menu-link], a[href*="calendly"]').forEach(el => {
-          el.classList.remove('opacity-0', 'translate-y-4');
-          el.classList.add('opacity-100', 'translate-y-0');
-        });
-      }, 100);
-    } else { closeMenu(); }
+// Mobile menu
+const burger = document.getElementById('burger');
+const mm = document.getElementById('mobileMenu');
+const b1 = document.getElementById('b1');
+const b2 = document.getElementById('b2');
+let mOpen = false;
+burger.addEventListener('click', () => {
+  mOpen = !mOpen;
+  mm.style.display = mOpen ? 'flex' : 'none';
+  mm.style.opacity = mOpen ? '1' : '0';
+  document.documentElement.style.overflow = mOpen ? 'hidden' : '';
+  b1.style.transform = mOpen ? 'translateY(3.5px) rotate(45deg)' : '';
+  b2.style.transform = mOpen ? 'translateY(-3.5px) rotate(-45deg)' : '';
+});
+document.querySelectorAll('[data-mlink]').forEach(l => l.addEventListener('click', () => {
+  mOpen = false; mm.style.display = 'none'; mm.style.opacity = '0';
+  document.documentElement.style.overflow = '';
+  b1.style.transform = ''; b2.style.transform = '';
+}));
+
+// Fade in
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(e => obs.observe(e));
+
+// Counters
+const cObs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) {
+    document.querySelectorAll('.hero-counter').forEach(c => {
+      if (c.dataset.done) return;
+      const t = +c.dataset.target, s = performance.now();
+      (function u(n) {
+        const p = Math.min((n-s)/2000, 1);
+        c.textContent = Math.round(t * (1 - Math.pow(1-p, 3)));
+        p < 1 ? requestAnimationFrame(u) : (c.textContent = t, c.dataset.done = '1');
+      })(performance.now());
+    });
+    cObs.unobserve(e.target);
+  }});
+}, { threshold: 0.3 });
+const hc = document.querySelector('.hero-counter');
+if (hc) cObs.observe(hc.parentElement.parentElement);
+
+// Testimonial carousel
+(function() {
+  const slides = document.querySelectorAll('.t-slide');
+  const dots = document.querySelectorAll('.t-dot');
+  let cur = 0, paused = false;
+  function go(i) {
+    cur = ((i%slides.length)+slides.length)%slides.length;
+    slides.forEach((s,j) => { s.style.opacity=j===cur?'1':'0'; s.style.position=j===cur?'relative':'absolute'; s.style.pointerEvents=j===cur?'auto':'none'; });
+    dots.forEach((d,j) => d.style.opacity=j===cur?'1':'0.3');
   }
+  dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.index)));
+  setInterval(() => { if (!paused) go(cur+1); }, 7000);
+  const car = document.getElementById('testimonial-carousel');
+  if (car) { car.addEventListener('mouseenter', () => paused=true); car.addEventListener('mouseleave', () => paused=false); }
+})();
 
-  function closeMenu() {
-    menuOpen = false;
-    mobileMenu.querySelectorAll('[data-menu-link], a[href*="calendly"]').forEach(el => {
-      el.classList.add('opacity-0', 'translate-y-4');
-      el.classList.remove('opacity-100', 'translate-y-0');
-    });
-    setTimeout(() => { mobileMenu.classList.remove('open'); }, 300);
-    document.body.style.overflow = '';
-    bar1.style.transform = '';
-    bar2.style.opacity = '';
-    bar3.style.transform = '';
-  }
+// Form
+const form = document.getElementById('contactForm');
+if (form) form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = form.querySelector('button[type="submit"]');
+  const orig = btn.textContent; btn.textContent = 'Enviando...'; btn.disabled = true;
+  try {
+    const r = await fetch(form.action, { method:'POST', body: new FormData(form) });
+    if (r.ok) form.innerHTML = '<div style="text-align:center;padding:2rem 0;"><h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.75rem;">Mensaje enviado</h3><p style="color:var(--body-muted);">Te contactaremos en menos de 24 horas.</p><a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary btn-press font-mono-meta" style="padding:1rem 2rem;font-size:0.72rem;margin-top:1.5rem;display:inline-flex;">Agendar llamada ahora</a></div>';
+    else throw 0;
+  } catch { btn.textContent='Error, intenta de nuevo'; btn.disabled=false; setTimeout(()=>btn.textContent=orig, 3000); }
+});
 
-  menuToggle.addEventListener('click', toggleMenu);
-  menuLinks.forEach(link => link.addEventListener('click', closeMenu));
-
-  // Fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // Counter animation
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        document.querySelectorAll('.hero-counter').forEach(counter => {
-          if (counter.dataset.animated) return;
-          const target = parseInt(counter.dataset.target, 10);
-          const start = performance.now();
-          function update(now) {
-            const progress = Math.min((now - start) / 2000, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            counter.textContent = Math.round(target * eased);
-            if (progress < 1) requestAnimationFrame(update);
-            else { counter.textContent = target; counter.dataset.animated = 'true'; }
-          }
-          requestAnimationFrame(update);
-        });
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  const heroCounters = document.querySelector('.hero-counter');
-  if (heroCounters) counterObserver.observe(heroCounters.parentElement.parentElement);
-
-  // Testimonial carousel
-  (function() {
-    const carousel = document.getElementById('testimonial-carousel');
-    if (!carousel) return;
-    const slides = carousel.querySelectorAll('.testimonial-slide');
-    const dots = carousel.querySelectorAll('.testimonial-dot');
-    let current = 0, paused = false;
-    function goTo(i) {
-      current = ((i % slides.length) + slides.length) % slides.length;
-      slides.forEach((s, j) => {
-        s.style.opacity = j === current ? '1' : '0';
-        s.style.position = j === current ? 'relative' : 'absolute';
-        s.style.pointerEvents = j === current ? 'auto' : 'none';
-      });
-      dots.forEach((d, j) => d.style.opacity = j === current ? '1' : '0.3');
-    }
-    dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.index))));
-    setInterval(() => { if (!paused) goTo(current + 1); }, 7000);
-    carousel.addEventListener('mouseenter', () => paused = true);
-    carousel.addEventListener('mouseleave', () => paused = false);
-  })();
-
-  // Form
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      const orig = btn.textContent;
-      btn.textContent = 'Enviando...'; btn.disabled = true;
-      try {
-        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
-        if (res.ok) {
-          form.innerHTML = '<div class="text-center py-8"><h3 class="font-headline-md text-[24px] text-primary mb-4" style="font-family: Bodoni Moda;">Mensaje enviado</h3><p class="text-on-surface-variant font-body-md">Te contactaremos en menos de 24 horas.</p><a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block mt-6 px-10 py-4 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest">Agendar llamada ahora</a></div>';
-        } else { throw new Error(); }
-      } catch {
-        btn.textContent = 'Error, intenta de nuevo'; btn.disabled = false;
-        setTimeout(() => { btn.textContent = orig; }, 3000);
-      }
-    });
-  }
-
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href');
-      if (href === '#' || href === '#hero') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-      const target = document.querySelector(href);
-      if (target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }
-    });
-  });
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const h = a.getAttribute('href');
+  if (h==='#'||h==='#hero') { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); return; }
+  const t = document.querySelector(h);
+  if (t) { e.preventDefault(); window.scrollTo({top:t.offsetTop-80,behavior:'smooth'}); }
+}));
 </script>
 </body>
 </html>
