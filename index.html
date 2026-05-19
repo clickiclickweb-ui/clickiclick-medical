@@ -74,6 +74,29 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;op
 /* Fade */
 .fi-a{opacity:1;transform:translateY(0)}
 
+/* FORCE READABILITY — override everything */
+p, li, blockquote, span, cite, label, td, th, dd, dt {
+  color: #ffffff !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+}
+/* Exceptions: keep accent colors */
+.idx, [style*="color:var(--gold)"], [style*="color:var(--accent)"] {
+  color: unset !important;
+}
+.idx { color: var(--gold) !important; }
+summary { color: #ffffff !important; }
+summary .fq-i { color: var(--accent) !important; }
+a.fm.hl { color: #ffffff !important; }
+a.bg { color: #ffffff !important; }
+a.bg:hover { color: var(--accent) !important; }
+.wm .d { color: var(--accent) !important; }
+.wm .s { color: #cccccc !important; }
+footer a { color: #cccccc !important; }
+input, select, textarea { color: #ffffff !important; }
+input::placeholder, textarea::placeholder { color: #999999 !important; }
+
 /* Wordmark */
 .wm{display:inline-flex;align-items:baseline;font-family:var(--fs);font-weight:800;letter-spacing:-.035em;line-height:1;white-space:nowrap;color:var(--cream)}
 .wm .d{color:var(--accent)}.wm .s{font-family:var(--fi);font-size:.55em;font-weight:400;font-style:italic;transform:translateY(-.18em);margin-left:.12em;color:#fff;letter-spacing:normal}
