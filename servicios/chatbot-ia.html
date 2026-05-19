@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>Chatbot IA 24/7 | CLICKICLICK — Automatizacion e IA para Clinicas</title>
+<meta name="description" content="Chatbot con Inteligencia Artificial que responde, califica y agenda pacientes las 24 horas del dia para tu clinica estetica." />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=DM+Serif+Display&family=Hanken+Grotesk:wght@300;400;600;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = { darkMode: "class", theme: { extend: {
+    colors: { "on-primary": "#ffffff", "outline-variant": "#c4c7c7", "surface": "#fdf8f8", "surface-container-low": "#f7f3f2", "on-surface": "#1c1b1b", "primary": "#171818", "background": "#fdf8f8", "on-surface-variant": "#444748", "primary-container": "#2c2c2c", "surface-container": "#f1edec", "on-primary-container": "#949393" },
+    fontFamily: { "label-sm": ["Hanken Grotesk"], "display-lg": ["Bodoni Moda"], "headline-lg": ["Bodoni Moda"], "headline-lg-mobile": ["Bodoni Moda"], "display-lg-mobile": ["Bodoni Moda"], "body-md": ["Hanken Grotesk"], "headline-md": ["Bodoni Moda"], "body-lg": ["Hanken Grotesk"] },
+    fontSize: { "label-sm": ["12px", { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "600" }], "display-lg": ["84px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "400" }], "headline-lg": ["48px", { lineHeight: "1.2", fontWeight: "400" }], "headline-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "400" }], "display-lg-mobile": ["48px", { lineHeight: "1.1", fontWeight: "400" }], "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }], "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "400" }], "body-lg": ["18px", { lineHeight: "1.6", letterSpacing: "0.01em", fontWeight: "400" }] }
+  }}}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  .film-grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E"); }
+  .serif-italic { font-family: "Bodoni Moda"; font-style: italic; }
+  .border-thin { border-width: 0.5px; }
+  ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: #fdf8f8; } ::-webkit-scrollbar-thumb { background: #171818; }
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<div class="film-grain"></div>
+
+<!-- Header -->
+<header class="w-full top-0 sticky z-50 bg-background/90 backdrop-blur-sm border-b border-outline-variant">
+  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-6 md:px-[64px] h-20">
+    <a href="../index.html" class="font-display-lg text-[22px] text-primary uppercase" style="font-family: 'DM Serif Display', serif; font-weight: 400; letter-spacing: 0.02em;">CLICKICLICK</a>
+    <div class="flex items-center gap-6">
+      <a href="../index.html" class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary hover:border-transparent transition-all duration-400">Volver</a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-[1440px] mx-auto px-6 md:px-[64px]">
+
+  <!-- Hero -->
+  <section class="py-20 md:py-32 fade-in">
+    <p class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-6">Servicio</p>
+    <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary max-w-4xl mb-8">Chatbot IA <span class="serif-italic">24/7</span></h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Un asistente virtual inteligente que responde, califica y agenda pacientes por ti, a cualquier hora del dia o la noche, sin perder una sola conversacion.</p>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 md:py-24 border-t border-outline-variant">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+      <div class="fade-in">
+        <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6">Como funciona</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">Cuatro pasos. Sin friccion. Tu paciente pasa de la primera pregunta a la cita confirmada en minutos.</p>
+      </div>
+      <div class="space-y-8 fade-in">
+        <div class="border-thin border-outline-variant p-6">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-3 block">01</span>
+          <h3 class="font-headline-md text-[22px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Contacto inicial</h3>
+          <p class="text-on-surface-variant font-body-md">El paciente escribe por WhatsApp, Instagram o el chat de tu web. El chatbot responde en segundos con un saludo personalizado para tu clinica.</p>
+        </div>
+        <div class="border-thin border-outline-variant p-6">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-3 block">02</span>
+          <h3 class="font-headline-md text-[22px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Calificacion inteligente</h3>
+          <p class="text-on-surface-variant font-body-md">La IA hace preguntas estrategicas para identificar el tratamiento de interes, nivel de urgencia y capacidad de inversion. Filtra curiosos de pacientes reales.</p>
+        </div>
+        <div class="border-thin border-outline-variant p-6">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-3 block">03</span>
+          <h3 class="font-headline-md text-[22px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Agenda automatica</h3>
+          <p class="text-on-surface-variant font-body-md">Si el paciente califica, el bot le ofrece horarios disponibles y agenda directamente en tu sistema. Sin intervenir tu recepcionista.</p>
+        </div>
+        <div class="border-thin border-outline-variant p-6">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-3 block">04</span>
+          <h3 class="font-headline-md text-[22px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Handoff al equipo</h3>
+          <p class="text-on-surface-variant font-body-md">Cuando la conversacion requiere atencion humana, el bot transfiere el chat con un resumen completo del paciente. Tu equipo arranca con contexto total.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16 md:py-24 border-t border-outline-variant">
+    <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-12 fade-in">Que incluye</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="border-thin border-outline-variant p-6 fade-in">
+        <span class="material-symbols-outlined text-primary text-[32px] mb-4">smart_toy</span>
+        <h3 class="font-headline-md text-[20px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">IA conversacional avanzada</h3>
+        <p class="text-on-surface-variant font-body-md">Respuestas naturales entrenadas con terminologia medico-estetica. No suena a robot generico.</p>
+      </div>
+      <div class="border-thin border-outline-variant p-6 fade-in">
+        <span class="material-symbols-outlined text-primary text-[32px] mb-4">schedule</span>
+        <h3 class="font-headline-md text-[20px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Disponible 24/7/365</h3>
+        <p class="text-on-surface-variant font-body-md">Fines de semana, madrugadas, feriados. Nunca pierdas un lead por no responder a tiempo.</p>
+      </div>
+      <div class="border-thin border-outline-variant p-6 fade-in">
+        <span class="material-symbols-outlined text-primary text-[32px] mb-4">translate</span>
+        <h3 class="font-headline-md text-[20px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Multiidioma</h3>
+        <p class="text-on-surface-variant font-body-md">Espanol, ingles y portugues. Ideal para clinicas que reciben turismo medico.</p>
+      </div>
+      <div class="border-thin border-outline-variant p-6 fade-in">
+        <span class="material-symbols-outlined text-primary text-[32px] mb-4">bar_chart</span>
+        <h3 class="font-headline-md text-[20px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Dashboard de metricas</h3>
+        <p class="text-on-surface-variant font-body-md">Visualiza conversaciones, tasa de calificacion, citas generadas y puntos de abandono en tiempo real.</p>
+      </div>
+      <div class="border-thin border-outline-variant p-6 fade-in">
+        <span class="material-symbols-outlined text-primary text-[32px] mb-4">tune</span>
+        <h3 class="font-headline-md text-[20px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Personalizable al 100%</h3>
+        <p class="text-on-surface-variant font-body-md">Tono, flujos, preguntas y respuestas adaptados a los tratamientos y la marca de tu clinica.</p>
+      </div>
+      <div class="border-thin border-outline-variant p-6 fade-in">
+        <span class="material-symbols-outlined text-primary text-[32px] mb-4">security</span>
+        <h3 class="font-headline-md text-[20px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Privacidad y compliance</h3>
+        <p class="text-on-surface-variant font-body-md">Datos encriptados. Cumplimiento con normativas de datos personales en salud de LATAM.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations -->
+  <section class="py-16 md:py-24 border-t border-outline-variant">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+      <div class="fade-in">
+        <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6">Se integra con todo</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant">El chatbot se conecta con las plataformas que tu clinica ya usa. Sin cambiar herramientas, sin migraciones complejas.</p>
+      </div>
+      <div class="space-y-6 fade-in">
+        <div class="flex items-center gap-4 border-thin border-outline-variant p-5">
+          <span class="material-symbols-outlined text-primary text-[28px]">chat</span>
+          <div>
+            <h3 class="font-headline-md text-[18px] text-primary" style="font-family: 'Bodoni Moda'; line-height: 1.3;">WhatsApp Business API</h3>
+            <p class="text-on-surface-variant text-[14px]">El canal #1 de comunicacion para clinicas en LATAM.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 border-thin border-outline-variant p-5">
+          <span class="material-symbols-outlined text-primary text-[28px]">photo_camera</span>
+          <div>
+            <h3 class="font-headline-md text-[18px] text-primary" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Instagram DM</h3>
+            <p class="text-on-surface-variant text-[14px]">Responde automaticamente a mensajes directos y stories.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 border-thin border-outline-variant p-5">
+          <span class="material-symbols-outlined text-primary text-[28px]">language</span>
+          <div>
+            <h3 class="font-headline-md text-[18px] text-primary" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Chat web embebido</h3>
+            <p class="text-on-surface-variant text-[14px]">Widget para tu sitio web con la misma IA y flujos.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 border-thin border-outline-variant p-5">
+          <span class="material-symbols-outlined text-primary text-[28px]">calendar_month</span>
+          <div>
+            <h3 class="font-headline-md text-[18px] text-primary" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Sistemas de agenda</h3>
+            <p class="text-on-surface-variant text-[14px]">Calendly, Google Calendar, software de clinica. Agenda directo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-24 border-t border-outline-variant text-center fade-in">
+    <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6">Tu clinica necesita un chatbot inteligente?</h2>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto mb-10">Te mostramos en 30 minutos como el chatbot puede empezar a agendar pacientes por ti esta misma semana.</p>
+    <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block px-10 py-5 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest transition-opacity hover:opacity-90">Agendar demo gratuita</a>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant py-10">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-[64px] flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="font-label-sm text-[10px] uppercase text-on-surface-variant">&copy; 2026 CLICKICLICK. Todos los derechos reservados.</p>
+    <div class="flex gap-6">
+      <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="../privacidad.html">Privacidad</a>
+      <a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="../terminos.html">Terminos</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

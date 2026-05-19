@@ -1,572 +1,831 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="light" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CLICKICLICK — Automatización e IA para Clínicas Estéticas</title>
-  <meta name="description" content="Transformamos clínicas de medicina estética y odontología en máquinas de captación y fidelización con Inteligencia Artificial y automatización. Latinoamérica.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-</head>
-<body>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>CLICKICLICK | Automatización e IA para Clínicas Estéticas</title>
+<meta name="description" content="Transformamos clínicas de medicina estética y odontología en máquinas de captación y fidelización con Inteligencia Artificial y automatización en Latinoamérica." />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=DM+Serif+Display&family=Hanken+Grotesk:wght@300;400;600;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-primary": "#ffffff",
+          "inverse-primary": "#c8c6c5",
+          "on-primary-fixed": "#1b1c1c",
+          "secondary-fixed": "#e6e2d9",
+          "surface-variant": "#e5e2e1",
+          "secondary-container": "#e3dfd6",
+          "on-primary-container": "#949393",
+          "on-tertiary-container": "#969390",
+          "surface-container-lowest": "#ffffff",
+          "outline-variant": "#c4c7c7",
+          "surface": "#fdf8f8",
+          "surface-tint": "#5f5e5e",
+          "surface-container-low": "#f7f3f2",
+          "inverse-surface": "#313030",
+          "inverse-on-surface": "#f4f0ef",
+          "primary-fixed": "#e4e2e1",
+          "primary-fixed-dim": "#c8c6c5",
+          "on-surface": "#1c1b1b",
+          "primary": "#171818",
+          "background": "#fdf8f8",
+          "surface-container-high": "#ebe7e7",
+          "surface-bright": "#fdf8f8",
+          "on-secondary-container": "#64635b",
+          "primary-container": "#2c2c2c",
+          "surface-dim": "#ddd9d8",
+          "surface-container": "#f1edec",
+          "outline": "#747878",
+          "on-surface-variant": "#444748",
+          "tertiary": "#181816"
+        },
+        spacing: {
+          "gutter": "24px",
+          "max-width": "1440px",
+          "margin-desktop": "64px",
+          "unit": "8px",
+          "margin-mobile": "24px"
+        },
+        fontFamily: {
+          "label-sm": ["Hanken Grotesk"],
+          "display-lg": ["Bodoni Moda"],
+          "headline-lg": ["Bodoni Moda"],
+          "headline-lg-mobile": ["Bodoni Moda"],
+          "display-lg-mobile": ["Bodoni Moda"],
+          "body-md": ["Hanken Grotesk"],
+          "headline-md": ["Bodoni Moda"],
+          "body-lg": ["Hanken Grotesk"]
+        },
+        fontSize: {
+          "label-sm": ["12px", { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "600" }],
+          "display-lg": ["84px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "400" }],
+          "headline-lg": ["48px", { lineHeight: "1.2", fontWeight: "400" }],
+          "headline-lg-mobile": ["32px", { lineHeight: "1.2", fontWeight: "400" }],
+          "display-lg-mobile": ["48px", { lineHeight: "1.1", fontWeight: "400" }],
+          "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+          "headline-md": ["32px", { lineHeight: "1.3", fontWeight: "400" }],
+          "body-lg": ["18px", { lineHeight: "1.6", letterSpacing: "0.01em", fontWeight: "400" }]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
 
-  <!-- NAVIGATION -->
-  <nav class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#" class="nav__logo">CLICKICLICK</a>
-      <div class="nav__links" id="navLinks">
-        <a href="#servicios">Servicios</a>
-        <a href="#resultados">Resultados</a>
-        <a href="#proceso">Proceso</a>
-        <a href="#precios">Precios</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contacto" class="nav__cta">Agendar llamada</a>
-      </div>
-      <button class="nav__burger" id="navBurger" aria-label="Menú">
-        <span></span><span></span><span></span>
+  .film-grain {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 9999; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 24;
+  }
+
+  .serif-italic { font-family: "Bodoni Moda"; font-style: italic; }
+  .border-thin { border-width: 0.5px; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #fdf8f8; }
+  ::-webkit-scrollbar-thumb { background: #171818; }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+    display: flex; width: max-content;
+  }
+
+  .mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mobile-menu.open { transform: translateX(0); }
+
+  .service-expand {
+    max-height: 0; overflow: hidden; opacity: 0;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+  .group:hover .service-expand { max-height: 240px; opacity: 1; }
+
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  .whatsapp-float {
+    position: fixed; bottom: 28px; right: 28px;
+    width: 56px; height: 56px; background: #25D366;
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; z-index: 9998;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+    transition: all 0.3s ease;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.4); }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<div class="film-grain"></div>
+
+<!-- Header -->
+<header class="w-full top-0 sticky z-50 bg-background/90 backdrop-blur-sm border-b border-outline-variant">
+  <div class="flex justify-between items-center max-w-[1440px] mx-auto px-6 md:px-[64px] h-20">
+    <div class="flex items-center">
+      <a href="#hero" class="font-display-lg text-[22px] text-primary uppercase" style="font-family: 'DM Serif Display', serif; font-weight: 400; letter-spacing: 0.02em;">CLICKICLICK</a>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary hover:border-transparent transition-all duration-400 hidden sm:inline">
+        Hablemos
+      </a>
+      <button id="menu-toggle" class="flex flex-col justify-center items-center w-10 h-10 gap-[6px]" aria-label="Abrir menu">
+        <span class="block w-6 h-[0.5px] bg-primary transition-all duration-400 origin-center" id="bar1"></span>
+        <span class="block w-6 h-[0.5px] bg-primary transition-all duration-400 origin-center" id="bar2"></span>
+        <span class="block w-6 h-[0.5px] bg-primary transition-all duration-400 origin-center" id="bar3"></span>
       </button>
     </div>
-  </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero__bg"></div>
-    <div class="hero__content">
-      <p class="hero__tag">Automatización + Inteligencia Artificial</p>
-      <h1 class="hero__title">Tu clínica llena.<br><em>Todos los días.</em></h1>
-      <p class="hero__sub">Diseñamos sistemas de captación, seguimiento y fidelización con IA para clínicas de medicina estética y odontología de alto valor en Latinoamérica.</p>
-      <div class="hero__actions">
-        <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn btn--primary">Agendar llamada estratégica</a>
-        <a href="#servicios" class="btn btn--ghost">Ver servicios</a>
-      </div>
-      <div class="hero__proof">
-        <div class="hero__stat">
-          <span class="hero__stat-number" data-target="147">0</span><span>%</span>
-          <p>Aumento promedio en citas agendadas</p>
-        </div>
-        <div class="hero__stat">
-          <span class="hero__stat-number" data-target="38">0</span><span>%</span>
-          <p>Reducción en no-shows</p>
-        </div>
-        <div class="hero__stat">
-          <span class="hero__stat-number" data-target="23">0</span>
-          <p>Clínicas transformadas en LATAM</p>
-        </div>
-      </div>
+<!-- Full Menu Overlay -->
+<div id="mobile-menu" class="mobile-menu fixed inset-0 z-[9998] bg-[#fdf8f8] flex items-center justify-center overflow-y-auto">
+  <div class="flex flex-col md:flex-row gap-12 md:gap-24 px-6 py-20 max-w-[1440px] mx-auto">
+    <div class="flex flex-col space-y-6">
+      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#servicios" data-menu-link style="transition-delay: 80ms;">Servicios</a>
+      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#resultados" data-menu-link style="transition-delay: 140ms;">Resultados</a>
+      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#proceso" data-menu-link style="transition-delay: 200ms;">Proceso</a>
+      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#precios" data-menu-link style="transition-delay: 260ms;">Precios</a>
+      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="nosotros.html" data-menu-link style="transition-delay: 320ms;">Nosotros</a>
+      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="faq-contacto.html" data-menu-link style="transition-delay: 380ms;">FAQ</a>
+      <a class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary opacity-0 translate-y-4 transition-all duration-500" href="#contacto" data-menu-link style="transition-delay: 440ms;">Contacto</a>
     </div>
-    <div class="hero__scroll">
-      <span>Descubre más</span>
-      <div class="hero__scroll-line"></div>
+    <div class="flex flex-col space-y-4 md:pt-2">
+      <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant mb-2 opacity-0 translate-y-4 transition-all duration-500" data-menu-link style="transition-delay: 300ms;">Servicios</span>
+      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/chatbot-ia.html" data-menu-link style="transition-delay: 360ms;">Chatbot IA 24/7</a>
+      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/automatizacion-citas.html" data-menu-link style="transition-delay: 400ms;">Automatizacion de Citas</a>
+      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/crm-ia.html" data-menu-link style="transition-delay: 440ms;">CRM con IA</a>
+      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/campanas-automatizadas.html" data-menu-link style="transition-delay: 480ms;">Campanas Automatizadas</a>
+      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/web-premium.html" data-menu-link style="transition-delay: 520ms;">Web Premium para Clinicas</a>
+      <a class="font-body-lg text-body-lg text-on-surface-variant hover:text-primary transition-colors duration-300 opacity-0 translate-y-4 transition-all duration-500" href="servicios/seguimiento-post.html" data-menu-link style="transition-delay: 560ms;">Seguimiento Post-Consulta</a>
     </div>
-  </header>
+    <div class="flex flex-col justify-end">
+      <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block px-10 py-5 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest opacity-0 translate-y-4 transition-all duration-500" data-menu-link style="transition-delay: 620ms;">Agenda una llamada</a>
+    </div>
+  </div>
+</div>
 
-  <!-- PROBLEMA -->
-  <section class="problem">
-    <div class="container">
-      <div class="problem__grid">
-        <div class="problem__text">
-          <p class="section-tag">El problema</p>
-          <h2 class="section-title">Tu clínica tiene el mejor equipo médico.<br>Pero pierde pacientes cada día.</h2>
-          <p class="section-desc">La recepcionista no puede contestar a las 2 AM. Los leads de Instagram se enfrían en horas. Los pacientes no vuelven porque nadie les da seguimiento. Y mientras tanto, la competencia ya automatizó.</p>
+<main>
+  <!-- Hero Section -->
+  <section id="hero" class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-16 md:py-32 overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-[24px] items-center">
+      <div class="md:col-span-7 space-y-8 md:space-y-10 fade-in">
+        <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-[1.05] max-w-2xl">
+          Tu clinica llena. <span class="serif-italic">Todos los dias.</span>
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+          Sistemas de captacion, seguimiento y fidelizacion con IA para clinicas de medicina estetica y odontologia de alto valor en Latinoamerica.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-4 md:pt-6">
+          <a class="inline-block px-10 py-5 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest transition-opacity hover:opacity-90" href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener">
+            Agendar llamada estrategica
+          </a>
+          <a class="inline-block px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest text-primary border-thin border-primary hover:bg-primary hover:text-on-primary transition-all duration-400" href="#servicios">
+            Ver servicios
+          </a>
         </div>
-        <div class="problem__list">
-          <div class="problem__item">
-            <div class="problem__icon">01</div>
-            <div>
-              <h3>Leads que se pierden</h3>
-              <p>El 68% de los pacientes potenciales contactan fuera de horario. Sin respuesta inmediata, eligen otra clínica.</p>
-            </div>
+      </div>
+      <div class="md:col-span-5 fade-in">
+        <div class="grid grid-cols-3 gap-6 text-center pt-8 md:pt-0">
+          <div>
+            <span class="block font-display-lg text-[48px] md:text-[56px] text-primary hero-counter" data-target="147" style="font-family: 'Bodoni Moda';">0</span>
+            <span class="block font-label-sm text-label-sm text-primary -mt-1">%</span>
+            <p class="font-body-md text-[13px] text-on-surface-variant mt-2">Aumento en citas agendadas</p>
           </div>
-          <div class="problem__item">
-            <div class="problem__icon">02</div>
-            <div>
-              <h3>Cero seguimiento post-consulta</h3>
-              <p>El paciente sale de la clínica y desaparece. Sin nurturing automatizado, pierdes el 40% de los procedimientos de alto valor.</p>
-            </div>
+          <div>
+            <span class="block font-display-lg text-[48px] md:text-[56px] text-primary hero-counter" data-target="38" style="font-family: 'Bodoni Moda';">0</span>
+            <span class="block font-label-sm text-label-sm text-primary -mt-1">%</span>
+            <p class="font-body-md text-[13px] text-on-surface-variant mt-2">Reduccion en no-shows</p>
           </div>
-          <div class="problem__item">
-            <div class="problem__icon">03</div>
-            <div>
-              <h3>Recepción saturada</h3>
-              <p>Tu equipo pierde 3+ horas diarias en tareas repetitivas: confirmar citas, responder las mismas preguntas, enviar recordatorios.</p>
-            </div>
-          </div>
-          <div class="problem__item">
-            <div class="problem__icon">04</div>
-            <div>
-              <h3>Marketing sin retorno</h3>
-              <p>Inviertes en Meta Ads pero no tienes un sistema que convierta clics en citas reales y medibles.</p>
-            </div>
+          <div>
+            <span class="block font-display-lg text-[48px] md:text-[56px] text-primary hero-counter" data-target="23" style="font-family: 'Bodoni Moda';">0</span>
+            <p class="font-body-md text-[13px] text-on-surface-variant mt-2">Clinicas en LATAM</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SOLUCIÓN -->
-  <section class="solution">
-    <div class="container">
-      <p class="section-tag">La solución</p>
-      <h2 class="section-title">Un sistema completo que trabaja<br>mientras tu equipo descansa.</h2>
-      <div class="solution__visual">
-        <div class="solution__flow">
-          <div class="solution__step">
-            <div class="solution__step-num">1</div>
-            <h3>Captura</h3>
-            <p>Chatbot IA responde en segundos, 24/7, en WhatsApp, Instagram y tu web.</p>
+  <!-- Social Proof Marquee -->
+  <section class="w-full border-y border-outline-variant py-8 md:py-10 bg-surface overflow-hidden">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-[64px]">
+      <div class="animate-marquee font-label-sm text-label-sm uppercase tracking-[0.2em] text-on-surface-variant items-center space-x-8 md:space-x-12">
+        <span>+23 clinicas automatizadas</span>
+        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
+        <span>Respuesta &lt;5 segundos</span>
+        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
+        <span>100% clinicas satisfechas</span>
+        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
+        <span>Resultados en 30 dias</span>
+        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
+        <span>Sin contratos de permanencia</span>
+        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
+        <span>+23 clinicas automatizadas</span>
+        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
+        <span>Respuesta &lt;5 segundos</span>
+        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
+        <span>100% clinicas satisfechas</span>
+        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
+        <span>Resultados en 30 dias</span>
+        <span class="w-1 h-1 bg-outline rounded-full inline-block flex-shrink-0"></span>
+        <span>Sin contratos de permanencia</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section id="problemas" class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-20 md:py-32 bg-background">
+    <div class="max-w-3xl mb-16 md:mb-24 fade-in">
+      <h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">
+        68% de los pacientes potenciales contactan fuera de horario. Sin respuesta inmediata, eligen otra clinica.
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-[24px]">
+      <div class="p-6 md:p-8 border-thin border-outline-variant hover:bg-surface-container-low transition-colors duration-400 fade-in">
+        <span class="material-symbols-outlined text-primary mb-6 md:mb-8" style="font-size: 32px;">schedule</span>
+        <h3 class="font-headline-md text-[22px] md:text-[24px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Leads perdidos</h3>
+        <p class="text-on-surface-variant font-body-md">Tu recepcionista no puede contestar a las 2 AM. Cada mensaje sin respuesta es un paciente que se fue a la competencia.</p>
+      </div>
+      <div class="p-6 md:p-8 border-thin border-outline-variant hover:bg-surface-container-low transition-colors duration-400 fade-in">
+        <span class="material-symbols-outlined text-primary mb-6 md:mb-8" style="font-size: 32px;">person_off</span>
+        <h3 class="font-headline-md text-[22px] md:text-[24px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Cero seguimiento</h3>
+        <p class="text-on-surface-variant font-body-md">El paciente sale de consulta y desaparece. Sin nurturing automatizado pierdes el 40% de los procedimientos de alto valor.</p>
+      </div>
+      <div class="p-6 md:p-8 border-thin border-outline-variant hover:bg-surface-container-low transition-colors duration-400 fade-in">
+        <span class="material-symbols-outlined text-primary mb-6 md:mb-8" style="font-size: 32px;">support_agent</span>
+        <h3 class="font-headline-md text-[22px] md:text-[24px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Recepcion saturada</h3>
+        <p class="text-on-surface-variant font-body-md">Tu equipo pierde 3+ horas diarias en tareas repetitivas: confirmar citas, responder las mismas preguntas, enviar recordatorios.</p>
+      </div>
+      <div class="p-6 md:p-8 border-thin border-outline-variant hover:bg-surface-container-low transition-colors duration-400 fade-in">
+        <span class="material-symbols-outlined text-primary mb-6 md:mb-8" style="font-size: 32px;">money_off</span>
+        <h3 class="font-headline-md text-[22px] md:text-[24px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Marketing sin retorno</h3>
+        <p class="text-on-surface-variant font-body-md">Inviertes en Meta Ads pero no tienes un sistema que convierta clics en citas reales y medibles.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="servicios" class="bg-surface py-20 md:py-32 border-y border-outline-variant">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-[64px]">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-6 md:gap-[24px] fade-in">
+        <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary">Servicios</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm border-l border-outline-variant pl-6 md:pl-8">
+          Automatizacion, IA y estrategia digital para clinicas que quieren dominar su mercado en Latinoamerica.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 md:gap-y-20 gap-x-[24px]">
+        <div class="group fade-in">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">01</span>
+          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Chatbot IA 24/7</h4>
+          <p class="text-on-surface-variant">Asistente inteligente que responde, agenda y califica pacientes en WhatsApp, Instagram y web.</p>
+          <div class="service-expand">
+            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Entrenado con el tono y protocolos de tu clinica. Respuesta en menos de 5 segundos. Integracion con tu agenda real. Escalamiento a humano inteligente.</p>
+            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN STARTER</p>
+            <a href="servicios/chatbot-ia.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
           </div>
-          <div class="solution__arrow">→</div>
-          <div class="solution__step">
-            <div class="solution__step-num">2</div>
-            <h3>Convierte</h3>
-            <p>Agenda automáticamente, califica al paciente y envía confirmación.</p>
+        </div>
+        <div class="group fade-in">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">02</span>
+          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Automatizacion de Citas</h4>
+          <p class="text-on-surface-variant">Sistema completo de agendamiento, confirmacion, recordatorios y re-agendamiento automatico.</p>
+          <div class="service-expand">
+            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Recordatorios WhatsApp + SMS. Re-agendamiento con un clic. Listas de espera inteligentes. Reduce no-shows hasta un 40%.</p>
+            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN STARTER</p>
+            <a href="servicios/automatizacion-citas.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
           </div>
-          <div class="solution__arrow">→</div>
-          <div class="solution__step">
-            <div class="solution__step-num">3</div>
-            <h3>Retiene</h3>
-            <p>Seguimiento post-consulta, recordatorios y campañas de reactivación.</p>
+        </div>
+        <div class="group fade-in">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">03</span>
+          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">CRM con IA</h4>
+          <p class="text-on-surface-variant">Centraliza pacientes con historial, scoring automatico, segmentacion inteligente y prediccion.</p>
+          <div class="service-expand">
+            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Scoring predictivo de pacientes. Segmentacion automatica por procedimiento. Pipeline visual de ventas. Todo en un solo lugar.</p>
+            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN GROWTH</p>
+            <a href="servicios/crm-ia.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
           </div>
-          <div class="solution__arrow">→</div>
-          <div class="solution__step">
-            <div class="solution__step-num">4</div>
-            <h3>Escala</h3>
-            <p>Dashboard con métricas reales. Optimización continua basada en datos.</p>
+        </div>
+        <div class="group fade-in">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">04</span>
+          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Campanas Automatizadas</h4>
+          <p class="text-on-surface-variant">Meta Ads + email + WhatsApp marketing. Embudos completos del clic a la cita cerrada.</p>
+          <div class="service-expand">
+            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Embudos multi-canal. Nurturing por procedimiento. Retargeting automatizado. Metricas de conversion en tiempo real.</p>
+            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN GROWTH</p>
+            <a href="servicios/campanas-automatizadas.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
+          </div>
+        </div>
+        <div class="group fade-in">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">05</span>
+          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Web Premium para Clinicas</h4>
+          <p class="text-on-surface-variant">Sitio web de alto rendimiento disenado para convertir visitantes en pacientes de alto valor.</p>
+          <div class="service-expand">
+            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Diseno a medida, no templates. SEO local optimizado. Integracion con chatbot, CRM y agenda. Velocidad de carga optimizada.</p>
+            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN PREMIUM</p>
+            <a href="servicios/web-premium.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
+          </div>
+        </div>
+        <div class="group fade-in">
+          <span class="serif-italic text-headline-lg text-outline-variant mb-4 block">06</span>
+          <div class="h-px bg-outline-variant w-full mb-6 md:mb-8 group-hover:bg-primary transition-colors duration-500"></div>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Seguimiento Post-Consulta</h4>
+          <p class="text-on-surface-variant">Automatiza el seguimiento despues de cada procedimiento con flujos inteligentes.</p>
+          <div class="service-expand">
+            <p class="text-on-surface-variant mt-4 text-[14px] leading-relaxed">Flujos post-procedimiento. Encuestas NPS automaticas. Recordatorios de control. Campanas de reactivacion de pacientes inactivos.</p>
+            <p class="font-label-sm text-label-sm text-primary mt-4 tracking-widest">INCLUIDO EN PLAN GROWTH</p>
+            <a href="servicios/seguimiento-post.html" class="inline-block mt-4 font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Saber mas</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS -->
-  <section class="services" id="servicios">
-    <div class="container">
-      <p class="section-tag">Servicios</p>
-      <h2 class="section-title">Todo lo que tu clínica necesita<br>para dominar su mercado.</h2>
-      <div class="services__grid">
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <h3>Chatbot IA 24/7</h3>
-          <p>Asistente inteligente que responde consultas, agenda citas y califica pacientes en WhatsApp, Instagram y web. Entrenado con el tono y protocolos de tu clínica.</p>
-          <ul class="service-card__features">
-            <li>Respuesta en menos de 5 segundos</li>
-            <li>Integración con tu agenda real</li>
-            <li>Escalamiento a humano inteligente</li>
-          </ul>
+  <!-- Results / Case Studies -->
+  <section id="resultados" class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-20 md:py-32">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-6 fade-in">
+      <h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-primary">Resultados Reales</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm">Clinicas que ya transformaron su captacion con nuestros sistemas.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Dermavance -->
+      <div class="border-thin border-outline-variant p-6 md:p-8 hover:bg-surface-container-low transition-colors duration-400 fade-in">
+        <div class="flex justify-between items-start mb-6">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Medicina Estetica</span>
+          <span class="font-label-sm text-[10px] text-on-surface-variant">Ciudad de Mexico</span>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <h3 class="font-headline-md text-[26px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Clinica Dermavance</h3>
+        <p class="text-on-surface-variant font-body-md mb-6">Rejuvenecimiento facial y corporal, 3 sedes. Chatbot IA + CRM + campanas automatizadas.</p>
+        <div class="grid grid-cols-3 gap-4 py-6 border-y border-outline-variant mb-6">
+          <div>
+            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+312%</span>
+            <p class="text-[11px] text-on-surface-variant mt-1">Citas online</p>
           </div>
-          <h3>Automatización de Citas</h3>
-          <p>Sistema completo de agendamiento, confirmación, recordatorios y re-agendamiento automático. Reduce no-shows hasta un 40%.</p>
-          <ul class="service-card__features">
-            <li>Recordatorios WhatsApp + SMS</li>
-            <li>Re-agendamiento con un clic</li>
-            <li>Listas de espera inteligentes</li>
-          </ul>
+          <div>
+            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">-45%</span>
+            <p class="text-[11px] text-on-surface-variant mt-1">No-shows</p>
+          </div>
+          <div>
+            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+$127K</span>
+            <p class="text-[11px] text-on-surface-variant mt-1">Revenue 6 meses</p>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3>CRM con IA</h3>
-          <p>Centraliza todos tus pacientes. Historial de interacciones, scoring automático, segmentación inteligente y predicción de procedimientos.</p>
-          <ul class="service-card__features">
-            <li>Scoring predictivo de pacientes</li>
-            <li>Segmentación automática</li>
-            <li>Pipeline visual de ventas</li>
-          </ul>
+        <blockquote class="serif-italic text-[15px] text-primary leading-relaxed">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos.&rdquo;</blockquote>
+        <p class="font-label-sm text-[11px] text-on-surface-variant mt-3 tracking-widest uppercase">Dra. Valentina Reyes, Directora Medica</p>
+      </div>
+      <!-- Sonrie Studio -->
+      <div class="border-thin border-outline-variant p-6 md:p-8 hover:bg-surface-container-low transition-colors duration-400 fade-in">
+        <div class="flex justify-between items-start mb-6">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Odontologia</span>
+          <span class="font-label-sm text-[10px] text-on-surface-variant">Bogota, Colombia</span>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <h3 class="font-headline-md text-[26px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Sonrie Studio Dental</h3>
+        <p class="text-on-surface-variant font-body-md mb-6">Diseno de sonrisa e implantes premium. Automatizacion completa + web premium.</p>
+        <div class="grid grid-cols-3 gap-4 py-6 border-y border-outline-variant mb-6">
+          <div>
+            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+189%</span>
+            <p class="text-[11px] text-on-surface-variant mt-1">Leads calificados</p>
           </div>
-          <h3>Campañas Automatizadas</h3>
-          <p>Meta Ads + email + WhatsApp marketing. Embudos completos desde el clic hasta la cita cerrada, con nurturing inteligente.</p>
-          <ul class="service-card__features">
-            <li>Embudos multi-canal</li>
-            <li>Nurturing por procedimiento</li>
-            <li>Retargeting automatizado</li>
-          </ul>
+          <div>
+            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">-52%</span>
+            <p class="text-[11px] text-on-surface-variant mt-1">Tiempo recepcion</p>
+          </div>
+          <div>
+            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+$89K</span>
+            <p class="text-[11px] text-on-surface-variant mt-1">Revenue 4 meses</p>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3>Web Premium para Clínicas</h3>
-          <p>Sitio web de alto rendimiento diseñado para convertir. Optimizado para SEO local, velocidad y captación de pacientes de alto valor.</p>
-          <ul class="service-card__features">
-            <li>Diseño a medida, no templates</li>
-            <li>SEO local optimizado</li>
-            <li>Integración con todos los sistemas</li>
-          </ul>
+        <blockquote class="serif-italic text-[15px] text-primary leading-relaxed">&ldquo;Antes perdiamos el 60% de leads de Instagram. Ahora el sistema los captura y les agenda cita.&rdquo;</blockquote>
+        <p class="font-label-sm text-[11px] text-on-surface-variant mt-3 tracking-widest uppercase">Dr. Andres Camacho, Fundador</p>
+      </div>
+      <!-- Instituto Belleza -->
+      <div class="border-thin border-outline-variant p-6 md:p-8 hover:bg-surface-container-low transition-colors duration-400 fade-in">
+        <div class="flex justify-between items-start mb-6">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Cirugia Plastica</span>
+          <span class="font-label-sm text-[10px] text-on-surface-variant">Lima, Peru</span>
         </div>
-        <div class="service-card">
-          <div class="service-card__icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <h3 class="font-headline-md text-[26px] mb-4" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Instituto Belleza Peru</h3>
+        <p class="text-on-surface-variant font-body-md mb-6">Cirugia plastica de alta gama. CRM con IA + seguimiento post-operatorio + retencion.</p>
+        <div class="grid grid-cols-3 gap-4 py-6 border-y border-outline-variant mb-6">
+          <div>
+            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+95%</span>
+            <p class="text-[11px] text-on-surface-variant mt-1">Retencion</p>
           </div>
-          <h3>Seguimiento Post-Consulta</h3>
-          <p>Automatiza el seguimiento después de cada procedimiento. Encuestas de satisfacción, recordatorios de control y campañas de reactivación.</p>
-          <ul class="service-card__features">
-            <li>Flujos post-procedimiento</li>
-            <li>Encuestas NPS automáticas</li>
-            <li>Reactivación de pacientes inactivos</li>
-          </ul>
+          <div>
+            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+67%</span>
+            <p class="text-[11px] text-on-surface-variant mt-1">Referidos</p>
+          </div>
+          <div>
+            <span class="block font-headline-md text-[24px] text-primary" style="font-family: 'Bodoni Moda';">+$203K</span>
+            <p class="text-[11px] text-on-surface-variant mt-1">Revenue 8 meses</p>
+          </div>
+        </div>
+        <blockquote class="serif-italic text-[15px] text-primary leading-relaxed">&ldquo;El seguimiento post-operatorio automatizado cambio todo. Los pacientes vuelven para mas procedimientos.&rdquo;</blockquote>
+        <p class="font-label-sm text-[11px] text-on-surface-variant mt-3 tracking-widest uppercase">Dr. Ricardo Mendieta, Director</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="proceso" class="bg-primary text-on-primary py-20 md:py-32 overflow-hidden">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-[64px]">
+      <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-16 md:mb-24 fade-in">Proceso</h2>
+      <div class="relative flex flex-col space-y-0">
+        <div class="absolute left-4 top-0 h-full w-px bg-on-primary/20"></div>
+        <div class="relative pl-12 md:pl-16 py-8 md:py-12 group fade-in">
+          <div class="absolute left-3 top-8 md:top-12 w-2 h-2 rounded-full bg-on-primary group-hover:scale-150 transition-transform"></div>
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary/40 block mb-2">Semana 1</span>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Diagnostico y Estrategia</h4>
+          <p class="font-body-lg text-on-primary/60 max-w-lg">Analizamos tu clinica, competencia local, flujo de pacientes actual y oportunidades. Disenamos un plan de automatizacion a medida.</p>
+        </div>
+        <div class="relative pl-12 md:pl-16 py-8 md:py-12 group fade-in">
+          <div class="absolute left-3 top-8 md:top-12 w-2 h-2 rounded-full bg-on-primary group-hover:scale-150 transition-transform"></div>
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary/40 block mb-2">Semana 2-3</span>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Implementacion</h4>
+          <p class="font-body-lg text-on-primary/60 max-w-lg">Configuramos chatbot entrenado con tu clinica, CRM, automatizaciones, integraciones con tu agenda y canales de comunicacion.</p>
+        </div>
+        <div class="relative pl-12 md:pl-16 py-8 md:py-12 group fade-in">
+          <div class="absolute left-3 top-8 md:top-12 w-2 h-2 rounded-full bg-on-primary group-hover:scale-150 transition-transform"></div>
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary/40 block mb-2">Semana 4</span>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Lanzamiento</h4>
+          <p class="font-body-lg text-on-primary/60 max-w-lg">Activamos todo, monitorizamos en tiempo real y ajustamos. Tu equipo recibe capacitacion completa para operar el sistema.</p>
+        </div>
+        <div class="relative pl-12 md:pl-16 py-8 md:py-12 group fade-in">
+          <div class="absolute left-3 top-8 md:top-12 w-2 h-2 rounded-full bg-on-primary group-hover:scale-150 transition-transform"></div>
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-on-primary/40 block mb-2">Continuo</span>
+          <h4 class="font-headline-md text-[24px] md:text-headline-md mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Soporte y Evolucion</h4>
+          <p class="font-body-lg text-on-primary/60 max-w-lg">Soporte prioritario, reportes mensuales, optimizacion continua. Tu sistema evoluciona con tu clinica.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RESULTADOS -->
-  <section class="results" id="resultados">
-    <div class="container">
-      <p class="section-tag">Resultados reales</p>
-      <h2 class="section-title">Clínicas que ya transformaron<br>su captación de pacientes.</h2>
-      <div class="results__grid">
-        <div class="result-card">
-          <div class="result-card__header">
-            <div class="result-card__badge">Medicina Estética</div>
-            <p class="result-card__location">Ciudad de México, México</p>
-          </div>
-          <h3 class="result-card__name">Clínica Dermavance</h3>
-          <p class="result-card__desc">Clínica especializada en rejuvenecimiento facial y corporal con 3 sedes. Implementamos chatbot IA + CRM + campañas automatizadas.</p>
-          <div class="result-card__metrics">
-            <div class="result-card__metric">
-              <span>+312%</span>
-              <p>Citas agendadas online</p>
-            </div>
-            <div class="result-card__metric">
-              <span>-45%</span>
-              <p>No-shows</p>
-            </div>
-            <div class="result-card__metric">
-              <span>+$127K</span>
-              <p>Revenue en 6 meses</p>
-            </div>
-          </div>
-          <blockquote class="result-card__quote">"En 90 días pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos. No sabíamos que esto era posible."</blockquote>
-          <p class="result-card__author">— Dra. Valentina Reyes, Directora Médica</p>
+  <!-- Testimonials Carousel -->
+  <section class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-20 md:py-32 text-center overflow-hidden">
+    <div id="testimonial-carousel" class="max-w-4xl mx-auto relative fade-in">
+      <div class="testimonial-track relative">
+        <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none" data-slide="0" style="opacity:1; position:relative; pointer-events:auto;">
+          <blockquote class="serif-italic text-headline-lg-mobile md:text-headline-lg leading-tight text-primary mb-8 md:mb-10">
+            &ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos. No sabiamos que esto era posible.&rdquo;
+          </blockquote>
+          <cite class="not-italic">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest block text-primary">Dra. Valentina Reyes</span>
+            <span class="font-body-md text-on-surface-variant">Directora Medica, Clinica Dermavance &mdash; Mexico</span>
+          </cite>
         </div>
-        <div class="result-card">
-          <div class="result-card__header">
-            <div class="result-card__badge">Odontología</div>
-            <p class="result-card__location">Bogotá, Colombia</p>
-          </div>
-          <h3 class="result-card__name">Sonríe Studio Dental</h3>
-          <p class="result-card__desc">Centro odontológico premium especializado en diseño de sonrisa e implantes. Implementamos automatización completa + web premium.</p>
-          <div class="result-card__metrics">
-            <div class="result-card__metric">
-              <span>+189%</span>
-              <p>Leads calificados</p>
-            </div>
-            <div class="result-card__metric">
-              <span>-52%</span>
-              <p>Tiempo recepción</p>
-            </div>
-            <div class="result-card__metric">
-              <span>+$89K</span>
-              <p>Revenue en 4 meses</p>
-            </div>
-          </div>
-          <blockquote class="result-card__quote">"Antes perdíamos el 60% de leads de Instagram. Ahora el sistema los captura, los califica y les agenda cita. Nuestro cierre de implantes subió un 34%."</blockquote>
-          <p class="result-card__author">— Dr. Andrés Camacho, Fundador</p>
+        <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none" data-slide="1">
+          <blockquote class="serif-italic text-headline-lg-mobile md:text-headline-lg leading-tight text-primary mb-8 md:mb-10">
+            &ldquo;Antes perdiamos el 60% de leads de Instagram. Ahora el sistema los captura, los califica y les agenda cita. Nuestro cierre de implantes subio un 34%.&rdquo;
+          </blockquote>
+          <cite class="not-italic">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest block text-primary">Dr. Andres Camacho</span>
+            <span class="font-body-md text-on-surface-variant">Fundador, Sonrie Studio Dental &mdash; Colombia</span>
+          </cite>
         </div>
-        <div class="result-card">
-          <div class="result-card__header">
-            <div class="result-card__badge">Cirugía Plástica</div>
-            <p class="result-card__location">Lima, Perú</p>
+        <div class="testimonial-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out pointer-events-none" data-slide="2">
+          <blockquote class="serif-italic text-headline-lg-mobile md:text-headline-lg leading-tight text-primary mb-8 md:mb-10">
+            &ldquo;El seguimiento post-operatorio automatizado cambio todo. Los pacientes se sienten cuidados y vuelven para mas procedimientos. Nuestra reputacion se disparo.&rdquo;
+          </blockquote>
+          <cite class="not-italic">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest block text-primary">Dr. Ricardo Mendieta</span>
+            <span class="font-body-md text-on-surface-variant">Director, Instituto Belleza Peru &mdash; Lima</span>
+          </cite>
+        </div>
+      </div>
+      <div class="flex justify-center gap-3 mt-10">
+        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary transition-opacity" data-index="0"></button>
+        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary opacity-30 transition-opacity" data-index="1"></button>
+        <button class="testimonial-dot w-2 h-2 rounded-full bg-primary opacity-30 transition-opacity" data-index="2"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="precios" class="bg-surface py-20 md:py-32 border-y border-outline-variant">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-[64px]">
+      <div class="mb-16 md:mb-24 fade-in">
+        <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Inversion</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">Todos los precios en USD. Sin contratos de permanencia. Resultados desde el primer mes.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Starter -->
+        <div class="border-thin border-outline-variant p-8 md:p-10 hover:bg-surface-container-low transition-colors duration-400 fade-in">
+          <h3 class="font-headline-md text-[28px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Starter</h3>
+          <p class="text-on-surface-variant font-body-md mb-8">Para clinicas que quieren empezar a automatizar</p>
+          <div class="mb-8 pb-8 border-b border-outline-variant">
+            <span class="font-display-lg text-[56px] text-primary" style="font-family: 'Bodoni Moda';">$497</span>
+            <span class="text-on-surface-variant font-body-md">/mes</span>
           </div>
-          <h3 class="result-card__name">Instituto Belleza Perú</h3>
-          <p class="result-card__desc">Instituto de cirugía plástica y estética de alta gama. Implementamos CRM con IA + seguimiento post-operatorio + campañas de retención.</p>
-          <div class="result-card__metrics">
-            <div class="result-card__metric">
-              <span>+95%</span>
-              <p>Retención pacientes</p>
-            </div>
-            <div class="result-card__metric">
-              <span>+67%</span>
-              <p>Referidos</p>
-            </div>
-            <div class="result-card__metric">
-              <span>+$203K</span>
-              <p>Revenue en 8 meses</p>
-            </div>
+          <ul class="space-y-3 mb-10">
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Chatbot IA para WhatsApp</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Agendamiento automatico</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Recordatorios de citas</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Hasta 200 conversaciones/mes</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Soporte por email</li>
+          </ul>
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block w-full text-center px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest text-primary border-thin border-primary hover:bg-primary hover:text-on-primary transition-all duration-400">Agendar llamada</a>
+        </div>
+        <!-- Growth -->
+        <div class="border-2 border-primary p-8 md:p-10 relative bg-surface-container-low fade-in">
+          <span class="absolute -top-3 left-8 bg-primary text-on-primary font-label-sm text-[10px] uppercase tracking-widest px-4 py-1.5">Mas popular</span>
+          <h3 class="font-headline-md text-[28px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Growth</h3>
+          <p class="text-on-surface-variant font-body-md mb-8">Para clinicas listas para escalar su captacion</p>
+          <div class="mb-8 pb-8 border-b border-outline-variant">
+            <span class="font-display-lg text-[56px] text-primary" style="font-family: 'Bodoni Moda';">$997</span>
+            <span class="text-on-surface-variant font-body-md">/mes</span>
           </div>
-          <blockquote class="result-card__quote">"El seguimiento post-operatorio automatizado cambió todo. Los pacientes se sienten cuidados y vuelven para más procedimientos. Nuestra reputación se disparó."</blockquote>
-          <p class="result-card__author">— Dr. Ricardo Mendieta, Director</p>
+          <ul class="space-y-3 mb-10">
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Todo en Starter +</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> CRM con IA integrado</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Campanas automatizadas multi-canal</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Seguimiento post-consulta</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Hasta 1,000 conversaciones/mes</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Dashboard de metricas</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Soporte prioritario WhatsApp</li>
+          </ul>
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block w-full text-center px-10 py-5 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest transition-opacity hover:opacity-90">Agendar llamada</a>
+        </div>
+        <!-- Premium -->
+        <div class="border-thin border-outline-variant p-8 md:p-10 hover:bg-surface-container-low transition-colors duration-400 fade-in">
+          <h3 class="font-headline-md text-[28px] text-primary mb-2" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Premium</h3>
+          <p class="text-on-surface-variant font-body-md mb-8">Para clinicas multi-sede y grupos medicos</p>
+          <div class="mb-8 pb-8 border-b border-outline-variant">
+            <span class="font-display-lg text-[56px] text-primary" style="font-family: 'Bodoni Moda';">$1,997</span>
+            <span class="text-on-surface-variant font-body-md">/mes</span>
+          </div>
+          <ul class="space-y-3 mb-10">
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Todo en Growth +</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Web premium a medida</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Campanas Meta Ads gestionadas</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Conversaciones ilimitadas</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Multi-sede / multi-doctor</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Account manager dedicado</li>
+            <li class="flex items-start gap-3 text-on-surface-variant font-body-md"><span class="text-primary mt-0.5">&#10003;</span> Reportes ejecutivos semanales</li>
+          </ul>
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block w-full text-center px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest text-primary border-thin border-primary hover:bg-primary hover:text-on-primary transition-all duration-400">Agendar llamada</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESO -->
-  <section class="process" id="proceso">
-    <div class="container">
-      <p class="section-tag">Cómo trabajamos</p>
-      <h2 class="section-title">De la primera llamada a resultados<br>en menos de 30 días.</h2>
-      <div class="process__timeline">
-        <div class="process__step">
-          <div class="process__step-marker">
-            <span>01</span>
-          </div>
-          <div class="process__step-content">
-            <p class="process__step-time">Semana 1</p>
-            <h3>Diagnóstico y Estrategia</h3>
-            <p>Analizamos tu clínica, competencia local, flujo de pacientes actual y oportunidades. Diseñamos un plan de automatización a medida.</p>
-          </div>
-        </div>
-        <div class="process__step">
-          <div class="process__step-marker">
-            <span>02</span>
-          </div>
-          <div class="process__step-content">
-            <p class="process__step-time">Semana 2-3</p>
-            <h3>Implementación</h3>
-            <p>Configuramos cada sistema: chatbot entrenado con tu clínica, CRM, automatizaciones, integraciones con tu agenda y canales.</p>
-          </div>
-        </div>
-        <div class="process__step">
-          <div class="process__step-marker">
-            <span>03</span>
-          </div>
-          <div class="process__step-content">
-            <p class="process__step-time">Semana 4</p>
-            <h3>Lanzamiento y Optimización</h3>
-            <p>Activamos todo, monitorizamos en tiempo real y ajustamos. Tu equipo recibe capacitación completa para operar el sistema.</p>
-          </div>
-        </div>
-        <div class="process__step">
-          <div class="process__step-marker">
-            <span>∞</span>
-          </div>
-          <div class="process__step-content">
-            <p class="process__step-time">Continuo</p>
-            <h3>Soporte y Evolución</h3>
-            <p>Soporte prioritario, reportes mensuales, optimización continua. Tu sistema evoluciona con tu clínica.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRECIOS -->
-  <section class="pricing" id="precios">
-    <div class="container">
-      <p class="section-tag">Inversión</p>
-      <h2 class="section-title">Planes diseñados para clínicas<br>que quieren crecer en serio.</h2>
-      <p class="section-desc pricing__note">Todos los precios en USD. Sin contratos de permanencia. Resultados desde el primer mes.</p>
-      <div class="pricing__grid">
-        <div class="pricing-card">
-          <div class="pricing-card__header">
-            <h3>Starter</h3>
-            <p>Para clínicas que quieren empezar a automatizar</p>
-          </div>
-          <div class="pricing-card__price">
-            <span class="pricing-card__amount">$497</span>
-            <span class="pricing-card__period">/mes</span>
-          </div>
-          <ul class="pricing-card__features">
-            <li>Chatbot IA para WhatsApp</li>
-            <li>Agendamiento automático</li>
-            <li>Recordatorios de citas</li>
-            <li>Hasta 200 conversaciones/mes</li>
-            <li>Soporte por email</li>
-          </ul>
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn btn--outline">Agendar llamada</a>
-        </div>
-        <div class="pricing-card pricing-card--featured">
-          <div class="pricing-card__label">Más popular</div>
-          <div class="pricing-card__header">
-            <h3>Growth</h3>
-            <p>Para clínicas listas para escalar su captación</p>
-          </div>
-          <div class="pricing-card__price">
-            <span class="pricing-card__amount">$997</span>
-            <span class="pricing-card__period">/mes</span>
-          </div>
-          <ul class="pricing-card__features">
-            <li>Todo en Starter +</li>
-            <li>CRM con IA integrado</li>
-            <li>Campañas automatizadas multi-canal</li>
-            <li>Seguimiento post-consulta</li>
-            <li>Hasta 1,000 conversaciones/mes</li>
-            <li>Dashboard de métricas</li>
-            <li>Soporte prioritario WhatsApp</li>
-          </ul>
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn btn--primary">Agendar llamada</a>
-        </div>
-        <div class="pricing-card">
-          <div class="pricing-card__header">
-            <h3>Premium</h3>
-            <p>Para clínicas multi-sede y grupos médicos</p>
-          </div>
-          <div class="pricing-card__price">
-            <span class="pricing-card__amount">$1,997</span>
-            <span class="pricing-card__period">/mes</span>
-          </div>
-          <ul class="pricing-card__features">
-            <li>Todo en Growth +</li>
-            <li>Web premium a medida</li>
-            <li>Campañas Meta Ads gestionadas</li>
-            <li>Conversaciones ilimitadas</li>
-            <li>Multi-sede / multi-doctor</li>
-            <li>Integraciones personalizadas</li>
-            <li>Account manager dedicado</li>
-            <li>Reportes ejecutivos semanales</li>
-          </ul>
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn btn--outline">Agendar llamada</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <p class="section-tag">Preguntas frecuentes</p>
-      <h2 class="section-title">Resolvemos tus dudas.</h2>
-      <div class="faq__list">
-        <details class="faq__item">
-          <summary class="faq__question">¿Cuánto tiempo toma ver resultados?</summary>
-          <p class="faq__answer">La mayoría de nuestras clínicas ven un incremento en citas agendadas en las primeras 2 semanas. Los resultados completos del sistema se consolidan entre el mes 1 y 3, dependiendo de tu volumen de pacientes.</p>
+  <!-- FAQ Preview -->
+  <section id="faq" class="max-w-[1440px] mx-auto px-6 md:px-[64px] py-20 md:py-32">
+    <div class="max-w-3xl fade-in">
+      <h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-16 md:mb-20">Preguntas Frecuentes</h2>
+      <div class="divide-y divide-outline-variant">
+        <details class="group py-6" open>
+          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
+            <span>Cuanto tiempo toma ver resultados?</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
+          </summary>
+          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">La mayoria de nuestras clinicas ven un incremento en citas agendadas en las primeras 2 semanas. Los resultados completos se consolidan entre el mes 1 y 3.</p>
         </details>
-        <details class="faq__item">
-          <summary class="faq__question">¿El chatbot reemplaza a mi recepcionista?</summary>
-          <p class="faq__answer">No, la complementa. El chatbot maneja consultas repetitivas, agendamientos y seguimientos 24/7. Tu recepcionista se enfoca en la atención presencial y casos que requieren trato humano. El resultado: más capacidad sin contratar más personal.</p>
+        <details class="group py-6">
+          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
+            <span>El chatbot reemplaza a mi recepcionista?</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
+          </summary>
+          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">No, la complementa. El chatbot maneja consultas repetitivas y agendamientos 24/7. Tu recepcionista se enfoca en atencion presencial. Resultado: mas capacidad sin contratar mas personal.</p>
         </details>
-        <details class="faq__item">
-          <summary class="faq__question">¿Funciona con mi sistema de agenda actual?</summary>
-          <p class="faq__answer">Sí. Nos integramos con los principales sistemas de gestión clínica y agendas digitales. Si usas algo específico, lo evaluamos en la llamada de diagnóstico sin compromiso.</p>
+        <details class="group py-6">
+          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
+            <span>Funciona con mi sistema de agenda actual?</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
+          </summary>
+          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">Si. Nos integramos con los principales sistemas de gestion clinica y agendas digitales. Si usas algo especifico, lo evaluamos en la llamada de diagnostico sin compromiso.</p>
         </details>
-        <details class="faq__item">
-          <summary class="faq__question">¿Qué pasa con la privacidad de los datos de mis pacientes?</summary>
-          <p class="faq__answer">La seguridad es prioridad absoluta. Todos los datos se manejan con encriptación de nivel bancario, servidores seguros y cumplimiento de normativas de protección de datos aplicables en cada país de LATAM.</p>
+        <details class="group py-6">
+          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
+            <span>Que pasa con la privacidad de datos de mis pacientes?</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
+          </summary>
+          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">La seguridad es prioridad absoluta. Encriptacion de nivel bancario, servidores seguros y cumplimiento de normativas de proteccion de datos en cada pais de LATAM.</p>
         </details>
-        <details class="faq__item">
-          <summary class="faq__question">¿Necesito conocimientos técnicos?</summary>
-          <p class="faq__answer">Cero. Nosotros implementamos, configuramos y mantenemos todo. Tu equipo recibe una capacitación sencilla para usar el dashboard y el CRM. Si algo falla, lo resolvemos nosotros.</p>
+        <details class="group py-6">
+          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
+            <span>Tienen contrato de permanencia?</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
+          </summary>
+          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">No. Trabajamos mes a mes. Nuestros resultados son razon suficiente para que te quedes. Si no estas satisfecho, cancelas sin penalizacion.</p>
         </details>
-        <details class="faq__item">
-          <summary class="faq__question">¿Tienen contrato de permanencia?</summary>
-          <p class="faq__answer">No. Trabajamos mes a mes. Creemos que nuestros resultados son razón suficiente para que te quedes. Si en algún momento no estás satisfecho, cancelas sin penalización.</p>
+        <details class="group py-6">
+          <summary class="flex justify-between items-center cursor-pointer font-body-lg text-body-lg text-primary list-none">
+            <span>En que paises de LATAM trabajan?</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-open:rotate-45 transition-transform duration-300" style="font-size: 20px;">add</span>
+          </summary>
+          <p class="text-on-surface-variant font-body-md mt-4 max-w-xl">Operamos en toda Latinoamerica: Mexico, Colombia, Peru, Chile, Argentina, Ecuador, Republica Dominicana y mas. Nuestros sistemas se adaptan a cada mercado.</p>
         </details>
-        <details class="faq__item">
-          <summary class="faq__question">¿En qué países de LATAM trabajan?</summary>
-          <p class="faq__answer">Operamos en toda Latinoamérica: México, Colombia, Perú, Chile, Argentina, Ecuador, República Dominicana, y más. Nuestros sistemas se adaptan a las regulaciones y canales de comunicación de cada mercado.</p>
-        </details>
+      </div>
+      <div class="mt-10">
+        <a href="faq-contacto.html" class="inline-block font-label-sm text-label-sm uppercase tracking-widest text-primary border-b border-primary pb-1 hover:border-transparent transition-all duration-300">Ver todas las preguntas</a>
       </div>
     </div>
   </section>
+</main>
 
-  <!-- CTA FINAL + CONTACTO -->
-  <section class="contact" id="contacto">
-    <div class="container">
-      <div class="contact__grid">
-        <div class="contact__info">
-          <p class="section-tag">Da el primer paso</p>
-          <h2 class="section-title">Tu competencia ya automatizó.<br>¿Vas a quedarte atrás?</h2>
-          <p class="section-desc">Agenda una llamada estratégica de 30 minutos. Sin compromiso. Analizamos tu clínica y te mostramos exactamente cómo podemos multiplicar tus citas.</p>
-          <div class="contact__channels">
-            <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="contact__channel">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              <div>
-                <strong>Agendar llamada</strong>
-                <span>30 min — sin compromiso</span>
-              </div>
-            </a>
-            <a href="https://wa.me/34722753559?text=Hola%2C%20quiero%20información%20sobre%20automatización%20para%20mi%20clínica" target="_blank" rel="noopener" class="contact__channel">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              <div>
-                <strong>WhatsApp directo</strong>
-                <span>+34 722 753 559</span>
-              </div>
-            </a>
-            <a href="mailto:clickiclickweb@gmail.com" class="contact__channel">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <div>
-                <strong>Email</strong>
-                <span>clickiclickweb@gmail.com</span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="contact__form-wrapper">
-          <form class="contact__form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="ff9e17a4-20d8-49d3-8319-3414194ec45a">
-            <input type="hidden" name="subject" value="Nuevo lead - CLICKICLICK Medical">
-            <input type="hidden" name="from_name" value="CLICKICLICK Medical Web">
-            <div class="form-group">
-              <label for="name">Nombre completo</label>
-              <input type="text" id="name" name="name" required placeholder="Dr. Juan Pérez">
-            </div>
-            <div class="form-group">
-              <label for="clinic">Nombre de la clínica</label>
-              <input type="text" id="clinic" name="clinic" required placeholder="Clínica Estética Premium">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="doctor@clinica.com">
-            </div>
-            <div class="form-group">
-              <label for="country">País</label>
-              <select id="country" name="country" required>
-                <option value="" disabled selected>Selecciona tu país</option>
-                <option value="México">México</option>
-                <option value="Colombia">Colombia</option>
-                <option value="Perú">Perú</option>
-                <option value="Chile">Chile</option>
-                <option value="Argentina">Argentina</option>
-                <option value="Ecuador">Ecuador</option>
-                <option value="República Dominicana">República Dominicana</option>
-                <option value="Costa Rica">Costa Rica</option>
-                <option value="Panamá">Panamá</option>
-                <option value="Otro">Otro</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">¿Qué necesita tu clínica?</label>
-              <textarea id="message" name="message" rows="3" placeholder="Cuéntanos sobre tu clínica y qué te gustaría automatizar..."></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary btn--full">Enviar consulta</button>
-            <p class="contact__form-note">Respondemos en menos de 24 horas</p>
-          </form>
-        </div>
+<!-- Footer / Contact -->
+<footer id="contacto" class="bg-surface-container-low border-t border-outline-variant py-16 md:py-20">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-[64px] grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-[24px]">
+    <div class="md:col-span-5 space-y-6 md:space-y-8">
+      <h2 class="font-headline-md text-[26px] md:text-headline-md text-primary" style="font-family: 'Bodoni Moda'; line-height: 1.3;">Tu competencia ya automatizo. Vas a quedarte atras?</h2>
+      <p class="font-body-md text-on-surface-variant max-w-sm">Agenda una llamada estrategica de 30 minutos. Sin compromiso. Te mostramos exactamente como multiplicar tus citas.</p>
+      <div class="flex flex-wrap gap-4 md:gap-6">
+        <a class="inline-block font-label-sm text-label-sm uppercase tracking-widest text-primary pb-1 border-b border-primary hover:border-transparent transition-colors duration-300" href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener">Calendly</a>
+        <a class="inline-block font-label-sm text-label-sm uppercase tracking-widest text-primary pb-1 border-b border-primary hover:border-transparent transition-colors duration-300" href="https://wa.me/34722753559?text=Hola%2C%20quiero%20informacion%20sobre%20automatizacion%20para%20mi%20clinica" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="inline-block font-label-sm text-label-sm uppercase tracking-widest text-primary pb-1 border-b border-primary hover:border-transparent transition-colors duration-300" href="mailto:clickiclickweb@gmail.com">Email</a>
       </div>
     </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__brand">
-          <p class="footer__logo">CLICKICLICK</p>
-          <p class="footer__desc">Automatización e Inteligencia Artificial para clínicas de medicina estética y odontología en Latinoamérica.</p>
-        </div>
-        <div class="footer__links">
-          <a href="#servicios">Servicios</a>
-          <a href="#resultados">Resultados</a>
-          <a href="#precios">Precios</a>
-          <a href="#contacto">Contacto</a>
-        </div>
-        <div class="footer__legal">
-          <p>&copy; 2025 CLICKICLICK. Todos los derechos reservados.</p>
-        </div>
+    <div class="md:col-span-3 md:col-start-7">
+      <!-- Contact Form -->
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+        <input type="hidden" name="access_key" value="ff9e17a4-20d8-49d3-8319-3414194ec45a">
+        <input type="hidden" name="subject" value="Nuevo lead - CLICKICLICK Medical">
+        <input type="hidden" name="from_name" value="CLICKICLICK Medical Web">
+        <input type="text" name="name" required placeholder="Nombre completo" class="w-full bg-transparent border-thin border-outline-variant px-4 py-3 font-body-md text-primary placeholder:text-on-surface-variant/50 focus:border-primary focus:outline-none transition-colors">
+        <input type="text" name="clinic" required placeholder="Nombre de la clinica" class="w-full bg-transparent border-thin border-outline-variant px-4 py-3 font-body-md text-primary placeholder:text-on-surface-variant/50 focus:border-primary focus:outline-none transition-colors">
+        <input type="email" name="email" required placeholder="Email" class="w-full bg-transparent border-thin border-outline-variant px-4 py-3 font-body-md text-primary placeholder:text-on-surface-variant/50 focus:border-primary focus:outline-none transition-colors">
+        <select name="country" required class="w-full bg-transparent border-thin border-outline-variant px-4 py-3 font-body-md text-on-surface-variant focus:border-primary focus:outline-none transition-colors">
+          <option value="" disabled selected>Pais</option>
+          <option>Mexico</option><option>Colombia</option><option>Peru</option><option>Chile</option><option>Argentina</option><option>Ecuador</option><option>Republica Dominicana</option><option>Costa Rica</option><option>Panama</option><option>Otro</option>
+        </select>
+        <button type="submit" class="w-full px-10 py-4 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest transition-opacity hover:opacity-90">Enviar consulta</button>
+      </form>
+    </div>
+    <div class="md:col-span-2 space-y-4">
+      <h4 class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-on-surface-variant mb-6 md:mb-8">Navegacion</h4>
+      <ul class="space-y-3 font-body-md">
+        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="#servicios">Servicios</a></li>
+        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="#resultados">Resultados</a></li>
+        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="#proceso">Proceso</a></li>
+        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="#precios">Precios</a></li>
+        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="nosotros.html">Nosotros</a></li>
+        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="faq-contacto.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-2 space-y-4">
+      <h4 class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-on-surface-variant mb-6 md:mb-8">Legal</h4>
+      <ul class="space-y-3 font-body-md">
+        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="privacidad.html">Politica de Privacidad</a></li>
+        <li><a class="hover:underline decoration-1 underline-offset-4 transition-all duration-400" href="terminos.html">Terminos de Servicio</a></li>
+      </ul>
+      <div class="pt-8 md:pt-12">
+        <p class="font-label-sm text-[10px] uppercase text-on-surface-variant">&copy; 2026 CLICKICLICK. Todos los derechos reservados.</p>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <!-- WHATSAPP FLOATING -->
-  <a href="https://wa.me/34722753559?text=Hola%2C%20quiero%20información%20sobre%20automatización%20para%20mi%20clínica" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+<!-- WhatsApp Float -->
+<a href="https://wa.me/34722753559?text=Hola%2C%20quiero%20informacion%20sobre%20automatizacion%20para%20mi%20clinica" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
-  <script src="main.js"></script>
+<script>
+  // Menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuLinks = document.querySelectorAll('[data-menu-link]');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  let menuOpen = false;
+
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      bar1.style.transform = 'translateY(6.5px) rotate(45deg)';
+      bar2.style.opacity = '0';
+      bar3.style.transform = 'translateY(-6.5px) rotate(-45deg)';
+      setTimeout(() => {
+        mobileMenu.querySelectorAll('[data-menu-link], a[href*="calendly"]').forEach(el => {
+          el.classList.remove('opacity-0', 'translate-y-4');
+          el.classList.add('opacity-100', 'translate-y-0');
+        });
+      }, 100);
+    } else { closeMenu(); }
+  }
+
+  function closeMenu() {
+    menuOpen = false;
+    mobileMenu.querySelectorAll('[data-menu-link], a[href*="calendly"]').forEach(el => {
+      el.classList.add('opacity-0', 'translate-y-4');
+      el.classList.remove('opacity-100', 'translate-y-0');
+    });
+    setTimeout(() => { mobileMenu.classList.remove('open'); }, 300);
+    document.body.style.overflow = '';
+    bar1.style.transform = '';
+    bar2.style.opacity = '';
+    bar3.style.transform = '';
+  }
+
+  menuToggle.addEventListener('click', toggleMenu);
+  menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+  // Fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Counter animation
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.hero-counter').forEach(counter => {
+          if (counter.dataset.animated) return;
+          const target = parseInt(counter.dataset.target, 10);
+          const start = performance.now();
+          function update(now) {
+            const progress = Math.min((now - start) / 2000, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            counter.textContent = Math.round(target * eased);
+            if (progress < 1) requestAnimationFrame(update);
+            else { counter.textContent = target; counter.dataset.animated = 'true'; }
+          }
+          requestAnimationFrame(update);
+        });
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const heroCounters = document.querySelector('.hero-counter');
+  if (heroCounters) counterObserver.observe(heroCounters.parentElement.parentElement);
+
+  // Testimonial carousel
+  (function() {
+    const carousel = document.getElementById('testimonial-carousel');
+    if (!carousel) return;
+    const slides = carousel.querySelectorAll('.testimonial-slide');
+    const dots = carousel.querySelectorAll('.testimonial-dot');
+    let current = 0, paused = false;
+    function goTo(i) {
+      current = ((i % slides.length) + slides.length) % slides.length;
+      slides.forEach((s, j) => {
+        s.style.opacity = j === current ? '1' : '0';
+        s.style.position = j === current ? 'relative' : 'absolute';
+        s.style.pointerEvents = j === current ? 'auto' : 'none';
+      });
+      dots.forEach((d, j) => d.style.opacity = j === current ? '1' : '0.3');
+    }
+    dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.index))));
+    setInterval(() => { if (!paused) goTo(current + 1); }, 7000);
+    carousel.addEventListener('mouseenter', () => paused = true);
+    carousel.addEventListener('mouseleave', () => paused = false);
+  })();
+
+  // Form
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const orig = btn.textContent;
+      btn.textContent = 'Enviando...'; btn.disabled = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        if (res.ok) {
+          form.innerHTML = '<div class="text-center py-8"><h3 class="font-headline-md text-[24px] text-primary mb-4" style="font-family: Bodoni Moda;">Mensaje enviado</h3><p class="text-on-surface-variant font-body-md">Te contactaremos en menos de 24 horas.</p><a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="inline-block mt-6 px-10 py-4 bg-primary text-on-primary font-label-sm text-label-sm uppercase tracking-widest">Agendar llamada ahora</a></div>';
+        } else { throw new Error(); }
+      } catch {
+        btn.textContent = 'Error, intenta de nuevo'; btn.disabled = false;
+        setTimeout(() => { btn.textContent = orig; }, 3000);
+      }
+    });
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (href === '#' || href === '#hero') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+      const target = document.querySelector(href);
+      if (target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }
+    });
+  });
+</script>
 </body>
 </html>
