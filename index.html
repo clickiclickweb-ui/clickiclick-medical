@@ -8,19 +8,16 @@
 <meta name="description" content="Sistemas de captacion, seguimiento y fidelizacion con IA para clinicas de medicina estetica y odontologia de alto valor en Latinoamerica." />
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@200,300,400,500,600,700,800,900&f[]=gambarino@400,400i&f[]=editorial-new@200,200i,300,300i,400,400i,500,500i&f[]=jetbrains-mono@400,500&display=swap" />
 <style>
-/* ═══════════ DESIGN TOKENS ═══════════ */
 :root {
   --ink: #0a0908;
   --ink-soft: #15120f;
-  --ink-deep: #050403;
   --cream: #f3ecde;
-  --cream-soft: #b8af9a;
-  --cream-mute: #5a5046;
-  --body: #d6cfbb;
-  --body-muted: #a89e8c;
+  --cream-soft: #d4cbb5;
+  --cream-mute: #8a7e6e;
+  --body: #e0d9c8;
+  --body-muted: #c4baa6;
   --accent: #a31e38;
   --accent-deep: #6e1425;
-  --cool: #8eb7b5;
   --gold: #b88746;
   --line: rgba(243,236,222,0.12);
   --line-strong: rgba(243,236,222,0.28);
@@ -29,23 +26,17 @@
   --font-sans: "Switzer", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --ease: cubic-bezier(0.23, 1, 0.32, 1);
-  --grain-opacity: 0.06;
   color-scheme: dark;
 }
-
-/* ═══════════ RESET & BASE ═══════════ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { background: var(--ink); color: var(--cream); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; font-feature-settings: "ss01","ss02","kern","liga"; scrollbar-color: var(--cream-mute) var(--ink); scroll-behavior: smooth; }
-body { font-family: var(--font-sans); font-weight: 300; letter-spacing: -0.005em; overflow-x: hidden; background: var(--ink); min-height: 100vh; }
-img { max-width: 100%; display: block; }
+html { background: var(--ink); color: var(--cream); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+body { font-family: var(--font-sans); font-weight: 300; letter-spacing: -0.005em; overflow-x: hidden; background: var(--ink); }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 ::selection { background: var(--accent); color: var(--ink); }
 
-/* ═══════════ GRAIN ═══════════ */
-.grain::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: var(--grain-opacity); background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>"); mix-blend-mode: overlay; }
+.grain::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: 0.06; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>"); mix-blend-mode: overlay; }
 
-/* ═══════════ TYPOGRAPHY ═══════════ */
 .font-display { font-family: var(--font-display); font-weight: 300; letter-spacing: -0.04em; line-height: 1.02; }
 .font-italic-display { font-family: var(--font-italic); font-style: italic; font-weight: 400; }
 .font-mono-meta { font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.7rem; }
@@ -53,535 +44,556 @@ ul { list-style: none; }
 .text-display-lg { font-size: clamp(2.4rem, 9vw, 9rem); }
 .text-display-md { font-size: clamp(2rem, 6vw, 5.25rem); }
 .text-display-sm { font-size: clamp(1.55rem, 4vw, 3rem); }
-
-/* ═══════════ LAYOUT ═══════════ */
 .container-wide { max-width: 1600px; margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 3rem); }
 .section-pad { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(5rem, 10vw, 9rem); }
 .line-thin { display: block; width: 100%; height: 1px; background: var(--line); }
 .idx-num { font-family: var(--font-mono); color: var(--gold); font-weight: 500; letter-spacing: 0.12em; font-size: 0.72rem; }
 
-/* ═══════════ BUTTONS ═══════════ */
-.btn-press { transition: transform 160ms var(--ease), background 220ms var(--ease), color 220ms var(--ease), border-color 220ms var(--ease); }
-.btn-press:active { transform: scale(0.97); }
+/* Buttons */
+.btn-glass-primary { position: relative; isolation: isolate; background: linear-gradient(180deg, rgba(193,50,80,0.96) 0%, rgba(163,30,56,0.95) 100%); backdrop-filter: blur(14px); border: 1px solid rgba(255,196,196,0.32); color: var(--cream); letter-spacing: 0.02em; font-weight: 500; border-radius: 4px; box-shadow: 0 1px 2px rgba(163,30,56,0.32), 0 4px 12px rgba(163,30,56,0.22), 0 8px 28px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.22); transition: all 240ms var(--ease); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-glass-primary:hover { background: linear-gradient(180deg, rgba(210,60,90,1) 0%, rgba(163,30,56,1) 100%); transform: translateY(-1px); }
+.btn-glass-primary:active { transform: scale(0.98); }
 
-.btn-glass-primary { position: relative; isolation: isolate; background: linear-gradient(180deg, rgba(193,50,80,0.96) 0%, rgba(163,30,56,0.95) 100%); backdrop-filter: blur(14px) saturate(1.2); border: 1px solid rgba(255,196,196,0.32); color: var(--cream); letter-spacing: 0.02em; font-weight: 500; border-radius: 4px; box-shadow: 0 1px 2px rgba(163,30,56,0.32), 0 4px 12px rgba(163,30,56,0.22), 0 8px 28px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(0,0,0,0.18); transition: background 240ms var(--ease), transform 240ms var(--ease), box-shadow 240ms var(--ease), border-color 240ms var(--ease); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
-.btn-glass-primary:hover { background: linear-gradient(180deg, rgba(210,60,90,1) 0%, rgba(163,30,56,1) 100%); transform: translateY(-1px); border-color: rgba(255,196,196,0.5); box-shadow: 0 2px 4px rgba(163,30,56,0.4), 0 8px 22px rgba(163,30,56,0.32), 0 14px 40px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.28); }
-.btn-glass-primary:active { transform: translateY(0) scale(0.98); }
-
-.btn-glass-secondary { background: linear-gradient(180deg, rgba(243,236,222,0.06) 0%, rgba(243,236,222,0.02) 100%); backdrop-filter: blur(10px) saturate(1.1); border: 1px solid rgba(243,236,222,0.28); color: var(--cream); letter-spacing: 0.02em; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.08); transition: background 240ms var(--ease), transform 240ms var(--ease), border-color 240ms var(--ease), box-shadow 240ms var(--ease); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
-.btn-glass-secondary:hover { background: linear-gradient(180deg, rgba(243,236,222,0.12) 0%, rgba(243,236,222,0.06) 100%); border-color: rgba(243,236,222,0.5); transform: translateY(-1px); }
-.btn-glass-secondary:active { transform: translateY(0) scale(0.98); }
+.btn-glass-secondary { background: linear-gradient(180deg, rgba(243,236,222,0.06) 0%, rgba(243,236,222,0.02) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(243,236,222,0.28); color: var(--cream); border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.18); transition: all 240ms var(--ease); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.btn-glass-secondary:hover { background: linear-gradient(180deg, rgba(243,236,222,0.12) 0%, rgba(243,236,222,0.06) 100%); transform: translateY(-1px); }
 
 .btn-glass-ghost { background: transparent; color: var(--cream); border: 0; position: relative; transition: color 220ms var(--ease); cursor: pointer; }
 .btn-glass-ghost::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 420ms var(--ease); }
 .btn-glass-ghost:hover { color: var(--accent); }
 .btn-glass-ghost:hover::after { transform: scaleX(1); }
 
-/* ═══════════ HOVER LINE ═══════════ */
 .hover-line { position: relative; }
-.hover-line::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left center; transition: transform 400ms var(--ease); }
+.hover-line::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 400ms var(--ease); }
 .hover-line:hover::after { transform: scaleX(1); }
 
-/* ═══════════ CARDS ═══════════ */
-.card-editorial { background: var(--ink-soft); border: 1px solid var(--line); transition: border-color 320ms var(--ease), background-color 320ms var(--ease); }
+.card-editorial { background: var(--ink-soft); border: 1px solid var(--line); transition: border-color 320ms var(--ease); }
 .card-editorial:hover { border-color: var(--line-strong); }
-.testimonial-card { background: rgba(243,236,222,0.04); backdrop-filter: blur(8px) saturate(1.05); border: 1px solid rgba(243,236,222,0.1); border-radius: 4px; }
 
-/* ═══════════ MARQUEE ═══════════ */
+/* Service hover reveal */
+.svc-reveal { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 400ms var(--ease), opacity 300ms ease; }
+.svc-card:hover .svc-reveal { max-height: 200px; opacity: 1; }
+.svc-card:hover .svc-line { background: var(--accent) !important; }
+
+/* Marquee */
 @keyframes marqueeX { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
-.marquee-track { animation: marqueeX 50s linear infinite; will-change: transform; display: flex; width: max-content; }
+.marquee-track { animation: marqueeX 50s linear infinite; display: flex; width: max-content; }
 
-/* ═══════════ FADE IN ═══════════ */
+/* Fade in */
 .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* ═══════════ WORDMARK ═══════════ */
+/* Wordmark */
 .wordmark { display: inline-flex; align-items: baseline; font-family: var(--font-sans); font-weight: 800; letter-spacing: -0.035em; line-height: 1; white-space: nowrap; color: var(--cream); }
 .wordmark .dot { color: var(--accent); }
 .wordmark .sub { font-family: var(--font-italic); font-size: 0.55em; font-weight: 400; font-style: italic; transform: translateY(-0.18em); margin-left: 0.12em; color: var(--cream-soft); letter-spacing: normal; }
 
-/* ═══════════ WHATSAPP FLOAT ═══════════ */
+/* WhatsApp */
 .whatsapp-float { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 99; box-shadow: 0 4px 20px rgba(37,211,102,0.3); transition: all 0.3s var(--ease); }
-.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.4); }
+.whatsapp-float:hover { transform: scale(1.1); }
 
-/* ═══════════ FAQ ═══════════ */
+/* FAQ */
 details summary { cursor: pointer; list-style: none; }
 details summary::-webkit-details-marker { display: none; }
 details[open] .faq-icon { transform: rotate(45deg); }
 .faq-icon { transition: transform 300ms var(--ease); }
 
-/* ═══════════ FORM ═══════════ */
+/* Chat mockup */
+.chat-bubble { padding: 0.6rem 1rem; border-radius: 12px; font-size: 0.8rem; line-height: 1.5; max-width: 260px; opacity: 0; transform: translateY(10px); animation: chatIn 0.4s ease forwards; }
+.chat-bot { background: rgba(243,236,222,0.08); color: var(--cream); border-bottom-left-radius: 4px; }
+.chat-user { background: var(--accent); color: var(--cream); margin-left: auto; border-bottom-right-radius: 4px; }
+@keyframes chatIn { to { opacity: 1; transform: translateY(0); } }
+
+/* Full-screen menu */
+.fs-menu { position: fixed; inset: 0; z-index: 90; background: var(--ink); display: flex; flex-direction: column; opacity: 0; pointer-events: none; transition: opacity 400ms var(--ease); }
+.fs-menu.open { opacity: 1; pointer-events: auto; }
+.fs-menu-link { font-family: var(--font-display); font-weight: 300; letter-spacing: -0.04em; line-height: 1.1; color: var(--cream); transition: color 300ms var(--ease), font-style 300ms; opacity: 0; transform: translateY(30px); }
+.fs-menu.open .fs-menu-link { opacity: 1; transform: translateY(0); }
+.fs-menu-link:hover { color: var(--accent); }
+.fs-menu-link:hover span { font-family: var(--font-italic); font-style: italic; }
+
 input, select, textarea { font-family: var(--font-sans); }
 input::placeholder, textarea::placeholder { color: var(--cream-mute); }
 
-/* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width: 768px) {
-  .grid-services { grid-template-columns: 1fr !important; }
-  .grid-results { grid-template-columns: 1fr !important; }
-  .grid-pricing { grid-template-columns: 1fr !important; }
-  .grid-contact { grid-template-columns: 1fr !important; }
-  .grid-footer { grid-template-columns: 1fr !important; }
-  .hero-grid { grid-template-columns: 1fr !important; }
+  .grid-services, .grid-results, .grid-pricing, .grid-contact, .grid-footer, .hero-grid, .grid-pain { grid-template-columns: 1fr !important; }
   .nav-links { display: none !important; }
-  .mobile-trigger { display: flex !important; }
-  .process-timeline { padding-left: 1.5rem; }
-}
-@media (min-width: 769px) {
-  .mobile-trigger { display: none !important; }
-  .mobile-menu { display: none !important; }
+  .fs-menu-link { font-size: clamp(2rem, 8vw, 3.5rem) !important; }
 }
 </style>
 </head>
-<body class="grain" style="background: var(--ink); color: var(--cream); min-height: 100vh;">
+<body class="grain">
 
-<!-- ═══════════ NAV ═══════════ -->
+<!-- ═══ NAV ═══ -->
 <header id="nav-header" style="position:fixed;top:0;left:0;right:0;z-index:50;transition:all 300ms;border-bottom:1px solid rgba(243,236,222,0.05);background:rgba(10,9,8,0.1);backdrop-filter:blur(2px);">
-  <div class="container-wide" style="display:flex;height:80px;align-items:center;justify-content:space-between;gap:1rem;">
-    <a href="#hero" style="display:flex;align-items:center;gap:0.75rem;" aria-label="Inicio">
-      <span class="font-mono-meta" style="color:var(--cream-soft);display:none;" id="nav-year">MMXXVI</span>
-      <span class="wordmark" style="font-size:1.15rem;">
-        <span>CLICKICLICK</span><span class="dot">.</span><span class="sub">studio</span>
-      </span>
+  <div class="container-wide" style="display:flex;height:80px;align-items:center;justify-content:space-between;">
+    <a href="#hero" class="wordmark" style="font-size:1.15rem;" aria-label="Inicio">
+      <span>CLICKICLICK</span><span class="dot">.</span><span class="sub">studio</span>
     </a>
     <nav class="nav-links" style="display:flex;align-items:center;gap:2rem;">
-      <a href="#services" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Servicios</a>
-      <a href="#results" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Resultados</a>
-      <a href="#process" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Proceso</a>
-      <a href="#pricing" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Precios</a>
-      <a href="#contact" class="font-mono-meta hover-line" style="color:rgba(243,236,222,0.85);">Contacto</a>
+      <a href="#services" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Servicios</a>
+      <a href="#results" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Resultados</a>
+      <a href="#process" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Proceso</a>
+      <a href="#pricing" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Precios</a>
+      <a href="#contact" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Contacto</a>
     </nav>
-    <button class="mobile-trigger btn-press" id="burger" aria-label="Menu" style="display:none;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;gap:6px;background:none;border:none;cursor:pointer;">
+    <button id="burger" aria-label="Menu" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:40px;height:40px;gap:6px;background:none;border:none;cursor:pointer;">
       <span id="b1" style="display:block;height:1px;width:24px;background:var(--cream);transition:transform 300ms ease;"></span>
       <span id="b2" style="display:block;height:1px;width:24px;background:var(--cream);transition:transform 300ms ease;"></span>
     </button>
   </div>
 </header>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu" style="display:none;position:fixed;inset:0;z-index:40;background:var(--ink);flex-direction:column;opacity:0;transition:opacity 250ms ease;">
-  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:1.5rem;">
-    <div style="display:flex;flex-direction:column;gap:1.5rem;">
-      <a href="#services" class="font-display text-display-md" data-mlink>Servicios</a>
-      <a href="#results" class="font-display text-display-md" data-mlink>Resultados</a>
-      <a href="#process" class="font-display text-display-md" data-mlink>Proceso</a>
-      <a href="#pricing" class="font-display text-display-md" data-mlink>Precios</a>
-      <a href="nosotros.html" class="font-display text-display-md" data-mlink>Nosotros</a>
-      <a href="faq-contacto.html" class="font-display text-display-md" data-mlink>FAQ</a>
-      <a href="#contact" class="font-display text-display-md" data-mlink>Contacto</a>
+<!-- ═══ FULL-SCREEN MENU ═══ -->
+<div class="fs-menu" id="fsMenu">
+  <div style="flex:1;display:flex;align-items:center;">
+    <div class="container-wide" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;width:100%;">
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <a href="#hero" class="fs-menu-link" data-mlink style="font-size:clamp(2.5rem,6vw,5rem);transition-delay:80ms;"><span>Inicio</span></a>
+        <a href="#services" class="fs-menu-link" data-mlink style="font-size:clamp(2.5rem,6vw,5rem);transition-delay:140ms;"><span>Servicios</span></a>
+        <a href="#results" class="fs-menu-link" data-mlink style="font-size:clamp(2.5rem,6vw,5rem);transition-delay:200ms;"><span>Resultados</span></a>
+        <a href="#process" class="fs-menu-link" data-mlink style="font-size:clamp(2.5rem,6vw,5rem);transition-delay:260ms;"><span>Proceso</span></a>
+        <a href="#pricing" class="fs-menu-link" data-mlink style="font-size:clamp(2.5rem,6vw,5rem);transition-delay:320ms;"><span>Precios</span></a>
+        <a href="nosotros.html" class="fs-menu-link" data-mlink style="font-size:clamp(2.5rem,6vw,5rem);transition-delay:380ms;"><span>Nosotros</span></a>
+        <a href="#contact" class="fs-menu-link" data-mlink style="font-size:clamp(2.5rem,6vw,5rem);transition-delay:440ms;"><span>Contacto</span></a>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:flex-end;gap:1.5rem;">
+        <div>
+          <span class="font-mono-meta" style="color:var(--gold);display:block;margin-bottom:1rem;">Servicios</span>
+          <a href="servicios/chatbot-ia.html" class="fs-menu-link" data-mlink style="font-size:1.25rem;transition-delay:300ms;display:block;margin-bottom:0.5rem;"><span>Chatbot IA 24/7</span></a>
+          <a href="servicios/automatizacion-citas.html" class="fs-menu-link" data-mlink style="font-size:1.25rem;transition-delay:340ms;display:block;margin-bottom:0.5rem;"><span>Automatizacion de Citas</span></a>
+          <a href="servicios/crm-ia.html" class="fs-menu-link" data-mlink style="font-size:1.25rem;transition-delay:380ms;display:block;margin-bottom:0.5rem;"><span>CRM con IA</span></a>
+          <a href="servicios/campanas-automatizadas.html" class="fs-menu-link" data-mlink style="font-size:1.25rem;transition-delay:420ms;display:block;margin-bottom:0.5rem;"><span>Campanas Automatizadas</span></a>
+          <a href="servicios/web-premium.html" class="fs-menu-link" data-mlink style="font-size:1.25rem;transition-delay:460ms;display:block;margin-bottom:0.5rem;"><span>Web Premium</span></a>
+          <a href="servicios/seguimiento-post.html" class="fs-menu-link" data-mlink style="font-size:1.25rem;transition-delay:500ms;display:block;margin-bottom:0.5rem;"><span>Seguimiento Post-Consulta</span></a>
+        </div>
+        <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary font-mono-meta" style="padding:1rem 2.5rem;font-size:0.72rem;width:fit-content;margin-top:1rem;opacity:0;transform:translateY(20px);transition:all 400ms var(--ease);transition-delay:550ms;" data-mlink>Agendar llamada</a>
+      </div>
     </div>
   </div>
-  <div style="border-top:1px solid var(--line);padding:1.5rem;display:flex;justify-content:space-between;align-items:center;">
-    <span class="font-mono-meta" style="color:var(--cream-soft);">Barcelona &middot; Remoto</span>
-    <a href="mailto:clickiclickweb@gmail.com" class="font-mono-meta" style="color:var(--accent);">clickiclickweb@gmail.com</a>
+  <div style="border-top:1px solid var(--line);padding:1.5rem 0;">
+    <div class="container-wide" style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="font-mono-meta" style="color:var(--cream-mute);">Barcelona &middot; Remoto &middot; LATAM</span>
+      <a href="mailto:clickiclickweb@gmail.com" class="font-mono-meta" style="color:var(--accent);">clickiclickweb@gmail.com</a>
+    </div>
   </div>
 </div>
 
 <main style="position:relative;">
 
-  <!-- ═══════════ HERO ═══════════ -->
-  <section id="hero" class="section-pad" style="min-height:100vh;display:flex;align-items:center;">
-    <div class="container-wide">
-      <div class="hero-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
-        <div class="fade-in">
-          <p class="font-mono-meta" style="color:var(--gold);margin-bottom:2rem;">Automatizacion + Inteligencia Artificial</p>
-          <h1 class="font-display text-display-lg" style="margin-bottom:1.5rem;">
-            Tu clinica llena.<br><span class="font-italic-display" style="color:var(--accent);">Todos los dias.</span>
-          </h1>
-          <p style="font-size:1.125rem;color:var(--body);max-width:520px;line-height:1.7;margin-bottom:2.5rem;">
-            Sistemas de captacion, seguimiento y fidelizacion con IA para clinicas de medicina estetica y odontologia de alto valor en Latinoamerica.
-          </p>
-          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-            <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary btn-press font-mono-meta" style="padding:1rem 2rem;font-size:0.72rem;">Agendar llamada</a>
-            <a href="#services" class="btn-glass-secondary btn-press font-mono-meta" style="padding:1rem 2rem;font-size:0.72rem;">Ver servicios</a>
-          </div>
-        </div>
-        <div class="fade-in" style="display:flex;gap:2.5rem;justify-content:center;">
-          <div style="text-align:center;">
-            <span class="font-display hero-counter" data-target="147" style="font-size:clamp(3rem,6vw,4.5rem);color:var(--cream);display:block;">0</span>
-            <span class="font-mono-meta" style="color:var(--accent);margin-top:-0.25rem;display:block;">%</span>
-            <p style="font-size:0.8rem;color:var(--body-muted);margin-top:0.5rem;max-width:100px;">Aumento en citas</p>
-          </div>
-          <div style="text-align:center;">
-            <span class="font-display hero-counter" data-target="38" style="font-size:clamp(3rem,6vw,4.5rem);color:var(--cream);display:block;">0</span>
-            <span class="font-mono-meta" style="color:var(--accent);margin-top:-0.25rem;display:block;">%</span>
-            <p style="font-size:0.8rem;color:var(--body-muted);margin-top:0.5rem;max-width:100px;">Menos no-shows</p>
-          </div>
-          <div style="text-align:center;">
-            <span class="font-display hero-counter" data-target="23" style="font-size:clamp(3rem,6vw,4.5rem);color:var(--cream);display:block;">0</span>
-            <p style="font-size:0.8rem;color:var(--body-muted);margin-top:0.5rem;max-width:100px;">Clinicas LATAM</p>
-          </div>
+<!-- ═══ HERO ═══ -->
+<section id="hero" style="min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;">
+  <div class="container-wide">
+    <div class="hero-grid" style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:center;">
+      <div class="fade-in">
+        <p class="font-mono-meta" style="color:var(--gold);margin-bottom:2.5rem;">Automatizacion + Inteligencia Artificial</p>
+        <h1 class="font-display" style="font-size:clamp(3.5rem,8vw,8rem);margin-bottom:2rem;">
+          Tu clinica llena.<br><span class="font-italic-display" style="color:var(--accent);">Todos los dias.</span>
+        </h1>
+        <p style="font-size:1.15rem;color:var(--body);max-width:540px;line-height:1.7;margin-bottom:3rem;">
+          Sistemas de captacion, seguimiento y fidelizacion con IA para clinicas de medicina estetica y odontologia de alto valor en Latinoamerica.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary font-mono-meta" style="padding:1.125rem 2.5rem;font-size:0.72rem;">Agendar llamada</a>
+          <a href="#services" class="btn-glass-secondary font-mono-meta" style="padding:1.125rem 2.5rem;font-size:0.72rem;">Ver servicios</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ MARQUEE ═══════════ -->
-  <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.25rem 0;overflow:hidden;">
-    <div class="marquee-track font-mono-meta" style="color:var(--cream-soft);gap:2.5rem;align-items:center;">
-      <span>+23 clinicas automatizadas</span><span style="color:var(--gold);">&bull;</span>
-      <span>Respuesta &lt;5 segundos</span><span style="color:var(--gold);">&bull;</span>
-      <span>100% satisfaccion</span><span style="color:var(--gold);">&bull;</span>
-      <span>Resultados en 30 dias</span><span style="color:var(--gold);">&bull;</span>
-      <span>Sin contratos de permanencia</span><span style="color:var(--gold);">&bull;</span>
-      <span>+23 clinicas automatizadas</span><span style="color:var(--gold);">&bull;</span>
-      <span>Respuesta &lt;5 segundos</span><span style="color:var(--gold);">&bull;</span>
-      <span>100% satisfaccion</span><span style="color:var(--gold);">&bull;</span>
-      <span>Resultados en 30 dias</span><span style="color:var(--gold);">&bull;</span>
-      <span>Sin contratos de permanencia</span><span style="color:var(--gold);">&bull;</span>
+      <div class="fade-in" style="display:flex;gap:3rem;justify-content:center;">
+        <div style="text-align:center;">
+          <span class="font-display hero-counter" data-target="147" style="font-size:clamp(3rem,5vw,4.5rem);display:block;">0</span>
+          <span class="font-mono-meta" style="color:var(--accent);">%</span>
+          <p style="font-size:0.85rem;color:var(--body-muted);margin-top:0.5rem;">Aumento en citas</p>
+        </div>
+        <div style="text-align:center;">
+          <span class="font-display hero-counter" data-target="38" style="font-size:clamp(3rem,5vw,4.5rem);display:block;">0</span>
+          <span class="font-mono-meta" style="color:var(--accent);">%</span>
+          <p style="font-size:0.85rem;color:var(--body-muted);margin-top:0.5rem;">Menos no-shows</p>
+        </div>
+        <div style="text-align:center;">
+          <span class="font-display hero-counter" data-target="23" style="font-size:clamp(3rem,5vw,4.5rem);display:block;">0</span>
+          <p style="font-size:0.85rem;color:var(--body-muted);margin-top:0.5rem;">Clinicas LATAM</p>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- ═══════════ PAIN POINTS ═══════════ -->
-  <section class="section-pad">
-    <div class="container-wide">
-      <div style="max-width:800px;margin-bottom:4rem;" class="fade-in">
-        <span class="idx-num">01 — EL PROBLEMA</span>
-        <h2 class="font-display text-display-md" style="margin-top:1.5rem;">68% de los pacientes contactan <span class="font-italic-display">fuera de horario.</span></h2>
-        <p style="color:var(--body);margin-top:1.5rem;max-width:600px;line-height:1.7;">Sin respuesta inmediata, eligen otra clinica. Tu recepcionista no puede contestar a las 2 AM. Los leads se enfrian. La competencia ya automatizo.</p>
+<!-- ═══ MARQUEE ═══ -->
+<div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.25rem 0;overflow:hidden;">
+  <div class="marquee-track font-mono-meta" style="color:var(--cream-soft);gap:2.5rem;align-items:center;">
+    <span>+23 clinicas automatizadas</span><span style="color:var(--gold);">&bull;</span>
+    <span>Respuesta en menos de 24h</span><span style="color:var(--gold);">&bull;</span>
+    <span>100% satisfaccion</span><span style="color:var(--gold);">&bull;</span>
+    <span>Resultados en 30 dias</span><span style="color:var(--gold);">&bull;</span>
+    <span>Sin contratos de permanencia</span><span style="color:var(--gold);">&bull;</span>
+    <span>+23 clinicas automatizadas</span><span style="color:var(--gold);">&bull;</span>
+    <span>Respuesta en menos de 24h</span><span style="color:var(--gold);">&bull;</span>
+    <span>100% satisfaccion</span><span style="color:var(--gold);">&bull;</span>
+    <span>Resultados en 30 dias</span><span style="color:var(--gold);">&bull;</span>
+    <span>Sin contratos de permanencia</span><span style="color:var(--gold);">&bull;</span>
+  </div>
+</div>
+
+<!-- ═══ PAIN POINTS ═══ -->
+<section class="section-pad">
+  <div class="container-wide">
+    <div style="max-width:800px;margin-bottom:4rem;" class="fade-in">
+      <span class="idx-num">01 — EL PROBLEMA</span>
+      <h2 class="font-display text-display-md" style="margin-top:1.5rem;">68% de los pacientes contactan <span class="font-italic-display">fuera de horario.</span></h2>
+      <p style="color:var(--body);margin-top:1.5rem;max-width:600px;line-height:1.7;">Sin respuesta inmediata, eligen otra clinica. Tu recepcionista no puede contestar a las 2 AM. Los leads se enfrian. La competencia ya automatizo.</p>
+    </div>
+    <div class="grid-pain" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;">
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">01</span>
+        <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Leads perdidos</h3>
+        <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">Cada mensaje sin respuesta es un paciente que se fue a la competencia.</p>
       </div>
-      <div class="grid-services" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;">
-        <div class="card-editorial fade-in" style="padding:2rem;">
-          <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">01</span>
-          <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Leads perdidos</h3>
-          <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">Cada mensaje sin respuesta es un paciente que se fue a la competencia. El 68% contactan fuera de horario.</p>
-        </div>
-        <div class="card-editorial fade-in" style="padding:2rem;">
-          <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">02</span>
-          <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Cero seguimiento</h3>
-          <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">El paciente sale de consulta y desaparece. Sin nurturing automatizado pierdes el 40% de procedimientos de alto valor.</p>
-        </div>
-        <div class="card-editorial fade-in" style="padding:2rem;">
-          <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">03</span>
-          <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Recepcion saturada</h3>
-          <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">Tu equipo pierde 3+ horas diarias en tareas repetitivas: confirmar citas, responder las mismas preguntas.</p>
-        </div>
-        <div class="card-editorial fade-in" style="padding:2rem;">
-          <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">04</span>
-          <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Marketing sin retorno</h3>
-          <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">Inviertes en Meta Ads pero no tienes un sistema que convierta clics en citas reales y medibles.</p>
-        </div>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">02</span>
+        <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Cero seguimiento</h3>
+        <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">El paciente sale de consulta y desaparece. Pierdes el 40% de procedimientos de alto valor.</p>
+      </div>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">03</span>
+        <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Recepcion saturada</h3>
+        <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">3+ horas diarias en tareas repetitivas: confirmar citas, responder las mismas preguntas.</p>
+      </div>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <span class="font-italic-display" style="font-size:2rem;color:var(--cream-mute);display:block;margin-bottom:1.5rem;">04</span>
+        <h3 style="font-size:1.25rem;color:var(--cream);margin-bottom:0.75rem;font-weight:400;">Marketing sin retorno</h3>
+        <p style="font-size:0.9rem;color:var(--body-muted);line-height:1.6;">Inviertes en Meta Ads sin un sistema que convierta clics en citas reales.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════ SERVICES ═══════════ -->
-  <section id="services" class="section-pad" style="border-top:1px solid var(--line);">
-    <div class="container-wide">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem;flex-wrap:wrap;gap:2rem;" class="fade-in">
-        <div>
-          <span class="idx-num">02 — SERVICIOS</span>
-          <h2 class="font-display text-display-md" style="margin-top:1.5rem;">Todo lo que tu clinica <span class="font-italic-display">necesita.</span></h2>
-        </div>
-        <p style="color:var(--body-muted);max-width:340px;line-height:1.7;border-left:1px solid var(--line);padding-left:1.5rem;">Automatizacion, IA y estrategia digital para clinicas que quieren dominar su mercado.</p>
+<!-- ═══ SERVICES (with hover reveal + visual examples) ═══ -->
+<section id="services" class="section-pad" style="border-top:1px solid var(--line);">
+  <div class="container-wide">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem;flex-wrap:wrap;gap:2rem;" class="fade-in">
+      <div>
+        <span class="idx-num">02 — SERVICIOS</span>
+        <h2 class="font-display text-display-md" style="margin-top:1.5rem;">Todo lo que tu clinica <span class="font-italic-display">necesita.</span></h2>
       </div>
-      <div class="grid-services" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
-        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-right:0;transition:border-color 320ms;">
-          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">01</span>
-          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms;"></div>
-          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Chatbot IA 24/7</h3>
-          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Asistente inteligente que responde, agenda y califica pacientes en WhatsApp, Instagram y web.</p>
-          <div style="margin-top:1.25rem;"><a href="servicios/chatbot-ia.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
+      <p style="color:var(--body-muted);max-width:340px;line-height:1.7;border-left:1px solid var(--line);padding-left:1.5rem;">Automatizacion, IA y estrategia digital para clinicas que quieren dominar su mercado.</p>
+    </div>
+
+    <!-- Chatbot IA — with mock chat -->
+    <div class="svc-card fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);margin-bottom:1.5rem;">
+      <div style="padding:3rem;">
+        <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1rem;">01</span>
+        <div class="svc-line" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms;"></div>
+        <h3 class="font-display" style="font-size:2rem;margin-bottom:0.75rem;">Chatbot IA 24/7</h3>
+        <p style="color:var(--body);font-size:0.95rem;line-height:1.7;">Asistente inteligente que responde, agenda y califica pacientes en WhatsApp, Instagram y web. Entrenado con el tono de tu clinica.</p>
+        <div class="svc-reveal">
+          <p class="font-mono-meta" style="color:var(--gold);margin-top:1.25rem;">Desde $297/mes</p>
+          <a href="servicios/chatbot-ia.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);margin-top:0.75rem;display:inline-block;">Saber mas</a>
         </div>
-        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-right:0;transition:border-color 320ms;">
-          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">02</span>
-          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
-          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Automatizacion de Citas</h3>
-          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Agendamiento, confirmacion, recordatorios y re-agendamiento automatico. Reduce no-shows un 40%.</p>
-          <div style="margin-top:1.25rem;"><a href="servicios/automatizacion-citas.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
+      </div>
+      <div style="background:rgba(243,236,222,0.03);padding:2rem;display:flex;flex-direction:column;gap:0.75rem;justify-content:center;border-left:1px solid var(--line);">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+          <div style="width:8px;height:8px;border-radius:50%;background:var(--accent);"></div>
+          <span class="font-mono-meta" style="color:var(--cream-mute);font-size:0.6rem;">CLINICA DERMAVANCE — CHATBOT ACTIVO</span>
         </div>
-        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);transition:border-color 320ms;">
-          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">03</span>
-          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
-          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">CRM con IA</h3>
-          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Centraliza pacientes. Scoring predictivo, segmentacion inteligente y pipeline visual de ventas.</p>
-          <div style="margin-top:1.25rem;"><a href="servicios/crm-ia.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
-        </div>
-        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-top:0;border-right:0;">
-          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">04</span>
-          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
-          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Campanas Automatizadas</h3>
-          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Meta Ads + email + WhatsApp marketing. Embudos completos del clic a la cita cerrada.</p>
-          <div style="margin-top:1.25rem;"><a href="servicios/campanas-automatizadas.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
-        </div>
-        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-top:0;border-right:0;">
-          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">05</span>
-          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
-          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Web Premium</h3>
-          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Sitio web de alto rendimiento disenado para convertir visitantes en pacientes de alto valor.</p>
-          <div style="margin-top:1.25rem;"><a href="servicios/web-premium.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
-        </div>
-        <div class="fade-in" style="padding:2.5rem 2rem;border:1px solid var(--line);border-top:0;">
-          <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1.5rem;">06</span>
-          <div style="height:1px;background:var(--line);margin-bottom:1.5rem;"></div>
-          <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;color:var(--cream);margin-bottom:0.75rem;">Seguimiento Post-Consulta</h3>
-          <p style="color:var(--body-muted);font-size:0.9rem;line-height:1.6;">Automatiza el seguimiento despues de cada procedimiento. Encuestas NPS y reactivacion.</p>
-          <div style="margin-top:1.25rem;"><a href="servicios/seguimiento-post.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Saber mas</a></div>
-        </div>
+        <div class="chat-bubble chat-user" style="animation-delay:0.2s;">Hola, quiero info sobre botox</div>
+        <div class="chat-bubble chat-bot" style="animation-delay:0.8s;">Hola! Gracias por tu interes. Tenemos tratamiento de toxina botulinica desde $250 USD. Quieres que te agende una valoracion gratuita?</div>
+        <div class="chat-bubble chat-user" style="animation-delay:1.6s;">Si, para esta semana si puede ser</div>
+        <div class="chat-bubble chat-bot" style="animation-delay:2.4s;">Perfecto! Tengo disponible jueves 22 a las 10:00 o viernes 23 a las 16:00. Cual prefieres?</div>
+        <div class="chat-bubble chat-user" style="animation-delay:3.2s;">Jueves a las 10 esta bien</div>
+        <div class="chat-bubble chat-bot" style="animation-delay:4s;">Listo! Cita confirmada: Jueves 22, 10:00 AM con Dra. Reyes. Te envio confirmacion por WhatsApp. Hasta pronto!</div>
       </div>
     </div>
-  </section>
 
-  <!-- ═══════════ RESULTS ═══════════ -->
-  <section id="results" class="section-pad" style="border-top:1px solid var(--line);">
-    <div class="container-wide">
-      <div style="margin-bottom:5rem;" class="fade-in">
-        <span class="idx-num">03 — RESULTADOS</span>
-        <h2 class="font-display text-display-md" style="margin-top:1.5rem;">Clinicas que ya <span class="font-italic-display">transformaron</span> su captacion.</h2>
+    <!-- Other services grid -->
+    <div class="grid-services" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
+      <div class="svc-card fade-in" style="padding:2.5rem;border:1px solid var(--line);border-right:0;">
+        <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1rem;">02</span>
+        <div class="svc-line" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms;"></div>
+        <h3 class="font-display" style="font-size:1.5rem;margin-bottom:0.75rem;">Automatizacion de Citas</h3>
+        <p style="color:var(--body);font-size:0.9rem;line-height:1.6;">Agendamiento, confirmacion, recordatorios WhatsApp + SMS. Re-agendamiento con un clic.</p>
+        <div class="svc-reveal">
+          <p class="font-mono-meta" style="color:var(--gold);margin-top:1.25rem;">Desde $197/mes</p>
+          <a href="servicios/automatizacion-citas.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);margin-top:0.75rem;display:inline-block;">Saber mas</a>
+        </div>
       </div>
-      <div class="grid-results" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
-        <div class="card-editorial fade-in" style="padding:2rem;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem;">
-            <span class="font-mono-meta" style="color:var(--gold);">Medicina Estetica</span>
-            <span class="font-mono-meta" style="color:var(--cream-mute);">Mexico</span>
-          </div>
-          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Clinica Dermavance</h3>
-          <p style="color:var(--body-muted);font-size:0.85rem;line-height:1.6;margin-bottom:1.5rem;">Rejuvenecimiento facial, 3 sedes. Chatbot IA + CRM + campanas automatizadas.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem;">
-            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+312%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Citas online</p></div>
-            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">-45%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">No-shows</p></div>
-            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+$127K</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Revenue 6m</p></div>
-          </div>
-          <blockquote class="font-italic-display" style="font-size:0.95rem;color:var(--cream);line-height:1.5;">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos.&rdquo;</blockquote>
-          <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:0.75rem;">Dra. Valentina Reyes</p>
+      <div class="svc-card fade-in" style="padding:2.5rem;border:1px solid var(--line);border-right:0;">
+        <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1rem;">03</span>
+        <div class="svc-line" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms;"></div>
+        <h3 class="font-display" style="font-size:1.5rem;margin-bottom:0.75rem;">CRM con IA</h3>
+        <p style="color:var(--body);font-size:0.9rem;line-height:1.6;">Scoring predictivo, segmentacion inteligente, pipeline visual de pacientes.</p>
+        <div class="svc-reveal">
+          <p class="font-mono-meta" style="color:var(--gold);margin-top:1.25rem;">Desde $397/mes</p>
+          <a href="servicios/crm-ia.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);margin-top:0.75rem;display:inline-block;">Saber mas</a>
         </div>
-        <div class="card-editorial fade-in" style="padding:2rem;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem;">
-            <span class="font-mono-meta" style="color:var(--gold);">Odontologia</span>
-            <span class="font-mono-meta" style="color:var(--cream-mute);">Colombia</span>
-          </div>
-          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Sonrie Studio Dental</h3>
-          <p style="color:var(--body-muted);font-size:0.85rem;line-height:1.6;margin-bottom:1.5rem;">Diseno de sonrisa e implantes premium. Automatizacion completa + web.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem;">
-            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+189%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Leads</p></div>
-            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">-52%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Tiempo recepcion</p></div>
-            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+$89K</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Revenue 4m</p></div>
-          </div>
-          <blockquote class="font-italic-display" style="font-size:0.95rem;color:var(--cream);line-height:1.5;">&ldquo;Antes perdiamos el 60% de leads de Instagram. Ahora el sistema los captura y les agenda cita.&rdquo;</blockquote>
-          <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:0.75rem;">Dr. Andres Camacho</p>
+      </div>
+      <div class="svc-card fade-in" style="padding:2.5rem;border:1px solid var(--line);">
+        <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1rem;">04</span>
+        <div class="svc-line" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms;"></div>
+        <h3 class="font-display" style="font-size:1.5rem;margin-bottom:0.75rem;">Campanas Automatizadas</h3>
+        <p style="color:var(--body);font-size:0.9rem;line-height:1.6;">Meta Ads + email + WhatsApp. Embudos completos del clic a la cita cerrada.</p>
+        <div class="svc-reveal">
+          <p class="font-mono-meta" style="color:var(--gold);margin-top:1.25rem;">Desde $497/mes</p>
+          <a href="servicios/campanas-automatizadas.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);margin-top:0.75rem;display:inline-block;">Saber mas</a>
         </div>
-        <div class="card-editorial fade-in" style="padding:2rem;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem;">
-            <span class="font-mono-meta" style="color:var(--gold);">Cirugia Plastica</span>
-            <span class="font-mono-meta" style="color:var(--cream-mute);">Peru</span>
-          </div>
-          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Instituto Belleza Peru</h3>
-          <p style="color:var(--body-muted);font-size:0.85rem;line-height:1.6;margin-bottom:1.5rem;">Cirugia plastica de alta gama. CRM + seguimiento post-operatorio.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem;">
-            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+95%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Retencion</p></div>
-            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+67%</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Referidos</p></div>
-            <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+$203K</span><p style="font-size:0.65rem;color:var(--cream-mute);margin-top:0.25rem;">Revenue 8m</p></div>
-          </div>
-          <blockquote class="font-italic-display" style="font-size:0.95rem;color:var(--cream);line-height:1.5;">&ldquo;El seguimiento post-operatorio automatizado cambio todo. Los pacientes vuelven.&rdquo;</blockquote>
-          <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:0.75rem;">Dr. Ricardo Mendieta</p>
+      </div>
+      <div class="svc-card fade-in" style="padding:2.5rem;border:1px solid var(--line);border-top:0;border-right:0;">
+        <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1rem;">05</span>
+        <div class="svc-line" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms;"></div>
+        <h3 class="font-display" style="font-size:1.5rem;margin-bottom:0.75rem;">Web Premium</h3>
+        <p style="color:var(--body);font-size:0.9rem;line-height:1.6;">Sitio web a medida para convertir visitantes en pacientes de alto valor. SEO local.</p>
+        <div class="svc-reveal">
+          <p class="font-mono-meta" style="color:var(--gold);margin-top:1.25rem;">Desde $1,500</p>
+          <a href="servicios/web-premium.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);margin-top:0.75rem;display:inline-block;">Saber mas</a>
         </div>
+      </div>
+      <div class="svc-card fade-in" style="padding:2.5rem;border:1px solid var(--line);border-top:0;border-right:0;">
+        <span class="font-italic-display" style="font-size:2.5rem;color:rgba(243,236,222,0.15);display:block;margin-bottom:1rem;">06</span>
+        <div class="svc-line" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms;"></div>
+        <h3 class="font-display" style="font-size:1.5rem;margin-bottom:0.75rem;">Seguimiento Post-Consulta</h3>
+        <p style="color:var(--body);font-size:0.9rem;line-height:1.6;">Flujos post-procedimiento, encuestas NPS, reactivacion de pacientes inactivos.</p>
+        <div class="svc-reveal">
+          <p class="font-mono-meta" style="color:var(--gold);margin-top:1.25rem;">Desde $297/mes</p>
+          <a href="servicios/seguimiento-post.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);margin-top:0.75rem;display:inline-block;">Saber mas</a>
+        </div>
+      </div>
+      <div class="svc-card fade-in" style="padding:2.5rem;border:1px solid var(--line);border-top:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <p class="font-italic-display" style="font-size:1.5rem;color:var(--cream);margin-bottom:1rem;">Necesitas algo a medida?</p>
+        <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary font-mono-meta" style="padding:0.875rem 2rem;font-size:0.72rem;">Hablemos</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════ PROCESS ═══════════ -->
-  <section id="process" class="section-pad" style="border-top:1px solid var(--line);">
-    <div class="container-wide">
-      <div class="fade-in" style="margin-bottom:5rem;">
-        <span class="idx-num">04 — PROCESO</span>
-        <h2 class="font-display text-display-lg" style="margin-top:1.5rem;">Proceso</h2>
+<!-- ═══ RESULTS ═══ -->
+<section id="results" class="section-pad" style="border-top:1px solid var(--line);">
+  <div class="container-wide">
+    <div style="margin-bottom:5rem;" class="fade-in">
+      <span class="idx-num">03 — RESULTADOS</span>
+      <h2 class="font-display text-display-md" style="margin-top:1.5rem;">Clinicas que ya <span class="font-italic-display">transformaron</span> su captacion.</h2>
+    </div>
+    <div class="grid-results" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem;"><span class="font-mono-meta" style="color:var(--gold);">Medicina Estetica</span><span class="font-mono-meta" style="color:var(--cream-mute);">Mexico</span></div>
+        <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Clinica Dermavance</h3>
+        <p style="color:var(--body-muted);font-size:0.85rem;line-height:1.6;margin-bottom:1.5rem;">Rejuvenecimiento facial, 3 sedes. Chatbot IA + CRM + campanas automatizadas.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem;">
+          <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+312%</span><p style="font-size:0.7rem;color:var(--body-muted);margin-top:0.25rem;">Citas online</p></div>
+          <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">-45%</span><p style="font-size:0.7rem;color:var(--body-muted);margin-top:0.25rem;">No-shows</p></div>
+          <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+$127K</span><p style="font-size:0.7rem;color:var(--body-muted);margin-top:0.25rem;">Revenue 6m</p></div>
+        </div>
+        <blockquote class="font-italic-display" style="font-size:0.95rem;color:var(--cream);line-height:1.5;">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos.&rdquo;</blockquote>
+        <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:0.75rem;">Dra. Valentina Reyes</p>
       </div>
-      <div class="process-timeline" style="position:relative;padding-left:3rem;">
-        <div style="position:absolute;left:15px;top:0;bottom:0;width:1px;background:rgba(243,236,222,0.12);"></div>
-        <div class="fade-in" style="position:relative;padding:2rem 0;">
-          <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream);transition:transform 300ms;"></div>
-          <span class="font-mono-meta" style="color:var(--gold);">Semana 1</span>
-          <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Diagnostico y Estrategia</h3>
-          <p style="color:var(--body-muted);max-width:500px;margin-top:0.5rem;line-height:1.7;">Analizamos tu clinica, competencia, flujo de pacientes y oportunidades. Disenamos un plan a medida.</p>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem;"><span class="font-mono-meta" style="color:var(--gold);">Odontologia</span><span class="font-mono-meta" style="color:var(--cream-mute);">Colombia</span></div>
+        <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Sonrie Studio Dental</h3>
+        <p style="color:var(--body-muted);font-size:0.85rem;line-height:1.6;margin-bottom:1.5rem;">Diseno de sonrisa e implantes premium. Automatizacion completa + web.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem;">
+          <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+189%</span><p style="font-size:0.7rem;color:var(--body-muted);margin-top:0.25rem;">Leads</p></div>
+          <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">-52%</span><p style="font-size:0.7rem;color:var(--body-muted);margin-top:0.25rem;">Tiempo recepcion</p></div>
+          <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+$89K</span><p style="font-size:0.7rem;color:var(--body-muted);margin-top:0.25rem;">Revenue 4m</p></div>
         </div>
-        <div class="fade-in" style="position:relative;padding:2rem 0;">
-          <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream);"></div>
-          <span class="font-mono-meta" style="color:var(--gold);">Semana 2-3</span>
-          <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Implementacion</h3>
-          <p style="color:var(--body-muted);max-width:500px;margin-top:0.5rem;line-height:1.7;">Configuramos chatbot, CRM, automatizaciones e integraciones con tu agenda y canales.</p>
+        <blockquote class="font-italic-display" style="font-size:0.95rem;color:var(--cream);line-height:1.5;">&ldquo;Antes perdiamos el 60% de leads de Instagram. Ahora el sistema los captura y agenda cita.&rdquo;</blockquote>
+        <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:0.75rem;">Dr. Andres Camacho</p>
+      </div>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem;"><span class="font-mono-meta" style="color:var(--gold);">Cirugia Plastica</span><span class="font-mono-meta" style="color:var(--cream-mute);">Peru</span></div>
+        <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Instituto Belleza Peru</h3>
+        <p style="color:var(--body-muted);font-size:0.85rem;line-height:1.6;margin-bottom:1.5rem;">Cirugia plastica de alta gama. CRM + seguimiento post-operatorio.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem;">
+          <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+95%</span><p style="font-size:0.7rem;color:var(--body-muted);margin-top:0.25rem;">Retencion</p></div>
+          <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+67%</span><p style="font-size:0.7rem;color:var(--body-muted);margin-top:0.25rem;">Referidos</p></div>
+          <div><span class="font-display" style="font-size:1.5rem;color:var(--accent);">+$203K</span><p style="font-size:0.7rem;color:var(--body-muted);margin-top:0.25rem;">Revenue 8m</p></div>
         </div>
-        <div class="fade-in" style="position:relative;padding:2rem 0;">
-          <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream);"></div>
-          <span class="font-mono-meta" style="color:var(--gold);">Semana 4</span>
-          <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Lanzamiento</h3>
-          <p style="color:var(--body-muted);max-width:500px;margin-top:0.5rem;line-height:1.7;">Activamos todo, monitorizamos en tiempo real y capacitamos a tu equipo.</p>
-        </div>
-        <div class="fade-in" style="position:relative;padding:2rem 0;">
-          <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--accent);"></div>
-          <span class="font-mono-meta" style="color:var(--gold);">Continuo</span>
-          <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Soporte y Evolucion</h3>
-          <p style="color:var(--body-muted);max-width:500px;margin-top:0.5rem;line-height:1.7;">Soporte prioritario, reportes mensuales, optimizacion continua. Tu sistema evoluciona contigo.</p>
-        </div>
+        <blockquote class="font-italic-display" style="font-size:0.95rem;color:var(--cream);line-height:1.5;">&ldquo;El seguimiento post-operatorio cambio todo. Los pacientes vuelven.&rdquo;</blockquote>
+        <p class="font-mono-meta" style="color:var(--cream-mute);margin-top:0.75rem;">Dr. Ricardo Mendieta</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════ TESTIMONIALS ═══════════ -->
-  <section class="section-pad" style="border-top:1px solid var(--line);text-align:center;">
-    <div class="container-wide" style="max-width:900px;">
-      <span class="idx-num fade-in">05 — TESTIMONIOS</span>
-      <div id="testimonial-carousel" style="margin-top:3rem;position:relative;" class="fade-in">
-        <div class="t-slide" data-slide="0" style="transition:opacity 700ms;">
-          <blockquote class="font-italic-display" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem;">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos. No sabiamos que esto era posible.&rdquo;</blockquote>
-          <span class="font-mono-meta" style="color:var(--cream);display:block;">Dra. Valentina Reyes</span>
-          <span style="color:var(--body-muted);font-size:0.9rem;">Directora Medica, Clinica Dermavance &mdash; Mexico</span>
-        </div>
-        <div class="t-slide" data-slide="1" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 700ms;">
-          <blockquote class="font-italic-display" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem;">&ldquo;Antes perdiamos el 60% de leads de Instagram. Ahora el sistema los captura, califica y agenda cita. Nuestro cierre subio un 34%.&rdquo;</blockquote>
-          <span class="font-mono-meta" style="color:var(--cream);display:block;">Dr. Andres Camacho</span>
-          <span style="color:var(--body-muted);font-size:0.9rem;">Fundador, Sonrie Studio Dental &mdash; Colombia</span>
-        </div>
-        <div class="t-slide" data-slide="2" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 700ms;">
-          <blockquote class="font-italic-display" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem;">&ldquo;El seguimiento post-operatorio automatizado cambio todo. Los pacientes se sienten cuidados y vuelven para mas procedimientos.&rdquo;</blockquote>
-          <span class="font-mono-meta" style="color:var(--cream);display:block;">Dr. Ricardo Mendieta</span>
-          <span style="color:var(--body-muted);font-size:0.9rem;">Director, Instituto Belleza Peru &mdash; Lima</span>
-        </div>
-        <div style="display:flex;justify-content:center;gap:0.75rem;margin-top:2.5rem;">
-          <button class="t-dot" data-index="0" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;opacity:1;transition:opacity 300ms;"></button>
-          <button class="t-dot" data-index="1" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;opacity:0.3;transition:opacity 300ms;"></button>
-          <button class="t-dot" data-index="2" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;opacity:0.3;transition:opacity 300ms;"></button>
-        </div>
+<!-- ═══ PROCESS ═══ -->
+<section id="process" class="section-pad" style="border-top:1px solid var(--line);">
+  <div class="container-wide">
+    <div class="fade-in" style="margin-bottom:5rem;">
+      <span class="idx-num">04 — PROCESO</span>
+      <h2 class="font-display text-display-lg" style="margin-top:1.5rem;">Proceso</h2>
+    </div>
+    <div style="position:relative;padding-left:3rem;">
+      <div style="position:absolute;left:15px;top:0;bottom:0;width:1px;background:var(--line);"></div>
+      <div class="fade-in" style="position:relative;padding:2rem 0;">
+        <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--accent);"></div>
+        <span class="font-mono-meta" style="color:var(--gold);">Paso 1 — Llamada</span>
+        <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Hablamos y entendemos tu negocio</h3>
+        <p style="color:var(--body);max-width:500px;margin-top:0.5rem;line-height:1.7;">Llamada de 30 minutos sin compromiso. Analizamos tu clinica, tus canales actuales, volumen de pacientes y objetivos. Salimos con un diagnostico claro de que necesitas.</p>
+      </div>
+      <div class="fade-in" style="position:relative;padding:2rem 0;">
+        <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream);"></div>
+        <span class="font-mono-meta" style="color:var(--gold);">Paso 2 — Propuesta</span>
+        <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Plan a medida + presupuesto</h3>
+        <p style="color:var(--body);max-width:500px;margin-top:0.5rem;line-height:1.7;">Disenamos un plan de automatizacion especifico para tu clinica con cronograma, KPIs y presupuesto detallado. Sin sorpresas.</p>
+      </div>
+      <div class="fade-in" style="position:relative;padding:2rem 0;">
+        <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream);"></div>
+        <span class="font-mono-meta" style="color:var(--gold);">Paso 3 — Implementacion</span>
+        <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Configuramos todo en 2-3 semanas</h3>
+        <p style="color:var(--body);max-width:500px;margin-top:0.5rem;line-height:1.7;">Chatbot entrenado, CRM conectado, automatizaciones activas, integraciones con tu agenda y canales. Tu equipo recibe capacitacion.</p>
+      </div>
+      <div class="fade-in" style="position:relative;padding:2rem 0;">
+        <div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--accent);"></div>
+        <span class="font-mono-meta" style="color:var(--gold);">Continuo</span>
+        <h3 class="font-display" style="font-size:1.75rem;margin-top:0.5rem;">Soporte, reportes y optimizacion</h3>
+        <p style="color:var(--body);max-width:500px;margin-top:0.5rem;line-height:1.7;">Soporte prioritario, reportes mensuales con metricas reales, optimizacion continua. Tu sistema evoluciona contigo.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════ PRICING ═══════════ -->
-  <section id="pricing" class="section-pad" style="border-top:1px solid var(--line);">
-    <div class="container-wide">
-      <div class="fade-in" style="margin-bottom:5rem;">
-        <span class="idx-num">06 — INVERSION</span>
-        <h2 class="font-display text-display-md" style="margin-top:1.5rem;">Planes para clinicas que quieren <span class="font-italic-display">crecer en serio.</span></h2>
-        <p style="color:var(--body-muted);margin-top:1rem;">Precios en USD. Sin contratos de permanencia.</p>
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="section-pad" style="border-top:1px solid var(--line);text-align:center;">
+  <div class="container-wide" style="max-width:900px;">
+    <span class="idx-num fade-in">05 — TESTIMONIOS</span>
+    <div id="testimonial-carousel" style="margin-top:3rem;position:relative;" class="fade-in">
+      <div class="t-slide" data-slide="0" style="transition:opacity 700ms;">
+        <blockquote class="font-italic-display" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem;">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos.&rdquo;</blockquote>
+        <span class="font-mono-meta" style="color:var(--cream);">Dra. Valentina Reyes</span><br>
+        <span style="color:var(--body-muted);font-size:0.9rem;">Clinica Dermavance &mdash; Mexico</span>
       </div>
-      <div class="grid-pricing" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
-        <div class="card-editorial fade-in" style="padding:2.5rem;">
-          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Starter</h3>
-          <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:2rem;">Para clinicas que quieren empezar a automatizar</p>
-          <div style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line);">
-            <span class="font-display" style="font-size:3.5rem;">$497</span>
-            <span style="color:var(--cream-mute);font-size:0.9rem;">/mes</span>
-          </div>
-          <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Chatbot IA para WhatsApp</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Agendamiento automatico</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Recordatorios de citas</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> 200 conversaciones/mes</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Soporte por email</li>
-          </ul>
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-secondary btn-press font-mono-meta" style="padding:0.875rem 2rem;font-size:0.72rem;width:100%;text-align:center;">Agendar llamada</a>
-        </div>
-        <div class="fade-in" style="padding:2.5rem;border:2px solid var(--accent);border-radius:4px;background:var(--ink-soft);position:relative;">
-          <span class="font-mono-meta" style="position:absolute;top:-10px;left:2rem;background:var(--accent);color:var(--cream);padding:0.25rem 0.75rem;font-size:0.6rem;">Mas popular</span>
-          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Growth</h3>
-          <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:2rem;">Para clinicas listas para escalar</p>
-          <div style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line);">
-            <span class="font-display" style="font-size:3.5rem;">$997</span>
-            <span style="color:var(--cream-mute);font-size:0.9rem;">/mes</span>
-          </div>
-          <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Todo en Starter +</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> CRM con IA integrado</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Campanas multi-canal</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Seguimiento post-consulta</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> 1,000 conversaciones/mes</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Dashboard de metricas</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Soporte WhatsApp</li>
-          </ul>
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary btn-press font-mono-meta" style="padding:0.875rem 2rem;font-size:0.72rem;width:100%;text-align:center;">Agendar llamada</a>
-        </div>
-        <div class="card-editorial fade-in" style="padding:2.5rem;">
-          <h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.5rem;">Premium</h3>
-          <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:2rem;">Para multi-sede y grupos medicos</p>
-          <div style="margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--line);">
-            <span class="font-display" style="font-size:3.5rem;">$1,997</span>
-            <span style="color:var(--cream-mute);font-size:0.9rem;">/mes</span>
-          </div>
-          <ul style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Todo en Growth +</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Web premium a medida</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Meta Ads gestionadas</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Conversaciones ilimitadas</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Multi-sede / multi-doctor</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Account manager dedicado</li>
-            <li style="display:flex;gap:0.75rem;color:var(--body-muted);font-size:0.85rem;"><span style="color:var(--accent);">&#10003;</span> Reportes semanales</li>
-          </ul>
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-secondary btn-press font-mono-meta" style="padding:0.875rem 2rem;font-size:0.72rem;width:100%;text-align:center;">Agendar llamada</a>
-        </div>
+      <div class="t-slide" data-slide="1" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 700ms;">
+        <blockquote class="font-italic-display" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem;">&ldquo;Antes perdiamos el 60% de leads. Ahora el sistema los captura y agenda cita. Cierre de implantes subio un 34%.&rdquo;</blockquote>
+        <span class="font-mono-meta" style="color:var(--cream);">Dr. Andres Camacho</span><br>
+        <span style="color:var(--body-muted);font-size:0.9rem;">Sonrie Studio Dental &mdash; Colombia</span>
+      </div>
+      <div class="t-slide" data-slide="2" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 700ms;">
+        <blockquote class="font-italic-display" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem;">&ldquo;El seguimiento post-operatorio cambio todo. Los pacientes se sienten cuidados y vuelven.&rdquo;</blockquote>
+        <span class="font-mono-meta" style="color:var(--cream);">Dr. Ricardo Mendieta</span><br>
+        <span style="color:var(--body-muted);font-size:0.9rem;">Instituto Belleza Peru &mdash; Lima</span>
+      </div>
+      <div style="display:flex;justify-content:center;gap:0.75rem;margin-top:2.5rem;">
+        <button class="t-dot" data-index="0" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;transition:opacity 300ms;"></button>
+        <button class="t-dot" data-index="1" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;opacity:0.3;transition:opacity 300ms;"></button>
+        <button class="t-dot" data-index="2" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:none;cursor:pointer;opacity:0.3;transition:opacity 300ms;"></button>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════ FAQ ═══════════ -->
-  <section id="faq" class="section-pad" style="border-top:1px solid var(--line);">
-    <div class="container-wide" style="max-width:800px;">
-      <span class="idx-num fade-in">07 — FAQ</span>
-      <h2 class="font-display text-display-md fade-in" style="margin-top:1.5rem;margin-bottom:3rem;">Preguntas <span class="font-italic-display">frecuentes.</span></h2>
-      <div style="border-top:1px solid var(--line);">
-        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
-          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>Cuanto tiempo toma ver resultados?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
-          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">La mayoria ven incremento en citas en las primeras 2 semanas. Resultados completos entre mes 1 y 3.</p>
-        </details>
-        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
-          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>El chatbot reemplaza a mi recepcionista?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
-          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">No, la complementa. Maneja repetitivas 24/7. Tu recepcionista se enfoca en atencion presencial.</p>
-        </details>
-        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
-          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>Funciona con mi agenda actual?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
-          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">Si. Nos integramos con los principales sistemas de gestion clinica y agendas digitales.</p>
-        </details>
-        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
-          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>Tienen contrato de permanencia?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
-          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">No. Mes a mes. Nuestros resultados son razon suficiente para que te quedes.</p>
-        </details>
-        <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
-          <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.05rem;"><span>En que paises trabajan?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span></summary>
-          <p style="color:var(--body-muted);margin-top:1rem;max-width:600px;line-height:1.7;font-size:0.9rem;">Toda Latinoamerica: Mexico, Colombia, Peru, Chile, Argentina, Ecuador, RD y mas.</p>
-        </details>
-      </div>
-      <div style="margin-top:2rem;"><a href="faq-contacto.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Ver todas las preguntas</a></div>
+<!-- ═══ PRICING (per service) ═══ -->
+<section id="pricing" class="section-pad" style="border-top:1px solid var(--line);">
+  <div class="container-wide">
+    <div class="fade-in" style="margin-bottom:5rem;">
+      <span class="idx-num">06 — PRECIOS ESTIMADOS</span>
+      <h2 class="font-display text-display-md" style="margin-top:1.5rem;">Precios orientativos <span class="font-italic-display">por servicio.</span></h2>
+      <p style="color:var(--body);margin-top:1rem;max-width:600px;line-height:1.7;">Cada clinica es unica. Estos son rangos de referencia en USD. El presupuesto final se define en la llamada de diagnostico segun tus necesidades reales.</p>
     </div>
-  </section>
-
-  <!-- ═══════════ CONTACT ═══════════ -->
-  <section id="contact" class="section-pad" style="border-top:1px solid var(--line);">
-    <div class="container-wide">
-      <div class="grid-contact" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;">
-        <div class="fade-in">
-          <span class="idx-num">08 — CONTACTO</span>
-          <h2 class="font-display text-display-sm" style="margin-top:1.5rem;margin-bottom:1.5rem;">Tu competencia ya automatizo. <span class="font-italic-display">Vas a quedarte atras?</span></h2>
-          <p style="color:var(--body-muted);max-width:400px;line-height:1.7;margin-bottom:2.5rem;">30 minutos. Sin compromiso. Te mostramos como multiplicar tus citas.</p>
-          <div style="display:flex;flex-direction:column;gap:1rem;">
-            <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-ghost font-mono-meta" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 0;width:fit-content;">Agendar llamada</a>
-            <a href="https://wa.me/34722753559?text=Hola%2C%20quiero%20informacion%20sobre%20automatizacion%20para%20mi%20clinica" target="_blank" rel="noopener" class="btn-glass-ghost font-mono-meta" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 0;width:fit-content;">WhatsApp &middot; +34 722 753 559</a>
-            <a href="mailto:clickiclickweb@gmail.com" class="btn-glass-ghost font-mono-meta" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 0;width:fit-content;">clickiclickweb@gmail.com</a>
-          </div>
-        </div>
-        <div class="fade-in">
-          <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" style="display:flex;flex-direction:column;gap:1rem;">
-            <input type="hidden" name="access_key" value="ff9e17a4-20d8-49d3-8319-3414194ec45a">
-            <input type="hidden" name="subject" value="Nuevo lead - CLICKICLICK Medical">
-            <input type="text" name="name" required placeholder="Nombre completo" style="background:transparent;border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream);font-size:0.9rem;border-radius:4px;outline:none;transition:border-color 300ms;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
-            <input type="text" name="clinic" required placeholder="Nombre de la clinica" style="background:transparent;border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream);font-size:0.9rem;border-radius:4px;outline:none;transition:border-color 300ms;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
-            <input type="email" name="email" required placeholder="Email" style="background:transparent;border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream);font-size:0.9rem;border-radius:4px;outline:none;transition:border-color 300ms;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
-            <select name="country" required style="background:var(--ink);border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream-mute);font-size:0.9rem;border-radius:4px;outline:none;">
-              <option value="" disabled selected>Pais</option>
-              <option>Mexico</option><option>Colombia</option><option>Peru</option><option>Chile</option><option>Argentina</option><option>Ecuador</option><option>Republica Dominicana</option><option>Costa Rica</option><option>Panama</option><option>Otro</option>
-            </select>
-            <button type="submit" class="btn-glass-primary btn-press font-mono-meta" style="padding:1rem 2rem;font-size:0.72rem;width:100%;">Enviar consulta</button>
-          </form>
-        </div>
+    <div class="grid-pricing" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <h3 class="font-display" style="font-size:1.35rem;margin-bottom:0.5rem;">Chatbot IA 24/7</h3>
+        <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:1.5rem;">WhatsApp + Instagram + Web</p>
+        <span class="font-display" style="font-size:2.5rem;">Desde $297</span><span style="color:var(--cream-mute);">/mes</span>
+      </div>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <h3 class="font-display" style="font-size:1.35rem;margin-bottom:0.5rem;">Automatizacion de Citas</h3>
+        <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:1.5rem;">Recordatorios + re-agendamiento</p>
+        <span class="font-display" style="font-size:2.5rem;">Desde $197</span><span style="color:var(--cream-mute);">/mes</span>
+      </div>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <h3 class="font-display" style="font-size:1.35rem;margin-bottom:0.5rem;">CRM con IA</h3>
+        <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:1.5rem;">Scoring + segmentacion + pipeline</p>
+        <span class="font-display" style="font-size:2.5rem;">Desde $397</span><span style="color:var(--cream-mute);">/mes</span>
+      </div>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <h3 class="font-display" style="font-size:1.35rem;margin-bottom:0.5rem;">Campanas Automatizadas</h3>
+        <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:1.5rem;">Meta Ads + email + WhatsApp</p>
+        <span class="font-display" style="font-size:2.5rem;">Desde $497</span><span style="color:var(--cream-mute);">/mes</span>
+      </div>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <h3 class="font-display" style="font-size:1.35rem;margin-bottom:0.5rem;">Web Premium</h3>
+        <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:1.5rem;">Diseno a medida + SEO local</p>
+        <span class="font-display" style="font-size:2.5rem;">Desde $1,500</span><span style="color:var(--cream-mute);"> (unico)</span>
+      </div>
+      <div class="card-editorial fade-in" style="padding:2rem;">
+        <h3 class="font-display" style="font-size:1.35rem;margin-bottom:0.5rem;">Seguimiento Post-Consulta</h3>
+        <p style="color:var(--body-muted);font-size:0.85rem;margin-bottom:1.5rem;">NPS + reactivacion + flujos</p>
+        <span class="font-display" style="font-size:2.5rem;">Desde $297</span><span style="color:var(--cream-mute);">/mes</span>
       </div>
     </div>
-  </section>
+    <div style="text-align:center;margin-top:3rem;" class="fade-in">
+      <p style="color:var(--body);margin-bottom:1.5rem;">Combina servicios y obtén mejor precio. Cuéntanos qué necesitas.</p>
+      <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary font-mono-meta" style="padding:1rem 2.5rem;font-size:0.72rem;">Solicitar presupuesto personalizado</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section id="faq" class="section-pad" style="border-top:1px solid var(--line);">
+  <div class="container-wide" style="max-width:800px;">
+    <span class="idx-num fade-in">07 — FAQ</span>
+    <h2 class="font-display text-display-md fade-in" style="margin-top:1.5rem;margin-bottom:3rem;">Preguntas <span class="font-italic-display">frecuentes.</span></h2>
+    <div style="border-top:1px solid var(--line);">
+      <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+        <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem;font-weight:400;"><span>Cuanto tiempo toma ver resultados?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;">+</span></summary>
+        <p style="color:var(--body);margin-top:1rem;max-width:600px;line-height:1.7;">La mayoria ven incremento en citas en las primeras 2 semanas. Resultados completos entre mes 1 y 3.</p>
+      </details>
+      <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+        <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem;font-weight:400;"><span>El chatbot reemplaza a mi recepcionista?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;">+</span></summary>
+        <p style="color:var(--body);margin-top:1rem;max-width:600px;line-height:1.7;">No, la complementa. Maneja repetitivas 24/7. Tu recepcionista se enfoca en atencion presencial. Mas capacidad sin contratar mas personal.</p>
+      </details>
+      <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+        <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem;font-weight:400;"><span>Funciona con mi agenda actual?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;">+</span></summary>
+        <p style="color:var(--body);margin-top:1rem;max-width:600px;line-height:1.7;">Si. Nos integramos con los principales sistemas de gestion clinica y agendas digitales.</p>
+      </details>
+      <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+        <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem;font-weight:400;"><span>Tienen contrato de permanencia?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;">+</span></summary>
+        <p style="color:var(--body);margin-top:1rem;max-width:600px;line-height:1.7;">No. Mes a mes. Nuestros resultados son razon suficiente para que te quedes.</p>
+      </details>
+      <details class="fade-in" style="border-bottom:1px solid var(--line);padding:1.5rem 0;">
+        <summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem;font-weight:400;"><span>En que paises trabajan?</span><span class="faq-icon" style="color:var(--accent);font-size:1.25rem;">+</span></summary>
+        <p style="color:var(--body);margin-top:1rem;max-width:600px;line-height:1.7;">Toda Latinoamerica: Mexico, Colombia, Peru, Chile, Argentina, Ecuador, RD y mas.</p>
+      </details>
+    </div>
+    <div style="margin-top:2rem;"><a href="faq-contacto.html" class="font-mono-meta hover-line" style="color:var(--cream-soft);">Ver todas las preguntas</a></div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="section-pad" style="border-top:1px solid var(--line);">
+  <div class="container-wide">
+    <div class="grid-contact" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;">
+      <div class="fade-in">
+        <span class="idx-num">08 — CONTACTO</span>
+        <h2 class="font-display text-display-sm" style="margin-top:1.5rem;margin-bottom:1.5rem;">Tu competencia ya automatizo. <span class="font-italic-display">Vas a quedarte atras?</span></h2>
+        <p style="color:var(--body);max-width:400px;line-height:1.7;margin-bottom:2.5rem;">30 minutos. Sin compromiso. Te mostramos como multiplicar tus citas.</p>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-ghost font-mono-meta" style="padding:0.5rem 0;width:fit-content;">Agendar llamada</a>
+          <a href="https://wa.me/34722753559?text=Hola%2C%20quiero%20informacion%20sobre%20automatizacion%20para%20mi%20clinica" target="_blank" rel="noopener" class="btn-glass-ghost font-mono-meta" style="padding:0.5rem 0;width:fit-content;">WhatsApp &middot; +34 722 753 559</a>
+          <a href="mailto:clickiclickweb@gmail.com" class="btn-glass-ghost font-mono-meta" style="padding:0.5rem 0;width:fit-content;">clickiclickweb@gmail.com</a>
+        </div>
+      </div>
+      <div class="fade-in">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" style="display:flex;flex-direction:column;gap:1rem;">
+          <input type="hidden" name="access_key" value="ff9e17a4-20d8-49d3-8319-3414194ec45a">
+          <input type="hidden" name="subject" value="Nuevo lead - CLICKICLICK Medical">
+          <input type="text" name="name" required placeholder="Nombre completo" style="background:transparent;border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream);font-size:0.9rem;border-radius:4px;outline:none;transition:border-color 300ms;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
+          <input type="text" name="clinic" required placeholder="Nombre de la clinica" style="background:transparent;border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream);font-size:0.9rem;border-radius:4px;outline:none;transition:border-color 300ms;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
+          <input type="email" name="email" required placeholder="Email" style="background:transparent;border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream);font-size:0.9rem;border-radius:4px;outline:none;transition:border-color 300ms;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
+          <select name="country" required style="background:var(--ink);border:1px solid var(--line);padding:0.875rem 1rem;color:var(--cream-mute);font-size:0.9rem;border-radius:4px;outline:none;">
+            <option value="" disabled selected>Pais</option>
+            <option>Mexico</option><option>Colombia</option><option>Peru</option><option>Chile</option><option>Argentina</option><option>Ecuador</option><option>Republica Dominicana</option><option>Costa Rica</option><option>Panama</option><option>Otro</option>
+          </select>
+          <button type="submit" class="btn-glass-primary font-mono-meta" style="padding:1rem 2rem;font-size:0.72rem;width:100%;">Enviar consulta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
-<!-- ═══════════ FOOTER ═══════════ -->
+<!-- ═══ FOOTER ═══ -->
 <footer style="border-top:1px solid var(--line);padding:3rem 0;">
   <div class="container-wide">
     <div class="grid-footer" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;">
       <div>
-        <span class="wordmark" style="font-size:1rem;display:block;margin-bottom:1rem;">
-          <span>CLICKICLICK</span><span class="dot">.</span><span class="sub">studio</span>
-        </span>
+        <span class="wordmark" style="font-size:1rem;display:block;margin-bottom:1rem;"><span>CLICKICLICK</span><span class="dot">.</span><span class="sub">studio</span></span>
         <p style="color:var(--body-muted);font-size:0.85rem;max-width:280px;line-height:1.6;">Automatizacion e IA para clinicas de medicina estetica y odontologia en Latinoamerica.</p>
       </div>
       <div>
@@ -598,8 +610,8 @@ input::placeholder, textarea::placeholder { color: var(--cream-mute); }
         <h4 class="font-mono-meta" style="color:var(--cream-mute);margin-bottom:1.5rem;">Contacto</h4>
         <ul style="display:flex;flex-direction:column;gap:0.75rem;font-size:0.9rem;">
           <li><a href="mailto:clickiclickweb@gmail.com" class="hover-line" style="color:var(--body-muted);">Email</a></li>
-          <li><a href="https://wa.me/34722753559" target="_blank" rel="noopener" class="hover-line" style="color:var(--body-muted);">WhatsApp</a></li>
-          <li><a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="hover-line" style="color:var(--body-muted);">Calendly</a></li>
+          <li><a href="https://wa.me/34722753559" target="_blank" class="hover-line" style="color:var(--body-muted);">WhatsApp</a></li>
+          <li><a href="https://calendly.com/diegopuelles/30min" target="_blank" class="hover-line" style="color:var(--body-muted);">Calendly</a></li>
         </ul>
       </div>
       <div>
@@ -614,103 +626,59 @@ input::placeholder, textarea::placeholder { color: var(--cream-mute); }
   </div>
 </footer>
 
-<!-- WhatsApp Float -->
 <a href="https://wa.me/34722753559?text=Hola%2C%20quiero%20informacion%20sobre%20automatizacion%20para%20mi%20clinica" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
 // Nav scroll
-const navH = document.getElementById('nav-header');
-const navY = document.getElementById('nav-year');
-window.addEventListener('scroll', () => {
-  const s = window.scrollY > 32;
-  navH.style.background = s ? 'rgba(10,9,8,0.75)' : 'rgba(10,9,8,0.1)';
-  navH.style.backdropFilter = s ? 'blur(12px) saturate(1.5)' : 'blur(2px)';
-  navH.style.borderBottomColor = s ? 'var(--line)' : 'rgba(243,236,222,0.05)';
-  if (navY) navY.style.display = s ? 'none' : '';
-}, { passive: true });
+const navH=document.getElementById('nav-header');
+window.addEventListener('scroll',()=>{const s=window.scrollY>32;navH.style.background=s?'rgba(10,9,8,0.85)':'rgba(10,9,8,0.1)';navH.style.backdropFilter=s?'blur(12px)':'blur(2px)';navH.style.borderBottomColor=s?'var(--line)':'rgba(243,236,222,0.05)';},{passive:true});
 
-// Mobile menu
-const burger = document.getElementById('burger');
-const mm = document.getElementById('mobileMenu');
-const b1 = document.getElementById('b1');
-const b2 = document.getElementById('b2');
-let mOpen = false;
-burger.addEventListener('click', () => {
-  mOpen = !mOpen;
-  mm.style.display = mOpen ? 'flex' : 'none';
-  mm.style.opacity = mOpen ? '1' : '0';
-  document.documentElement.style.overflow = mOpen ? 'hidden' : '';
-  b1.style.transform = mOpen ? 'translateY(3.5px) rotate(45deg)' : '';
-  b2.style.transform = mOpen ? 'translateY(-3.5px) rotate(-45deg)' : '';
+// Full-screen menu
+const burger=document.getElementById('burger'),fsMenu=document.getElementById('fsMenu'),b1=document.getElementById('b1'),b2=document.getElementById('b2');
+let mOpen=false;
+burger.addEventListener('click',()=>{
+  mOpen=!mOpen;
+  fsMenu.classList.toggle('open',mOpen);
+  document.documentElement.style.overflow=mOpen?'hidden':'';
+  b1.style.transform=mOpen?'translateY(3.5px) rotate(45deg)':'';
+  b2.style.transform=mOpen?'translateY(-3.5px) rotate(-45deg)':'';
+  // Animate CTA button in menu
+  const cta=fsMenu.querySelector('.btn-glass-primary');
+  if(cta){if(mOpen){setTimeout(()=>{cta.style.opacity='1';cta.style.transform='translateY(0)';},500);}else{cta.style.opacity='0';cta.style.transform='translateY(20px)';}}
 });
-document.querySelectorAll('[data-mlink]').forEach(l => l.addEventListener('click', () => {
-  mOpen = false; mm.style.display = 'none'; mm.style.opacity = '0';
-  document.documentElement.style.overflow = '';
-  b1.style.transform = ''; b2.style.transform = '';
+document.querySelectorAll('[data-mlink]').forEach(l=>l.addEventListener('click',()=>{
+  mOpen=false;fsMenu.classList.remove('open');document.documentElement.style.overflow='';
+  b1.style.transform='';b2.style.transform='';
 }));
 
 // Fade in
-const obs = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(e => obs.observe(e));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(e=>obs.observe(e));
 
 // Counters
-const cObs = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) {
-    document.querySelectorAll('.hero-counter').forEach(c => {
-      if (c.dataset.done) return;
-      const t = +c.dataset.target, s = performance.now();
-      (function u(n) {
-        const p = Math.min((n-s)/2000, 1);
-        c.textContent = Math.round(t * (1 - Math.pow(1-p, 3)));
-        p < 1 ? requestAnimationFrame(u) : (c.textContent = t, c.dataset.done = '1');
-      })(performance.now());
-    });
-    cObs.unobserve(e.target);
-  }});
-}, { threshold: 0.3 });
-const hc = document.querySelector('.hero-counter');
-if (hc) cObs.observe(hc.parentElement.parentElement);
+const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  document.querySelectorAll('.hero-counter').forEach(c=>{
+    if(c.dataset.done)return;const t=+c.dataset.target,s=performance.now();
+    (function u(n){const p=Math.min((n-s)/2000,1);c.textContent=Math.round(t*(1-Math.pow(1-p,3)));p<1?requestAnimationFrame(u):(c.textContent=t,c.dataset.done='1');})(performance.now());
+  });cObs.unobserve(e.target);}});},{threshold:0.3});
+const hc=document.querySelector('.hero-counter');if(hc)cObs.observe(hc.parentElement.parentElement);
 
-// Testimonial carousel
-(function() {
-  const slides = document.querySelectorAll('.t-slide');
-  const dots = document.querySelectorAll('.t-dot');
-  let cur = 0, paused = false;
-  function go(i) {
-    cur = ((i%slides.length)+slides.length)%slides.length;
-    slides.forEach((s,j) => { s.style.opacity=j===cur?'1':'0'; s.style.position=j===cur?'relative':'absolute'; s.style.pointerEvents=j===cur?'auto':'none'; });
-    dots.forEach((d,j) => d.style.opacity=j===cur?'1':'0.3');
-  }
-  dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.index)));
-  setInterval(() => { if (!paused) go(cur+1); }, 7000);
-  const car = document.getElementById('testimonial-carousel');
-  if (car) { car.addEventListener('mouseenter', () => paused=true); car.addEventListener('mouseleave', () => paused=false); }
-})();
+// Testimonials
+(function(){const sl=document.querySelectorAll('.t-slide'),dt=document.querySelectorAll('.t-dot');let c=0,p=false;
+function go(i){c=((i%sl.length)+sl.length)%sl.length;sl.forEach((s,j)=>{s.style.opacity=j===c?'1':'0';s.style.position=j===c?'relative':'absolute';s.style.pointerEvents=j===c?'auto':'none';});dt.forEach((d,j)=>d.style.opacity=j===c?'1':'0.3');}
+dt.forEach(d=>d.addEventListener('click',()=>go(+d.dataset.index)));setInterval(()=>{if(!p)go(c+1);},7000);
+const car=document.getElementById('testimonial-carousel');if(car){car.addEventListener('mouseenter',()=>p=true);car.addEventListener('mouseleave',()=>p=false);}})();
 
 // Form
-const form = document.getElementById('contactForm');
-if (form) form.addEventListener('submit', async e => {
-  e.preventDefault();
-  const btn = form.querySelector('button[type="submit"]');
-  const orig = btn.textContent; btn.textContent = 'Enviando...'; btn.disabled = true;
-  try {
-    const r = await fetch(form.action, { method:'POST', body: new FormData(form) });
-    if (r.ok) form.innerHTML = '<div style="text-align:center;padding:2rem 0;"><h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.75rem;">Mensaje enviado</h3><p style="color:var(--body-muted);">Te contactaremos en menos de 24 horas.</p><a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="btn-glass-primary btn-press font-mono-meta" style="padding:1rem 2rem;font-size:0.72rem;margin-top:1.5rem;display:inline-flex;">Agendar llamada ahora</a></div>';
-    else throw 0;
-  } catch { btn.textContent='Error, intenta de nuevo'; btn.disabled=false; setTimeout(()=>btn.textContent=orig, 3000); }
-});
+const form=document.getElementById('contactForm');
+if(form)form.addEventListener('submit',async e=>{e.preventDefault();const btn=form.querySelector('button[type="submit"]');const orig=btn.textContent;btn.textContent='Enviando...';btn.disabled=true;
+try{const r=await fetch(form.action,{method:'POST',body:new FormData(form)});if(r.ok)form.innerHTML='<div style="text-align:center;padding:2rem 0;"><h3 class="font-display" style="font-size:1.75rem;margin-bottom:0.75rem;">Mensaje enviado</h3><p style="color:var(--body);">Te contactaremos en menos de 24 horas.</p></div>';else throw 0;}
+catch{btn.textContent='Error';btn.disabled=false;setTimeout(()=>btn.textContent=orig,3000);}});
 
 // Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-  const h = a.getAttribute('href');
-  if (h==='#'||h==='#hero') { e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); return; }
-  const t = document.querySelector(h);
-  if (t) { e.preventDefault(); window.scrollTo({top:t.offsetTop-80,behavior:'smooth'}); }
-}));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#'||h==='#hero'){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});return;}const t=document.querySelector(h);if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});}}));
 </script>
 </body>
 </html>
