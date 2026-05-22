@@ -4,8 +4,36 @@
 <meta charset="utf-8" />
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <meta name="theme-color" content="#0a0908" />
-<title>CLICKICLICK.studio | Automatizacion e IA para Clinicas Esteticas</title>
-<meta name="description" content="Sistemas de captacion, seguimiento y fidelizacion con IA para clinicas de medicina estetica y odontologia de alto valor en Latinoamerica." />
+
+<!-- SEO básico -->
+<title>ClickiClick.studio — Tu clínica llena. Todos los días.</title>
+<meta name="description" content="Sistemas de captación, seguimiento y fidelización con IA para clínicas de medicina estética y odontología de alto valor en Latinoamérica. Auditorías desde $1.500 USD.">
+<meta name="author" content="ClickiClick.studio">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://clickiclick-medical.vercel.app/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClickiClick.studio">
+<meta property="og:title" content="ClickiClick.studio — Tu clínica llena. Todos los días.">
+<meta property="og:description" content="Sistemas de captación, seguimiento y fidelización con IA para clínicas de medicina estética y odontología en LATAM. Auditorías desde $1.500 USD.">
+<meta property="og:url" content="https://clickiclick-medical.vercel.app/">
+<meta property="og:image" content="https://clickiclick-medical.vercel.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ClickiClick.studio — Tu clínica llena. Todos los días.">
+<meta property="og:locale" content="es_ES">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ClickiClick.studio — Tu clínica llena. Todos los días.">
+<meta name="twitter:description" content="Sistemas de captación, seguimiento y fidelización con IA para clínicas estéticas y odontológicas en LATAM.">
+<meta name="twitter:image" content="https://clickiclick-medical.vercel.app/og-image.jpg">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@200,300,400,500,600,700,800,900&f[]=gambarino@400,400i&f[]=editorial-new@200,200i,300,300i,400,400i,500,500i&f[]=jetbrains-mono@400,500&display=swap" />
 <style>
 :root {
@@ -27,7 +55,7 @@
   color-scheme: dark;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+html{background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased}
 body{font-family:var(--fs);font-weight:300;letter-spacing:-0.005em;overflow-x:hidden;background:var(--ink)}
 a{color:inherit;text-decoration:none}ul{list-style:none}
 ::selection{background:var(--accent);color:var(--ink)}
@@ -74,9 +102,56 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;op
 /* Fade */
 .fi-a{opacity:1;transform:translateY(0)}
 
-/* Readability defaults */
-input, select, textarea { color: #fff }
-input::placeholder, textarea::placeholder { color: #999 }
+/* === LEGIBILIDAD GLOBAL — fix antialiasing en dark bg === */
+/* Todo párrafo del cuerpo: peso 400 + gris claro sólido.
+   Las clases con color/peso propio (.fm, .fd) ganan por especificidad. */
+p {
+  color: #d5d5d5;
+  font-weight: 400;
+}
+
+/* Texto de cards de servicios y problemas */
+.ce p, .sv p, .sv-r p {
+  color: #d5d5d5;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Testimonios — citas de doctores legibles */
+blockquote, .testimonial p, [class*="testim"] p {
+  color: #e0e0e0;
+  font-weight: 400;
+}
+
+/* Texto secundario bajo botones de inversión / CTAs */
+.cta-sub, .inversion-note, section p.fm + p {
+  color: #c8c8c8;
+  font-weight: 400;
+}
+
+/* Inputs: texto que teclea el usuario en blanco puro */
+input, select, textarea {
+  color: #ffffff;
+  font-weight: 400;
+}
+input::placeholder, textarea::placeholder {
+  color: rgba(255,255,255,.45);
+  font-weight: 300;
+}
+
+/* Stats count-up — numbers always visible */
+#hero .hc {
+  display: inline-block;
+  transform: scale(1);
+  opacity: 1;
+  transition: none;
+}
+
+/* Labels de estadísticas Hero (texto pequeño) */
+#hero .fi-a p {
+  font-weight: 500;
+  letter-spacing: .02em;
+}
 
 /* Wordmark */
 .wm{display:inline-flex;align-items:baseline;font-family:var(--fs);font-weight:800;letter-spacing:-.035em;line-height:1;white-space:nowrap;color:var(--cream)}
@@ -89,78 +164,465 @@ input::placeholder, textarea::placeholder { color: #999 }
 details summary{cursor:pointer;list-style:none}details summary::-webkit-details-marker{display:none}
 details[open] .fq-i{transform:rotate(45deg)}.fq-i{transition:transform 300ms var(--ease)}
 
-/* FS Menu */
-.fsm{position:fixed;inset:0;z-index:90;background:var(--ink);opacity:0;pointer-events:none;transition:opacity 500ms var(--ease);display:flex;flex-direction:column}
-.fsm.open{opacity:1;pointer-events:auto}
-.fsm-l{font-family:var(--fd);font-weight:300;letter-spacing:-.04em;line-height:1.05;color:var(--cream);opacity:0;transform:translateY(40px);transition:opacity 600ms var(--ease),transform 600ms var(--ease),color 300ms}
-.fsm.open .fsm-l{opacity:1;transform:translateY(0)}
-.fsm-l:hover{color:var(--accent)}
-.fsm-l:hover span{font-family:var(--fi);font-style:italic}
-.fsm-sub{color:#fff;font-size:1.1rem;opacity:0;transform:translateY(20px);transition:all 500ms var(--ease)}
-.fsm.open .fsm-sub{opacity:1;transform:translateY(0)}
-.fsm-sub:hover{color:var(--accent)}
+/* === Nav fixed — liquid glass === */
+.nav-fixed {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 80;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  background: rgba(10, 9, 8, 0.72);
+  backdrop-filter: blur(40px) saturate(160%);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  border-bottom: 1px solid rgba(243, 236, 222, 0.08);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  transition: background 320ms var(--ease);
+}
+.nav-fixed::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 100%);
+  pointer-events: none;
+}
+.nav-fixed .wm { color: var(--cream); transition: color 240ms var(--ease); }
+.nav-fixed .wm:hover { color: var(--accent); }
 
+.nav-toggle {
+  width: 48px; height: 48px; background: none; border: 0; cursor: pointer;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-end;
+  gap: 7px; padding: 0; transition: transform 240ms var(--ease); position: relative;
+}
+.nav-toggle:hover { transform: scale(1.05); }
+.nav-toggle span {
+  display: block; height: 1px; background: var(--cream);
+  transition: width 320ms var(--ease), background 240ms var(--ease),
+              transform 360ms var(--ease-studio), opacity 240ms var(--ease);
+  transform-origin: center;
+}
+.nav-toggle span:nth-child(1) { width: 28px; }
+.nav-toggle span:nth-child(2) { width: 18px; }
+.nav-toggle:hover span:nth-child(2) { width: 28px; }
+.nav-toggle:hover span { background: var(--accent); }
+
+
+/* === Fullscreen menu — editorial === */
+.fsm {
+  position: fixed; inset: 0; z-index: 90; background: var(--ink);
+  opacity: 0; pointer-events: none; transition: opacity 600ms var(--ease-studio);
+  display: grid; grid-template-rows: auto 1fr auto;
+  padding: 1.5rem clamp(1.5rem, 4vw, 4rem);
+}
+.fsm.open { opacity: 1; pointer-events: auto; }
+
+.fsm-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 1.5rem; border-bottom: 1px solid var(--line);
+}
+.fsm-close {
+  font-family: var(--fm); font-size: .75rem; letter-spacing: .16em;
+  color: var(--cream); cursor: pointer; background: none; border: 0;
+  padding: .5rem 1rem; display: flex; align-items: center; gap: .75rem;
+  transition: color 240ms var(--ease);
+}
+.fsm-close:hover { color: var(--accent); }
+.fsm-close::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+
+.fsm-body {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem;
+  align-items: start; padding: clamp(1.5rem, 3vw, 3rem) 0;
+}
+
+.fsm-main { display: flex; flex-direction: column; gap: .3rem; }
+.fsm-l {
+  font-family: var(--fd); font-weight: 300; letter-spacing: -.04em; line-height: 1.05;
+  font-size: clamp(2rem, 4.5vw, 3.8rem); color: var(--cream);
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 700ms var(--ease-studio), transform 800ms var(--ease-studio), color 240ms var(--ease);
+  display: inline-flex; align-items: baseline; gap: 1rem; cursor: pointer; text-decoration: none;
+}
+.fsm.open .fsm-l { opacity: 1; transform: translateY(0); }
+.fsm.open .fsm-l:nth-child(1) { transition-delay: 200ms, 200ms, 0ms; }
+.fsm.open .fsm-l:nth-child(2) { transition-delay: 280ms, 280ms, 0ms; }
+.fsm.open .fsm-l:nth-child(3) { transition-delay: 360ms, 360ms, 0ms; }
+.fsm.open .fsm-l:nth-child(4) { transition-delay: 440ms, 440ms, 0ms; }
+.fsm.open .fsm-l:nth-child(5) { transition-delay: 520ms, 520ms, 0ms; }
+.fsm.open .fsm-l:nth-child(6) { transition-delay: 600ms, 600ms, 0ms; }
+.fsm-l:hover { color: var(--accent); font-style: italic; font-family: var(--fi); }
+.fsm-l .fsm-num {
+  font-family: var(--fm); font-size: .7rem; font-weight: 500;
+  letter-spacing: .12em; color: var(--gold); opacity: .6;
+}
+
+.fsm-aside {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 800ms var(--ease-studio) 700ms, transform 800ms var(--ease-studio) 700ms;
+}
+.fsm.open .fsm-aside { opacity: 1; transform: translateY(0); }
+.fsm-aside-title {
+  font-family: var(--fm); font-size: .7rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 2rem;
+  padding-bottom: 1rem; border-bottom: 1px solid var(--line);
+}
+.fsm-aside ul { display: flex; flex-direction: column; gap: .85rem; list-style: none; padding: 0; margin: 0; }
+.fsm-aside li a {
+  font-family: var(--fs); font-size: 1rem; color: #d5d5d5; font-weight: 400;
+  transition: color 240ms var(--ease), padding-left 240ms var(--ease);
+  display: block; text-decoration: none;
+}
+.fsm-aside li a:hover { color: var(--accent); padding-left: .75rem; }
+
+.fsm-footer {
+  padding-top: 1.5rem; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1.5rem;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 800ms var(--ease-studio) 900ms, transform 800ms var(--ease-studio) 900ms;
+}
+.fsm.open .fsm-footer { opacity: 1; transform: translateY(0); }
+.fsm-footer-contact { display: flex; flex-direction: column; gap: .25rem; }
+.fsm-footer-contact a {
+  font-family: var(--fs); color: var(--cream); font-size: .95rem;
+  transition: color 240ms var(--ease); text-decoration: none;
+}
+.fsm-footer-contact a:hover { color: var(--accent); }
+.fsm-footer-contact .fm { color: var(--gold); font-size: .65rem; opacity: .7; }
+.fsm-footer-social {
+  display: flex; gap: 1.5rem; font-family: var(--fm); font-size: .7rem;
+  letter-spacing: .16em; text-transform: uppercase;
+}
+.fsm-footer-social a { color: #c8c8c8; transition: color 240ms var(--ease); text-decoration: none; }
+.fsm-footer-social a:hover { color: var(--accent); }
+
+/* Ocultar WhatsApp cuando menú abierto */
+body:has(.fsm.open) .wa {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms var(--ease);
+}
+
+@media (max-height: 800px) {
+  .fsm-l { font-size: clamp(1.8rem, 3.5vw, 3rem); }
+  .fsm-main { gap: .15rem; }
+}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 input,select,textarea{font-family:var(--fs)}input::placeholder,textarea::placeholder{color:rgba(243,236,222,.4)}
+
+/* === FAQ refinada === */
+details {
+  border-bottom: 1px solid var(--line);
+  padding: 1.5rem 0;
+  transition: border-color 320ms var(--ease);
+}
+details:hover {
+  border-color: var(--line-h);
+}
+details summary {
+  font-family: var(--fs);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  color: #ebebeb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  transition: color 240ms var(--ease);
+}
+details:hover summary {
+  color: var(--cream);
+}
+details summary .fq-i {
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1;
+  flex-shrink: 0;
+}
+details[open] summary {
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+details[open] summary .fq-i {
+  color: var(--accent);
+}
+details > *:not(summary) {
+  color: #d5d5d5;
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: .98rem;
+  padding-top: .5rem;
+}
+
+/* Refuerzo color + animación rotación del + */
+details summary .fq-i {
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 320ms var(--ease), color 240ms var(--ease);
+  display: inline-block;
+}
+details[open] summary .fq-i {
+  transform: rotate(45deg);
+  color: var(--gold);
+}
+
+/* Línea acento granate en la pregunta abierta */
+details[open] {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.5rem;
+  margin-left: -1.5rem;
+}
+
+/* Separador inicial del bloque FAQ más sutil */
+.faq-wrap > details:first-of-type {
+  border-top: 1px solid var(--line);
+}
+
+/* === Números decorativos sección Problemas (solo .ce, no .sv) === */
+.ce > span.fi {
+  color: var(--gold) !important;
+  opacity: .6;
+}
+
+/* Números de Servicios — gold muy sutil, decorativos pero con vida */
+.sv > span.fi {
+  color: var(--gold) !important;
+  opacity: .35;
+}
+
+/* === Eyebrows de sección: punto granate antes === */
+.idx::before {
+  content: "● ";
+  color: var(--gold);
+  opacity: .7;
+  margin-right: .5rem;
+  font-size: .55em;
+  vertical-align: middle;
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
+/* === Hover refinado en cards: línea granate arriba === */
+.ce, .sv {
+  position: relative;
+}
+.ce::before, .sv::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms var(--ease);
+  pointer-events: none;
+  z-index: 2;
+}
+.ce:hover::before, .sv:hover::before {
+  transform: scaleX(1);
+}
+
+/* === Hover granate unificado en interactivos === */
+
+/* Nav principal */
+nav a, .nav-d a {
+  transition: color 240ms var(--ease);
+}
+nav a:hover, .nav-d a:hover {
+  color: var(--accent);
+}
+
+/* Links secundarios tipo "Saber mas", footer links */
+a.fm.hl, .sv a, .ce a {
+  transition: color 240ms var(--ease);
+}
+a.fm.hl:hover, .sv a:hover, .ce a:hover {
+  color: var(--accent) !important;
+}
+
+/* La línea bajo .hl también granate al hover */
+.hl::after {
+  background: var(--accent);
+}
+
+/* === Reveal on scroll === */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 900ms var(--ease), transform 900ms var(--ease);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* === Hero entrance — studio-grade word split === */
+
+:root {
+  --ease-studio: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.split-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.split-word {
+  display: inline-block;
+  transform: translateY(110%) rotate(2deg);
+  filter: blur(8px);
+  opacity: 0;
+  transition: transform 1100ms var(--ease-studio),
+              filter 900ms var(--ease-soft),
+              opacity 700ms var(--ease-soft);
+  will-change: transform, filter, opacity;
+}
+
+.split-word.in {
+  transform: translateY(0) rotate(0);
+  filter: blur(0);
+  opacity: 1;
+}
+
+.split-word + .split-word { margin-left: 0.25em; }
+
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60%);
+  transition: opacity 500ms var(--ease-soft),
+              transform 600ms var(--ease-studio);
+}
+.split-char.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-block {
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(6px);
+  transition: opacity 900ms var(--ease-soft),
+              transform 1000ms var(--ease-studio),
+              filter 800ms var(--ease-soft);
+  will-change: opacity, transform, filter;
+}
+.hero-block.in {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split-word, .split-char, .hero-block {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* === Line reveal separators === */
+.line-reveal {
+  position: relative;
+  height: 1px;
+  background: transparent;
+  overflow: hidden;
+  margin: 0;
+  border: 0;
+}
+.line-reveal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--line-h);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 800ms var(--ease);
+}
+.line-reveal.in::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line-reveal::after { transform: scaleX(1); transition: none; }
+}
 
 @media(max-width:768px){
   .g3,.g4,.gc,.gf,.hg{grid-template-columns:1fr!important}
-  .nav-d{display:none!important}
-  .fsm-l{font-size:clamp(2.2rem,8vw,3.5rem)!important}
+  .fsm-body{grid-template-columns:1fr!important;gap:2.5rem}
+  .fsm-aside{display:none!important}
   .svc-full{grid-template-columns:1fr!important}
+  #hero .hg{gap:2rem!important}
+  #hero .fi-a[style*="gap:3rem"],#hero .fi-a[style*="gap: 3rem"]{gap:1.5rem!important;flex-wrap:wrap;justify-content:flex-start}
+  .wa{width:48px!important;height:48px!important;bottom:16px!important;right:16px!important;box-shadow:0 3px 14px rgba(37,211,102,.35);display:flex!important;align-items:center;justify-content:center}
+  .wa>*{width:24px!important;height:24px!important;max-width:24px;max-height:24px}
+  .cw{padding-inline:1.25rem}
+  #hero{padding-left:0!important;padding-right:0!important}
+  #inversion [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;gap:1.5rem!important}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<header id="nh" style="position:fixed;top:0;left:0;right:0;z-index:50;transition:all 300ms;border-bottom:1px solid rgba(243,236,222,.04);background:rgba(10,9,8,.05);backdrop-filter:blur(2px)">
-  <div class="cw" style="display:flex;height:80px;align-items:center;justify-content:space-between">
-    <a href="#hero" class="wm" style="font-size:1.15rem"><span>CLICKICLICK</span><span class="d">.</span><span class="s">studio</span></a>
-    <nav class="nav-d" style="display:flex;align-items:center;gap:2rem">
-      <a href="#services" class="fm hl" style="color:#fff">Servicios</a>
-      <a href="#results" class="fm hl" style="color:#fff">Resultados</a>
-      <a href="#process" class="fm hl" style="color:#fff">Proceso</a>
-      <a href="#inversion" class="fm hl" style="color:#fff">Inversion</a>
-      <a href="#contact" class="fm hl" style="color:#fff">Contacto</a>
-    </nav>
-    <button id="burger" aria-label="Menu" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:44px;height:44px;gap:7px;background:0;border:0;cursor:pointer;z-index:91">
-      <span id="b1" style="display:block;height:1px;width:26px;background:var(--cream);transition:all 400ms var(--ease)"></span>
-      <span id="b2" style="display:block;height:1px;width:26px;background:var(--cream);transition:all 400ms var(--ease)"></span>
+<header class="nav-fixed">
+  <div class="cw" style="display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0">
+    <a href="#hero" class="wm" style="font-size:1.2rem"><span>CLICKICLICK</span><span class="d">.</span><span class="s">studio</span></a>
+    <button class="nav-toggle" id="burger" aria-label="Abrir menu">
+      <span></span>
+      <span></span>
     </button>
   </div>
 </header>
 
 <!-- FULLSCREEN MENU -->
 <div class="fsm" id="fsm">
-  <div style="flex:1;display:flex;align-items:center;padding-top:80px">
-    <div class="cw" style="display:grid;grid-template-columns:1.2fr .8fr;gap:6rem;width:100%">
-      <div style="display:flex;flex-direction:column;gap:.75rem">
-        <a href="#hero" class="fsm-l" data-ml style="font-size:clamp(3rem,7vw,6rem);transition-delay:60ms"><span>Inicio</span></a>
-        <a href="#services" class="fsm-l" data-ml style="font-size:clamp(3rem,7vw,6rem);transition-delay:120ms"><span>Servicios</span></a>
-        <a href="#results" class="fsm-l" data-ml style="font-size:clamp(3rem,7vw,6rem);transition-delay:180ms"><span>Resultados</span></a>
-        <a href="#process" class="fsm-l" data-ml style="font-size:clamp(3rem,7vw,6rem);transition-delay:240ms"><span>Proceso</span></a>
-        <a href="#inversion" class="fsm-l" data-ml style="font-size:clamp(3rem,7vw,6rem);transition-delay:300ms"><span>Inversion</span></a>
-        <a href="nosotros.html" class="fsm-l" data-ml style="font-size:clamp(3rem,7vw,6rem);transition-delay:360ms"><span>Nosotros</span></a>
-        <a href="#contact" class="fsm-l" data-ml style="font-size:clamp(3rem,7vw,6rem);transition-delay:420ms"><span>Contacto</span></a>
-      </div>
-      <div style="display:flex;flex-direction:column;justify-content:space-between;padding:2rem 0">
-        <div>
-          <span class="fm" style="color:var(--gold);display:block;margin-bottom:1.5rem">Servicios</span>
-          <a href="servicios/chatbot-ia.html" class="fsm-sub" data-ml style="display:block;margin-bottom:.6rem;transition-delay:200ms">Chatbot IA 24/7</a>
-          <a href="servicios/automatizacion-citas.html" class="fsm-sub" data-ml style="display:block;margin-bottom:.6rem;transition-delay:250ms">Automatizacion de Citas</a>
-          <a href="servicios/crm-ia.html" class="fsm-sub" data-ml style="display:block;margin-bottom:.6rem;transition-delay:300ms">CRM con IA</a>
-          <a href="servicios/campanas-automatizadas.html" class="fsm-sub" data-ml style="display:block;margin-bottom:.6rem;transition-delay:350ms">Campanas Automatizadas</a>
-          <a href="servicios/web-premium.html" class="fsm-sub" data-ml style="display:block;margin-bottom:.6rem;transition-delay:400ms">Web Premium</a>
-          <a href="servicios/seguimiento-post.html" class="fsm-sub" data-ml style="display:block;margin-bottom:.6rem;transition-delay:450ms">Seguimiento Post-Consulta</a>
-        </div>
-        <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="bp fm fsm-sub" data-ml style="padding:1.1rem 2.5rem;font-size:.72rem;width:fit-content;transition-delay:500ms">Agendar auditoria</a>
-      </div>
-    </div>
+  <div class="fsm-header">
+    <span class="wm" style="font-size:1.2rem"><span>CLICKICLICK</span><span class="d">.</span><span class="s">studio</span></span>
+    <button class="fsm-close" id="fsm-close" aria-label="Cerrar menu">CERRAR</button>
   </div>
-  <div style="border-top:1px solid var(--line);padding:1.25rem 0">
-    <div class="cw" style="display:flex;justify-content:space-between;align-items:center">
-      <span class="fm" style="color:#e8e8e8">Barcelona &middot; Remoto &middot; LATAM</span>
-      <a href="mailto:clickiclickweb@gmail.com" class="fm" style="color:var(--accent)">clickiclickweb@gmail.com</a>
+  <div class="fsm-body">
+    <nav class="fsm-main">
+      <a href="#hero" class="fsm-l" data-ml><span class="fsm-num">01</span>Inicio</a>
+      <a href="#services" class="fsm-l" data-ml><span class="fsm-num">02</span>Servicios</a>
+      <a href="#results" class="fsm-l" data-ml><span class="fsm-num">03</span>Resultados</a>
+      <a href="#process" class="fsm-l" data-ml><span class="fsm-num">04</span>Proceso</a>
+      <a href="#inversion" class="fsm-l" data-ml><span class="fsm-num">05</span>Inversion</a>
+      <a href="#contact" class="fsm-l" data-ml><span class="fsm-num">06</span>Contacto</a>
+    </nav>
+    <aside class="fsm-aside">
+      <p class="fsm-aside-title">Servicios</p>
+      <ul>
+        <li><a href="servicios/chatbot-ia.html" data-ml>Chatbot IA 24/7</a></li>
+        <li><a href="servicios/automatizacion-citas.html" data-ml>Automatización de Citas</a></li>
+        <li><a href="servicios/crm-ia.html" data-ml>CRM con IA</a></li>
+        <li><a href="servicios/campanas-automatizadas.html" data-ml>Campanas Automatizadas</a></li>
+        <li><a href="servicios/web-premium.html" data-ml>Web Premium</a></li>
+        <li><a href="servicios/seguimiento-post.html" data-ml>Seguimiento Post-Consulta</a></li>
+      </ul>
+    </aside>
+  </div>
+  <div class="fsm-footer">
+    <div class="fsm-footer-contact">
+      <span class="fm">Contacto directo</span>
+      <a href="mailto:clickiclickweb@gmail.com">clickiclickweb@gmail.com</a>
+      <a href="tel:+34722753559">+34 722 753 559</a>
+    </div>
+    <div class="fsm-footer-social">
+      <a href="https://wa.me/34722753559" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener">Calendly</a>
     </div>
   </div>
 </div>
@@ -172,18 +634,32 @@ input,select,textarea{font-family:var(--fs)}input::placeholder,textarea::placeho
   <div class="cw">
     <div class="hg" style="display:grid;grid-template-columns:1.3fr .7fr;gap:4rem;align-items:center">
       <div class="fi-a">
-        <p class="fm" style="color:var(--gold);margin-bottom:2.5rem">Automatizacion + Inteligencia Artificial</p>
-        <h1 class="fd" style="font-size:clamp(3.5rem,8.5vw,8.5rem);margin-bottom:2rem">Tu clinica llena.<br><span class="fi" style="color:var(--accent)">Todos los dias.</span></h1>
-        <p style="font-size:1.15rem; color:#000000 !important; background-color:#eab308 !important; padding: 10px; font-weight: 800 !important; max-width:540px; line-height:1.75; margin-bottom:3rem;">Sistemas de captacion, seguimiento y fidelizacion con IA para clinicas de medicina estetica y odontologia de alto valor en Latinoamerica.</p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap">
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="bp fm" style="padding:1.1rem 2.5rem;font-size:.72rem">Agendar auditoria</a>
+        <p class="fm" data-split="chars" style="color:var(--gold);margin-bottom:2.5rem">Automatización + Inteligencia Artificial</p>
+        <h1 class="fd" style="font-size:clamp(3.5rem,8.5vw,8.5rem);margin-bottom:2rem">
+          <span class="split-line" data-split="words">Tu clínica llena.</span>
+          <span class="split-line fi" data-split="words" style="color:var(--accent);display:block">Todos los días.</span>
+        </h1>
+        <p data-split="words" style="font-size:1.05rem;color:#d5d5d5;font-weight:400;max-width:540px;line-height:1.7;margin-bottom:3rem">Sistemas de captación, seguimiento y fidelización con IA para clínicas de medicina estética y odontología de alto valor en Latinoamérica.</p>
+        <div class="hero-block" data-hero-delay="1400" style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="bp fm" style="padding:1.1rem 2.5rem;font-size:.72rem">Agendar Auditoría de Viabilidad</a>
           <a href="#services" class="bs fm" style="padding:1.1rem 2.5rem;font-size:.72rem">Ver servicios</a>
         </div>
       </div>
-      <div class="fi-a" style="display:flex;gap:3rem;justify-content:center">
-        <div style="text-align:center"><span class="fd hc" data-t="147" style="font-size:clamp(3rem,5vw,4.5rem);display:block">0</span><span class="fm" style="color:var(--accent)">%</span><p style="font-size:.85rem;color:#e8e8e8;margin-top:.5rem">Aumento en citas</p></div>
-        <div style="text-align:center"><span class="fd hc" data-t="38" style="font-size:clamp(3rem,5vw,4.5rem);display:block">0</span><span class="fm" style="color:var(--accent)">%</span><p style="font-size:.85rem;color:#e8e8e8;margin-top:.5rem">Menos no-shows</p></div>
-        <div style="text-align:center"><span class="fd hc" data-t="23" style="font-size:clamp(3rem,5vw,4.5rem);display:block">0</span><p style="font-size:.85rem;color:#e8e8e8;margin-top:.5rem">Clinicas LATAM</p></div>
+      <div class="hero-block" data-hero-delay="1600" style="display:flex;gap:3rem;justify-content:center">
+        <div style="text-align:center">
+          <div style="display:inline-flex;align-items:flex-start;gap:.2rem;line-height:1"><span class="fd hc" data-t="147" style="font-size:clamp(3rem,5vw,4.5rem)">0</span><span class="fm" style="color:var(--accent);font-size:1.4rem;margin-top:.4em">%</span></div>
+          <p style="font-size:.9rem;color:#e5e5e5;font-weight:500;letter-spacing:.01em;margin-top:.75rem;line-height:1.3">Mas citas calificadas</p>
+          <p class="fm" style="font-size:.55rem;color:var(--gold);opacity:.6;margin-top:.4rem;letter-spacing:.18em">EN 90 DIAS</p>
+        </div>
+        <div style="text-align:center">
+          <div style="display:inline-flex;align-items:center;gap:.15rem;line-height:1"><span style="color:var(--accent);font-size:2rem;font-weight:300">&minus;</span><span class="fd hc" data-t="38" style="font-size:clamp(3rem,5vw,4.5rem)">0</span><span class="fm" style="color:var(--accent);font-size:1.4rem;align-self:flex-start;margin-top:.4em">%</span></div>
+          <p style="font-size:.9rem;color:#e5e5e5;font-weight:500;letter-spacing:.01em;margin-top:.75rem;line-height:1.3">No-shows</p>
+          <p class="fm" style="font-size:.55rem;color:var(--gold);opacity:.6;margin-top:.4rem;letter-spacing:.18em">RECORDATORIOS AUTOMATIZADOS</p>
+        </div>
+        <div style="text-align:center">
+          <span class="fd hc" data-t="23" style="font-size:clamp(3rem,5vw,4.5rem);display:inline-block;line-height:1">0</span>
+          <p style="font-size:.9rem;color:#e5e5e5;font-weight:500;letter-spacing:.01em;margin-top:.75rem;line-height:1.3">Clínicas activas</p>
+        </div>
       </div>
     </div>
   </div>
@@ -192,59 +668,62 @@ input,select,textarea{font-family:var(--fs)}input::placeholder,textarea::placeho
 <!-- MARQUEE -->
 <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.25rem 0;overflow:hidden">
   <div class="mq fm" style="color:#fff;gap:2.5rem;align-items:center">
-    <span>+23 clinicas automatizadas</span><span style="color:var(--gold)">&bull;</span><span>Respuesta en menos de 24h</span><span style="color:var(--gold)">&bull;</span><span>100% satisfaccion</span><span style="color:var(--gold)">&bull;</span><span>Resultados en 30 dias</span><span style="color:var(--gold)">&bull;</span><span>Sin permanencia</span><span style="color:var(--gold)">&bull;</span>
-    <span>+23 clinicas automatizadas</span><span style="color:var(--gold)">&bull;</span><span>Respuesta en menos de 24h</span><span style="color:var(--gold)">&bull;</span><span>100% satisfaccion</span><span style="color:var(--gold)">&bull;</span><span>Resultados en 30 dias</span><span style="color:var(--gold)">&bull;</span><span>Sin permanencia</span><span style="color:var(--gold)">&bull;</span>
+    <span>+23 clínicas automatizadas</span><span style="color:var(--gold)">&bull;</span><span>Respuesta en menos de 24h</span><span style="color:var(--gold)">&bull;</span><span>100% satisfacción</span><span style="color:var(--gold)">&bull;</span><span>Resultados en 30 días</span><span style="color:var(--gold)">&bull;</span><span>Sin permanencia</span><span style="color:var(--gold)">&bull;</span>
+    <span>+23 clínicas automatizadas</span><span style="color:var(--gold)">&bull;</span><span>Respuesta en menos de 24h</span><span style="color:var(--gold)">&bull;</span><span>100% satisfacción</span><span style="color:var(--gold)">&bull;</span><span>Resultados en 30 días</span><span style="color:var(--gold)">&bull;</span><span>Sin permanencia</span><span style="color:var(--gold)">&bull;</span>
   </div>
 </div>
 
 <!-- PAIN POINTS -->
+<div class="line-reveal" style="margin-bottom:3rem"></div>
 <section class="sp">
   <div class="cw">
     <div style="max-width:800px;margin-bottom:4rem" class="fi-a">
       <span class="idx">01 — EL PROBLEMA</span>
-      <h2 class="fd dm" style="margin-top:1.5rem">68% de los pacientes contactan <span class="fi">fuera de horario.</span></h2>
-      <p style="color:#fff;margin-top:1.5rem;max-width:600px;line-height:1.75">Sin respuesta inmediata, eligen otra clinica. La recepcionista no contesta a las 2 AM. Los leads se enfrian. La competencia ya automatizo.</p>
+      <h2 class="fd dm reveal" style="margin-top:1.5rem">68% de los pacientes contactan <span class="fi">fuera de horario.</span></h2>
+      <p style="color:#fff;margin-top:1.5rem;max-width:600px;line-height:1.75">Sin respuesta inmediata, eligen otra clínica. La recepcionista no contesta a las 2 AM. Los leads se enfrían. La competencia ya automatizó.</p>
     </div>
     <div class="g4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px">
-      <div class="ce fi-a" style="padding:2rem"><span class="fi" style="font-size:2rem;color:#e8e8e8;display:block;margin-bottom:1.5rem">01</span><h3 style="font-size:1.2rem;color:var(--cream);margin-bottom:.75rem;font-weight:400">Leads perdidos</h3><p style="font-size:.9rem; color:white !important; background-color:red !important; padding:5px; line-height:1.65">Cada mensaje sin respuesta es un paciente que se fue a la competencia.</p></div>
-      <div class="ce fi-a" style="padding:2rem"><span class="fi" style="font-size:2rem;color:#e8e8e8;display:block;margin-bottom:1.5rem">02</span><h3 style="font-size:1.2rem;color:var(--cream);margin-bottom:.75rem;font-weight:400">Cero seguimiento</h3><p style="font-size:.9rem; color:white !important; background-color:red !important; padding:5px; line-height:1.65">El paciente sale y desaparece. Pierdes el 40% de procedimientos de alto valor.</p></div>
-      <div class="ce fi-a" style="padding:2rem"><span class="fi" style="font-size:2rem;color:#e8e8e8;display:block;margin-bottom:1.5rem">03</span><h3 style="font-size:1.2rem;color:var(--cream);margin-bottom:.75rem;font-weight:400">Recepcion saturada</h3><p style="font-size:.9rem; color:white !important; background-color:red !important; padding:5px; line-height:1.65">3+ horas diarias confirmando citas y respondiendo las mismas preguntas.</p></div>
-      <div class="ce fi-a" style="padding:2rem"><span class="fi" style="font-size:2rem;color:#e8e8e8;display:block;margin-bottom:1.5rem">04</span><h3 style="font-size:1.2rem;color:var(--cream);margin-bottom:.75rem;font-weight:400">Marketing sin retorno</h3><p style="font-size:.9rem; color:white !important; background-color:red !important; padding:5px; line-height:1.65">Inviertes en Meta Ads sin un sistema que convierta clics en citas reales.</p></div>
+      <div class="ce fi-a" style="padding:2rem"><span class="fi" style="font-size:2rem;color:#e8e8e8;display:block;margin-bottom:1.5rem">01</span><h3 style="font-size:1.2rem;color:var(--cream);margin-bottom:.75rem;font-weight:400">Leads perdidos</h3><p style="font-size:.95rem;color:#e5e5e5;font-weight:400;line-height:1.65">Cada mensaje sin respuesta es un paciente que se fue a la competencia.</p></div>
+      <div class="ce fi-a" style="padding:2rem"><span class="fi" style="font-size:2rem;color:#e8e8e8;display:block;margin-bottom:1.5rem">02</span><h3 style="font-size:1.2rem;color:var(--cream);margin-bottom:.75rem;font-weight:400">Cero seguimiento</h3><p style="font-size:.95rem;color:#e5e5e5;font-weight:400;line-height:1.65">El paciente sale y desaparece. Pierdes el 40% de procedimientos de alto valor.</p></div>
+      <div class="ce fi-a" style="padding:2rem"><span class="fi" style="font-size:2rem;color:#e8e8e8;display:block;margin-bottom:1.5rem">03</span><h3 style="font-size:1.2rem;color:var(--cream);margin-bottom:.75rem;font-weight:400">Recepción saturada</h3><p style="font-size:.95rem;color:#e5e5e5;font-weight:400;line-height:1.65">3+ horas diarias confirmando citas y respondiendo las mismas preguntas.</p></div>
+      <div class="ce fi-a" style="padding:2rem"><span class="fi" style="font-size:2rem;color:#e8e8e8;display:block;margin-bottom:1.5rem">04</span><h3 style="font-size:1.2rem;color:var(--cream);margin-bottom:.75rem;font-weight:400">Marketing sin retorno</h3><p style="font-size:.95rem;color:#e5e5e5;font-weight:400;line-height:1.65">Inviertes en Meta Ads sin un sistema que convierta clics en citas reales.</p></div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="sp" style="border-top:1px solid var(--line)">
+<div class="line-reveal"></div>
+<section id="services" class="sp">
   <div class="cw">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:5rem;flex-wrap:wrap;gap:2rem" class="fi-a">
-      <div><span class="idx">02 — SERVICIOS</span><h2 class="fd dm" style="margin-top:1.5rem">Todo lo que tu clinica <span class="fi">necesita.</span></h2></div>
-      <p style="color:#e8e8e8;max-width:340px;line-height:1.7;border-left:1px solid var(--line);padding-left:1.5rem">Automatizacion, IA y estrategia para clinicas que quieren dominar su mercado.</p>
+      <div><span class="idx">02 — SERVICIOS</span><h2 class="fd dm reveal" style="margin-top:1.5rem">Todo lo que tu clínica <span class="fi">necesita.</span></h2></div>
+      <p style="color:#e8e8e8;max-width:340px;line-height:1.7;border-left:1px solid var(--line);padding-left:1.5rem">Automatización, IA y estrategia para clínicas que quieren dominar su mercado.</p>
     </div>
     <div class="g3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0">
       <div class="sv fi-a" style="padding:2.5rem;border:1px solid var(--line);border-right:0"><span class="fi" style="font-size:2.5rem;color:rgba(243,236,222,.12);display:block;margin-bottom:1rem">01</span><div class="sv-l" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms"></div><h3 class="fd" style="font-size:1.5rem;margin-bottom:.75rem">Chatbot IA 24/7</h3><p style="color:#fff;font-size:.9rem;line-height:1.65">Asistente inteligente en WhatsApp, Instagram y web. Responde, agenda y califica pacientes 24/7.</p><div class="sv-r"><a href="servicios/chatbot-ia.html" class="fm hl" style="color:#fff;margin-top:1.25rem;display:inline-block">Saber mas</a></div></div>
-      <div class="sv fi-a" style="padding:2.5rem;border:1px solid var(--line);border-right:0"><span class="fi" style="font-size:2.5rem;color:rgba(243,236,222,.12);display:block;margin-bottom:1rem">02</span><div class="sv-l" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms"></div><h3 class="fd" style="font-size:1.5rem;margin-bottom:.75rem">Automatizacion de Citas</h3><p style="color:#fff;font-size:.9rem;line-height:1.65">Agendamiento, confirmacion, recordatorios WhatsApp + SMS. Reduce no-shows un 40%.</p><div class="sv-r"><a href="servicios/automatizacion-citas.html" class="fm hl" style="color:#fff;margin-top:1.25rem;display:inline-block">Saber mas</a></div></div>
-      <div class="sv fi-a" style="padding:2.5rem;border:1px solid var(--line)"><span class="fi" style="font-size:2.5rem;color:rgba(243,236,222,.12);display:block;margin-bottom:1rem">03</span><div class="sv-l" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms"></div><h3 class="fd" style="font-size:1.5rem;margin-bottom:.75rem">CRM con IA</h3><p style="color:#fff;font-size:.9rem;line-height:1.65">Scoring predictivo, segmentacion inteligente y pipeline visual de pacientes.</p><div class="sv-r"><a href="servicios/crm-ia.html" class="fm hl" style="color:#fff;margin-top:1.25rem;display:inline-block">Saber mas</a></div></div>
+      <div class="sv fi-a" style="padding:2.5rem;border:1px solid var(--line);border-right:0"><span class="fi" style="font-size:2.5rem;color:rgba(243,236,222,.12);display:block;margin-bottom:1rem">02</span><div class="sv-l" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms"></div><h3 class="fd" style="font-size:1.5rem;margin-bottom:.75rem">Automatización de Citas</h3><p style="color:#fff;font-size:.9rem;line-height:1.65">Agendamiento, confirmación, recordatorios WhatsApp + SMS. Reduce no-shows un 40%.</p><div class="sv-r"><a href="servicios/automatizacion-citas.html" class="fm hl" style="color:#fff;margin-top:1.25rem;display:inline-block">Saber mas</a></div></div>
+      <div class="sv fi-a" style="padding:2.5rem;border:1px solid var(--line)"><span class="fi" style="font-size:2.5rem;color:rgba(243,236,222,.12);display:block;margin-bottom:1rem">03</span><div class="sv-l" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms"></div><h3 class="fd" style="font-size:1.5rem;margin-bottom:.75rem">CRM con IA</h3><p style="color:#fff;font-size:.9rem;line-height:1.65">Scoring predictivo, segmentación inteligente y pipeline visual de pacientes.</p><div class="sv-r"><a href="servicios/crm-ia.html" class="fm hl" style="color:#fff;margin-top:1.25rem;display:inline-block">Saber mas</a></div></div>
       <div class="sv fi-a" style="padding:2.5rem;border:1px solid var(--line);border-top:0;border-right:0"><span class="fi" style="font-size:2.5rem;color:rgba(243,236,222,.12);display:block;margin-bottom:1rem">04</span><div class="sv-l" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms"></div><h3 class="fd" style="font-size:1.5rem;margin-bottom:.75rem">Campanas Automatizadas</h3><p style="color:#fff;font-size:.9rem;line-height:1.65">Meta Ads + email + WhatsApp. Embudos completos del clic a la cita cerrada.</p><div class="sv-r"><a href="servicios/campanas-automatizadas.html" class="fm hl" style="color:#fff;margin-top:1.25rem;display:inline-block">Saber mas</a></div></div>
       <div class="sv fi-a" style="padding:2.5rem;border:1px solid var(--line);border-top:0;border-right:0"><span class="fi" style="font-size:2.5rem;color:rgba(243,236,222,.12);display:block;margin-bottom:1rem">05</span><div class="sv-l" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms"></div><h3 class="fd" style="font-size:1.5rem;margin-bottom:.75rem">Web Premium</h3><p style="color:#fff;font-size:.9rem;line-height:1.65">Sitio web a medida para convertir visitantes en pacientes. SEO local optimizado.</p><div class="sv-r"><a href="servicios/web-premium.html" class="fm hl" style="color:#fff;margin-top:1.25rem;display:inline-block">Saber mas</a></div></div>
-      <div class="sv fi-a" style="padding:2.5rem;border:1px solid var(--line);border-top:0"><span class="fi" style="font-size:2.5rem;color:rgba(243,236,222,.12);display:block;margin-bottom:1rem">06</span><div class="sv-l" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms"></div><h3 class="fd" style="font-size:1.5rem;margin-bottom:.75rem">Seguimiento Post-Consulta</h3><p style="color:#fff;font-size:.9rem;line-height:1.65">Flujos post-procedimiento, encuestas NPS y reactivacion de pacientes inactivos.</p><div class="sv-r"><a href="servicios/seguimiento-post.html" class="fm hl" style="color:#fff;margin-top:1.25rem;display:inline-block">Saber mas</a></div></div>
+      <div class="sv fi-a" style="padding:2.5rem;border:1px solid var(--line);border-top:0"><span class="fi" style="font-size:2.5rem;color:rgba(243,236,222,.12);display:block;margin-bottom:1rem">06</span><div class="sv-l" style="height:1px;background:var(--line);margin-bottom:1.5rem;transition:background 500ms"></div><h3 class="fd" style="font-size:1.5rem;margin-bottom:.75rem">Seguimiento Post-Consulta</h3><p style="color:#fff;font-size:.9rem;line-height:1.65">Flujos post-procedimiento, encuestas NPS y reactivación de pacientes inactivos.</p><div class="sv-r"><a href="servicios/seguimiento-post.html" class="fm hl" style="color:#fff;margin-top:1.25rem;display:inline-block">Saber mas</a></div></div>
     </div>
   </div>
 </section>
 
 <!-- RESULTS -->
-<section id="results" class="sp" style="border-top:1px solid var(--line)">
+<div class="line-reveal"></div>
+<section id="results" class="sp">
   <div class="cw">
-    <div style="margin-bottom:5rem" class="fi-a"><span class="idx">03 — RESULTADOS</span><h2 class="fd dm" style="margin-top:1.5rem">Clinicas que ya <span class="fi">transformaron</span> su captacion.</h2></div>
+    <div style="margin-bottom:5rem" class="fi-a"><span class="idx">03 — RESULTADOS</span><h2 class="fd dm reveal" style="margin-top:1.5rem">Clinicas que ya <span class="fi">transformaron</span> su captación.</h2></div>
     <div class="g3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem">
       <div class="ce fi-a" style="padding:2rem">
-        <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem"><span class="fm" style="color:var(--gold)">Medicina Estetica</span><span class="fm" style="color:#e8e8e8">Mexico</span></div>
-        <h3 class="fd" style="font-size:1.75rem;margin-bottom:.5rem">Clinica Dermavance</h3>
+        <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem"><span class="fm" style="color:var(--gold)">Medicina Estetica</span><span class="fm" style="color:#e8e8e8">México</span></div>
+        <h3 class="fd" style="font-size:1.75rem;margin-bottom:.5rem">Clínica Dermavance</h3>
         <p style="color:#e8e8e8;font-size:.85rem;line-height:1.6;margin-bottom:1.5rem">Rejuvenecimiento facial, 3 sedes. Chatbot IA + CRM + campanas.</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem">
-          <div><span class="fd" style="font-size:1.5rem;color:var(--accent)">+312%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Citas online</p></div>
-          <div><span class="fd" style="font-size:1.5rem;color:var(--accent)">-45%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">No-shows</p></div>
-          <div><span class="fd" style="font-size:1.5rem;color:var(--accent)">+$127K</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Revenue 6m</p></div>
+          <div><span class="fd" style="font-size:1.75rem;font-weight:400;color:var(--accent);letter-spacing:-.02em">+312%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Citas online</p></div>
+          <div><span class="fd" style="font-size:1.75rem;font-weight:400;color:var(--accent);letter-spacing:-.02em">-45%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">No-shows</p></div>
+          <div><span class="fd" style="font-size:1.75rem;font-weight:400;color:var(--accent);letter-spacing:-.02em">+$127K</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Revenue 6m</p></div>
         </div>
         <blockquote class="fi" style="font-size:.95rem;color:var(--cream);line-height:1.5">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales.&rdquo;</blockquote>
         <p class="fm" style="color:#e8e8e8;margin-top:.75rem">Dra. Valentina Reyes</p>
@@ -252,23 +731,23 @@ input,select,textarea{font-family:var(--fs)}input::placeholder,textarea::placeho
       <div class="ce fi-a" style="padding:2rem">
         <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem"><span class="fm" style="color:var(--gold)">Odontologia</span><span class="fm" style="color:#e8e8e8">Colombia</span></div>
         <h3 class="fd" style="font-size:1.75rem;margin-bottom:.5rem">Sonrie Studio Dental</h3>
-        <p style="color:#e8e8e8;font-size:.85rem;line-height:1.6;margin-bottom:1.5rem">Diseno de sonrisa e implantes. Automatizacion completa.</p>
+        <p style="color:#e8e8e8;font-size:.85rem;line-height:1.6;margin-bottom:1.5rem">Diseño de sonrisa e implantes. Automatizacion completa.</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem">
-          <div><span class="fd" style="font-size:1.5rem;color:var(--accent)">+189%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Leads</p></div>
-          <div><span class="fd" style="font-size:1.5rem;color:var(--accent)">-52%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Tiempo</p></div>
-          <div><span class="fd" style="font-size:1.5rem;color:var(--accent)">+$89K</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Revenue 4m</p></div>
+          <div><span class="fd" style="font-size:1.75rem;font-weight:400;color:var(--accent);letter-spacing:-.02em">+189%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Leads</p></div>
+          <div><span class="fd" style="font-size:1.75rem;font-weight:400;color:var(--accent);letter-spacing:-.02em">-52%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Tiempo</p></div>
+          <div><span class="fd" style="font-size:1.75rem;font-weight:400;color:var(--accent);letter-spacing:-.02em">+$89K</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Revenue 4m</p></div>
         </div>
         <blockquote class="fi" style="font-size:.95rem;color:var(--cream);line-height:1.5">&ldquo;Ahora el sistema captura leads y les agenda cita automaticamente.&rdquo;</blockquote>
         <p class="fm" style="color:#e8e8e8;margin-top:.75rem">Dr. Andres Camacho</p>
       </div>
       <div class="ce fi-a" style="padding:2rem">
-        <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem"><span class="fm" style="color:var(--gold)">Cirugia Plastica</span><span class="fm" style="color:#e8e8e8">Peru</span></div>
-        <h3 class="fd" style="font-size:1.75rem;margin-bottom:.5rem">Instituto Belleza Peru</h3>
-        <p style="color:#e8e8e8;font-size:.85rem;line-height:1.6;margin-bottom:1.5rem">Cirugia de alta gama. CRM + seguimiento post-operatorio.</p>
+        <div style="display:flex;justify-content:space-between;margin-bottom:1.5rem"><span class="fm" style="color:var(--gold)">Cirugía Plástica</span><span class="fm" style="color:#e8e8e8">Perú</span></div>
+        <h3 class="fd" style="font-size:1.75rem;margin-bottom:.5rem">Instituto Belleza Perú</h3>
+        <p style="color:#e8e8e8;font-size:.85rem;line-height:1.6;margin-bottom:1.5rem">Cirugía de alta gama. CRM + seguimiento post-operatorio.</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:1.5rem">
-          <div><span class="fd" style="font-size:1.5rem;color:var(--accent)">+95%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Retencion</p></div>
-          <div><span class="fd" style="font-size:1.5rem;color:var(--accent)">+67%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Referidos</p></div>
-          <div><span class="fd" style="font-size:1.5rem;color:var(--accent)">+$203K</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Revenue 8m</p></div>
+          <div><span class="fd" style="font-size:1.75rem;font-weight:400;color:var(--accent);letter-spacing:-.02em">+95%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Retencion</p></div>
+          <div><span class="fd" style="font-size:1.75rem;font-weight:400;color:var(--accent);letter-spacing:-.02em">+67%</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Referidos</p></div>
+          <div><span class="fd" style="font-size:1.75rem;font-weight:400;color:var(--accent);letter-spacing:-.02em">+$203K</span><p style="font-size:.7rem;color:#e8e8e8;margin-top:.25rem">Revenue 8m</p></div>
         </div>
         <blockquote class="fi" style="font-size:.95rem;color:var(--cream);line-height:1.5">&ldquo;Los pacientes se sienten cuidados y vuelven para mas procedimientos.&rdquo;</blockquote>
         <p class="fm" style="color:#e8e8e8;margin-top:.75rem">Dr. Ricardo Mendieta</p>
@@ -278,58 +757,83 @@ input,select,textarea{font-family:var(--fs)}input::placeholder,textarea::placeho
 </section>
 
 <!-- PROCESS -->
-<section id="process" class="sp" style="border-top:1px solid var(--line)">
+<div class="line-reveal"></div>
+<section id="process" class="sp">
   <div class="cw">
-    <div class="fi-a" style="margin-bottom:5rem"><span class="idx">04 — PROCESO</span><h2 class="fd dl" style="margin-top:1.5rem">Proceso</h2></div>
+    <div class="fi-a" style="margin-bottom:5rem"><span class="idx">04 — PROCESO</span><h2 class="fd dl reveal" style="margin-top:1.5rem">Proceso</h2></div>
     <div style="position:relative;padding-left:3rem">
       <div style="position:absolute;left:15px;top:0;bottom:0;width:1px;background:var(--line)"></div>
-      <div class="fi-a" style="position:relative;padding:2rem 0"><div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--accent)"></div><span class="fm" style="color:var(--gold)">Paso 1 — Llamada</span><h3 class="fd" style="font-size:1.75rem;margin-top:.5rem">Hablamos y entendemos tu negocio</h3><p style="color:#fff;max-width:500px;margin-top:.5rem;line-height:1.75">Llamada de 30 minutos sin compromiso. Analizamos tu clinica, canales, volumen y objetivos. Diagnostico claro de que necesitas.</p></div>
-      <div class="fi-a" style="position:relative;padding:2rem 0"><div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream)"></div><span class="fm" style="color:var(--gold)">Paso 2 — Propuesta</span><h3 class="fd" style="font-size:1.75rem;margin-top:.5rem">Plan a medida + presupuesto</h3><p style="color:#fff;max-width:500px;margin-top:.5rem;line-height:1.75">Disenamos un plan especifico con cronograma, KPIs y presupuesto detallado. Sin sorpresas.</p></div>
-      <div class="fi-a" style="position:relative;padding:2rem 0"><div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream)"></div><span class="fm" style="color:var(--gold)">Paso 3 — Implementacion</span><h3 class="fd" style="font-size:1.75rem;margin-top:.5rem">Configuramos todo en 2-3 semanas</h3><p style="color:#fff;max-width:500px;margin-top:.5rem;line-height:1.75">Chatbot entrenado, CRM conectado, automatizaciones activas. Tu equipo recibe capacitacion completa.</p></div>
-      <div class="fi-a" style="position:relative;padding:2rem 0"><div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--accent)"></div><span class="fm" style="color:var(--gold)">Continuo</span><h3 class="fd" style="font-size:1.75rem;margin-top:.5rem">Soporte, reportes y optimizacion</h3><p style="color:#fff;max-width:500px;margin-top:.5rem;line-height:1.75">Soporte prioritario, reportes mensuales, optimizacion continua. Tu sistema evoluciona contigo.</p></div>
+      <div class="fi-a" style="position:relative;padding:2rem 0"><div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--accent)"></div><span class="fm" style="color:var(--gold)">Paso 1 — Llamada</span><h3 class="fd" style="font-size:1.75rem;margin-top:.5rem">Hablamos y entendemos tu negocio</h3><p style="color:#fff;max-width:500px;margin-top:.5rem;line-height:1.75">Llamada de 30 minutos sin compromiso. Analizamos tu clínica, canales, volumen y objetivos. Diagnóstico claro de que necesitas.</p><a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="fm hl" style="display:inline-block;margin-top:1.5rem;color:var(--cream);border-bottom:1px solid var(--accent);padding-bottom:.4rem;font-size:.75rem;letter-spacing:.14em">Agendar tu diagnóstico →</a></div>
+      <div class="fi-a" style="position:relative;padding:2rem 0"><div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream)"></div><span class="fm" style="color:var(--gold)">Paso 2 — Propuesta</span><h3 class="fd" style="font-size:1.75rem;margin-top:.5rem">Plan a medida + presupuesto</h3><p style="color:#fff;max-width:500px;margin-top:.5rem;line-height:1.75">Diseñamos un plan específico con cronograma, KPIs y presupuesto detallado. Sin sorpresas.</p></div>
+      <div class="fi-a" style="position:relative;padding:2rem 0"><div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--cream)"></div><span class="fm" style="color:var(--gold)">Paso 3 — Implementacion</span><h3 class="fd" style="font-size:1.75rem;margin-top:.5rem">Configuramos todo en 2-3 semanas</h3><p style="color:#fff;max-width:500px;margin-top:.5rem;line-height:1.75">Chatbot entrenado, CRM conectado, automatizaciones activas. Tu equipo recibe capacitación completa.</p></div>
+      <div class="fi-a" style="position:relative;padding:2rem 0"><div style="position:absolute;left:-2.4rem;top:2.25rem;width:8px;height:8px;border-radius:50%;background:var(--accent)"></div><span class="fm" style="color:var(--gold)">Continuo</span><h3 class="fd" style="font-size:1.75rem;margin-top:.5rem">Soporte, reportes y optimizacion</h3><p style="color:#fff;max-width:500px;margin-top:.5rem;line-height:1.75">Soporte prioritario, reportes mensuales, optimización continua. Tu sistema evoluciona contigo.</p></div>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="sp" style="border-top:1px solid var(--line);text-align:center">
+<div class="line-reveal"></div>
+<section class="sp" style="text-align:center">
   <div class="cw" style="max-width:900px">
     <span class="idx fi-a">05 — TESTIMONIOS</span>
-    <div id="tc" style="margin-top:3rem;position:relative" class="fi-a">
-      <div class="ts" data-s="0" style="transition:opacity 700ms"><blockquote class="fi" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos.&rdquo;</blockquote><span class="fm" style="color:var(--cream)">Dra. Valentina Reyes</span><br><span style="color:#e8e8e8;font-size:.9rem">Clinica Dermavance — Mexico</span></div>
+    <div id="tc" style="margin-top:3rem;position:relative" class="reveal">
+      <div class="ts" data-s="0" style="transition:opacity 700ms"><blockquote class="fi" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem">&ldquo;En 90 dias pasamos de 40 a 125 citas mensuales. El chatbot agenda mientras dormimos.&rdquo;</blockquote><span class="fm" style="color:var(--cream)">Dra. Valentina Reyes</span><br><span style="color:#e8e8e8;font-size:.9rem">Clínica Dermavance — México</span></div>
       <div class="ts" data-s="1" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 700ms"><blockquote class="fi" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem">&ldquo;Ahora el sistema captura leads, los califica y les agenda cita. Cierre de implantes subio un 34%.&rdquo;</blockquote><span class="fm" style="color:var(--cream)">Dr. Andres Camacho</span><br><span style="color:#e8e8e8;font-size:.9rem">Sonrie Studio Dental — Colombia</span></div>
-      <div class="ts" data-s="2" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 700ms"><blockquote class="fi" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem">&ldquo;El seguimiento post-operatorio cambio todo. Los pacientes vuelven para mas procedimientos.&rdquo;</blockquote><span class="fm" style="color:var(--cream)">Dr. Ricardo Mendieta</span><br><span style="color:#e8e8e8;font-size:.9rem">Instituto Belleza Peru — Lima</span></div>
+      <div class="ts" data-s="2" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 700ms"><blockquote class="fi" style="font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.25;color:var(--cream);margin-bottom:2rem">&ldquo;El seguimiento post-operatorio cambio todo. Los pacientes vuelven para mas procedimientos.&rdquo;</blockquote><span class="fm" style="color:var(--cream)">Dr. Ricardo Mendieta</span><br><span style="color:#e8e8e8;font-size:.9rem">Instituto Belleza Perú — Lima</span></div>
       <div style="display:flex;justify-content:center;gap:.75rem;margin-top:2.5rem"><button class="td" data-i="0" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:0;cursor:pointer;transition:opacity 300ms"></button><button class="td" data-i="1" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:0;cursor:pointer;opacity:.3;transition:opacity 300ms"></button><button class="td" data-i="2" style="width:8px;height:8px;border-radius:50%;background:var(--cream);border:0;cursor:pointer;opacity:.3;transition:opacity 300ms"></button></div>
     </div>
   </div>
 </section>
 
 <!-- INVERSION (Precio Ancla) -->
-<section id="inversion" class="sp" style="border-top:1px solid var(--line)">
+<div class="line-reveal"></div>
+<section id="inversion" class="sp">
   <div class="cw" style="max-width:900px;text-align:center">
     <span class="idx fi-a">06 — INVERSION</span>
-    <h2 class="fd dm fi-a" style="margin-top:2rem;margin-bottom:2rem">Cada clinica es un ecosistema <span class="fi">unico.</span></h2>
-    <p style="color:#fff;font-size:1.1rem;line-height:1.75;max-width:600px;margin:0 auto 3rem" class="fi-a">No creemos en paquetes genericos. Cada programa se disena tras una auditoria profunda de tu operacion, tus canales, tu equipo y tus objetivos reales. Solo asi garantizamos resultados medibles.</p>
-    <div class="fi-a" style="border:1px solid var(--line-h);padding:3rem;margin-bottom:3rem;background:rgba(243,236,222,.02)">
-      <p style="color:#e8e8e8;font-size:.9rem;letter-spacing:.05em;margin-bottom:1.5rem">PROGRAMAS DE TRANSFORMACION DIGITAL</p>
-      <p class="fd" style="font-size:clamp(1.8rem,4vw,3rem);color:var(--cream);line-height:1.2">Nuestros programas de transformacion digital y automatizacion integral requieren una inversion <span style="color:var(--gold)">a partir de $1,500 USD.</span></p>
+    <h2 class="fd dm reveal" style="margin-top:2rem;margin-bottom:2rem">Cada clinica es un ecosistema <span class="fi">unico.</span></h2>
+    <p style="color:#fff;font-size:1.1rem;line-height:1.75;max-width:600px;margin:0 auto 3rem" class="fi-a">No creemos en paquetes genericos. Cada programa se diseña tras una auditoría profunda de tu operación, tus canales, tu equipo y tus objetivos reales. Solo asi garantizamos resultados medibles.</p>
+    <div class="reveal" style="border:1px solid var(--line-h);padding:3rem;margin-bottom:3rem;background:rgba(243,236,222,.02)">
+      <p class="fm" style="color:var(--gold);margin-bottom:1.5rem">PROGRAMAS DE TRANSFORMACION DIGITAL</p>
+      <h3 class="fd" style="font-size:clamp(2.5rem,5vw,4rem);margin-bottom:.5rem;line-height:1">Desde <span style="color:var(--accent)">$1.500</span> <span style="font-size:.55em;color:var(--cream);opacity:.7">USD</span></h3>
+      <p style="color:#c8c8c8;font-size:.9rem;margin-bottom:2.5rem">Auditoria de viabilidad inicial. Programa completo cotizado a medida.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2.5rem;margin-bottom:2.5rem;text-align:left">
+        <div>
+          <p class="fm" style="color:var(--gold);font-size:.65rem;opacity:.7;margin-bottom:.5rem">QUE INCLUYE</p>
+          <ul style="list-style:none;padding:0;color:#e8e8e8;font-size:1rem;line-height:1.9;font-weight:400">
+            <li>· Auditoria completa del funnel</li>
+            <li>· Plan de captación a medida</li>
+            <li>· Implementación inicial supervisada</li>
+            <li>· 30 días de acompañamiento</li>
+          </ul>
+        </div>
+        <div>
+          <p class="fm" style="color:var(--gold);font-size:.65rem;opacity:.7;margin-bottom:.5rem">RETORNO ESPERADO</p>
+          <ul style="list-style:none;padding:0;color:#e8e8e8;font-size:1rem;line-height:1.9;font-weight:400">
+            <li>· +40 a +120 citas/mes adicionales</li>
+            <li>· ROI proyectado en 60-90 días</li>
+            <li>· Metricas medibles desde día 1</li>
+            <li>· Sin permanencia, sin letra pequeña</li>
+          </ul>
+        </div>
+      </div>
+      <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="bp fm" style="padding:1.1rem 2.5rem;font-size:.72rem">Agendar Auditoria de Viabilidad</a>
+      <p class="fm" style="color:#888;font-size:.65rem;margin-top:1.5rem;letter-spacing:.12em">30 MINUTOS · SIN COMPROMISO · 100% CONFIDENCIAL</p>
     </div>
-    <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="bp fm fi-a" style="padding:1.25rem 3rem;font-size:.75rem">Agendar Auditoria de Viabilidad</a>
-    <p style="color:#e8e8e8;font-size:.8rem;margin-top:1.5rem" class="fi-a">30 minutos &middot; Sin compromiso &middot; 100% confidencial</p>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="sp" style="border-top:1px solid var(--line)">
+<div class="line-reveal"></div>
+<section id="faq" class="sp">
   <div class="cw" style="max-width:800px">
     <span class="idx fi-a">07 — FAQ</span>
-    <h2 class="fd dm fi-a" style="margin-top:1.5rem;margin-bottom:3rem">Preguntas <span class="fi">frecuentes.</span></h2>
+    <h2 class="fd dm reveal" style="margin-top:1.5rem;margin-bottom:3rem">Preguntas <span class="fi">frecuentes.</span></h2>
     <div style="border-top:1px solid var(--line)">
-      <details class="fi-a" style="border-bottom:1px solid var(--line);padding:1.5rem 0"><summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem"><span>Cuanto tiempo toma ver resultados?</span><span class="fq-i" style="color:var(--accent);font-size:1.25rem">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">La mayoria ven incremento en citas en las primeras 2 semanas. Resultados completos entre mes 1 y 3.</p></details>
-      <details class="fi-a" style="border-bottom:1px solid var(--line);padding:1.5rem 0"><summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem"><span>El chatbot reemplaza a mi recepcionista?</span><span class="fq-i" style="color:var(--accent);font-size:1.25rem">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">No, la complementa. Maneja repetitivas 24/7. Tu recepcionista se enfoca en atencion presencial.</p></details>
-      <details class="fi-a" style="border-bottom:1px solid var(--line);padding:1.5rem 0"><summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem"><span>Funciona con mi agenda actual?</span><span class="fq-i" style="color:var(--accent);font-size:1.25rem">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">Si. Nos integramos con los principales sistemas de gestion clinica y agendas digitales.</p></details>
-      <details class="fi-a" style="border-bottom:1px solid var(--line);padding:1.5rem 0"><summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem"><span>Tienen contrato de permanencia?</span><span class="fq-i" style="color:var(--accent);font-size:1.25rem">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">No. Mes a mes. Nuestros resultados hablan por si solos.</p></details>
-      <details class="fi-a" style="border-bottom:1px solid var(--line);padding:1.5rem 0"><summary style="display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:1.1rem"><span>En que paises trabajan?</span><span class="fq-i" style="color:var(--accent);font-size:1.25rem">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">Toda Latinoamerica: Mexico, Colombia, Peru, Chile, Argentina, Ecuador, RD y mas.</p></details>
+      <details class="fi-a"><summary><span>Cuanto tiempo toma ver resultados?</span><span class="fq-i">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">La mayoria ven incremento en citas en las primeras 2 semanas. Resultados completos entre mes 1 y 3.</p></details>
+      <details class="fi-a"><summary><span>El chatbot reemplaza a mi recepcionista?</span><span class="fq-i">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">No, la complementa. Maneja repetitivas 24/7. Tu recepcionista se enfoca en atención presencial.</p></details>
+      <details class="fi-a"><summary><span>Funciona con mi agenda actual?</span><span class="fq-i">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">Si. Nos integramos con los principales sistemas de gestion clinica y agendas digitales.</p></details>
+      <details class="fi-a"><summary><span>Tienen contrato de permanencia?</span><span class="fq-i">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">No. Mes a mes. Nuestros resultados hablan por si solos.</p></details>
+      <details class="fi-a"><summary><span>En que paises trabajan?</span><span class="fq-i">+</span></summary><p style="color:#fff;margin-top:1rem;max-width:600px;line-height:1.75">Toda Latinoamerica: México, Colombia, Perú, Chile, Argentina, Ecuador, RD y mas.</p></details>
     </div>
     <div style="margin-top:2rem"><a href="faq-contacto.html" class="fm hl" style="color:#fff">Ver todas las preguntas</a></div>
   </div>
@@ -341,23 +845,30 @@ input,select,textarea{font-family:var(--fs)}input::placeholder,textarea::placeho
     <div class="gc" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem">
       <div class="fi-a">
         <span class="idx">08 — CONTACTO</span>
-        <h2 class="fd ds" style="margin-top:1.5rem;margin-bottom:1.5rem">Tu competencia ya automatizo. <span class="fi">Vas a quedarte atras?</span></h2>
+        <h2 class="fd ds reveal" style="margin-top:1.5rem;margin-bottom:1.5rem">Tu competencia ya automatizó. <span class="fi">Vas a quedarte atras?</span></h2>
         <p style="color:#fff;max-width:400px;line-height:1.75;margin-bottom:2.5rem">30 minutos. Sin compromiso. Te mostramos como multiplicar tus citas.</p>
         <div style="display:flex;flex-direction:column;gap:1rem">
-          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="bg fm" style="padding:.5rem 0;width:fit-content">Agendar auditoria de viabilidad</a>
+          <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="bg fm" style="padding:.5rem 0;width:fit-content">Agendar Auditoría de Viabilidad</a>
           <a href="https://wa.me/34722753559?text=Hola%2C%20quiero%20informacion%20sobre%20automatizacion%20para%20mi%20clinica" target="_blank" rel="noopener" class="bg fm" style="padding:.5rem 0;width:fit-content">WhatsApp &middot; +34 722 753 559</a>
           <a href="mailto:clickiclickweb@gmail.com" class="bg fm" style="padding:.5rem 0;width:fit-content">clickiclickweb@gmail.com</a>
         </div>
       </div>
       <div class="fi-a">
+        <h3 class="fd" style="font-size:1.75rem;margin-bottom:.5rem">Cuéntanos sobre tu clínica.</h3>
+        <p style="color:#c8c8c8;font-size:.95rem;margin-bottom:2rem;line-height:1.6">Respuesta personalizada en menos de 24 horas — no es un autoresponder. Te escribe directamente el equipo.</p>
         <form id="cf" action="https://api.web3forms.com/submit" method="POST" style="display:flex;flex-direction:column;gap:1rem">
           <input type="hidden" name="access_key" value="ff9e17a4-20d8-49d3-8319-3414194ec45a">
           <input type="hidden" name="subject" value="Nuevo lead - CLICKICLICK Medical">
-          <input type="text" name="name" required placeholder="Nombre completo" style="background:transparent;border:1px solid var(--line);padding:.875rem 1rem;color:var(--cream);font-size:.9rem;border-radius:4px;outline:0;transition:border-color 300ms" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
-          <input type="text" name="clinic" required placeholder="Nombre de la clinica" style="background:transparent;border:1px solid var(--line);padding:.875rem 1rem;color:var(--cream);font-size:.9rem;border-radius:4px;outline:0;transition:border-color 300ms" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
-          <input type="email" name="email" required placeholder="Email" style="background:transparent;border:1px solid var(--line);padding:.875rem 1rem;color:var(--cream);font-size:.9rem;border-radius:4px;outline:0;transition:border-color 300ms" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
-          <select name="country" required style="background:var(--ink);border:1px solid var(--line);padding:.875rem 1rem;color:#e8e8e8;font-size:.9rem;border-radius:4px;outline:0"><option value="" disabled selected>Pais</option><option>Mexico</option><option>Colombia</option><option>Peru</option><option>Chile</option><option>Argentina</option><option>Ecuador</option><option>Republica Dominicana</option><option>Costa Rica</option><option>Panama</option><option>Otro</option></select>
+          <label for="cf-name" class="sr-only">Nombre completo</label>
+          <input id="cf-name" type="text" name="name" required placeholder="Nombre completo" style="background:transparent;border:1px solid var(--line);padding:.875rem 1rem;color:var(--cream);font-size:.9rem;border-radius:4px;outline:0;transition:border-color 300ms" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
+          <label for="cf-clinic" class="sr-only">Nombre de la clínica</label>
+          <input id="cf-clinic" type="text" name="clinic" required placeholder="Nombre de la clínica" style="background:transparent;border:1px solid var(--line);padding:.875rem 1rem;color:var(--cream);font-size:.9rem;border-radius:4px;outline:0;transition:border-color 300ms" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
+          <label for="cf-email" class="sr-only">Email</label>
+          <input id="cf-email" type="email" name="email" required placeholder="Email" style="background:transparent;border:1px solid var(--line);padding:.875rem 1rem;color:var(--cream);font-size:.9rem;border-radius:4px;outline:0;transition:border-color 300ms" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--line)'">
+          <label for="cf-country" class="sr-only">Pais</label>
+          <select id="cf-country" name="country" required style="background:var(--ink);border:1px solid var(--line);padding:.875rem 1rem;color:#e8e8e8;font-size:.9rem;border-radius:4px;outline:0"><option value="" disabled selected>Pais</option><option>México</option><option>Colombia</option><option>Perú</option><option>Chile</option><option>Argentina</option><option>Ecuador</option><option>República Dominicana</option><option>Costa Rica</option><option>Panamá</option><option>Otro</option></select>
           <button type="submit" class="bp fm" style="padding:1rem 2rem;font-size:.72rem;width:100%">Enviar consulta</button>
+          <p class="fm" style="color:#888;font-size:.7rem;margin-top:1rem;letter-spacing:.12em">100% CONFIDENCIAL · SIN COMPROMISO</p>
         </form>
       </div>
     </div>
@@ -365,11 +876,22 @@ input,select,textarea{font-family:var(--fs)}input::placeholder,textarea::placeho
 </section>
 </main>
 
+<!-- CTA PRE-FOOTER -->
+<section style="padding:7rem 0 5rem;text-align:center;border-top:1px solid var(--line)">
+  <div class="cw">
+    <p class="fm" style="color:var(--gold);margin-bottom:1.5rem;opacity:.8;letter-spacing:.2em">MMXXVI</p>
+    <h2 class="fd reveal" style="font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:2rem;line-height:1.1">
+      ¿Tu clínica está lista <span class="fi" style="color:var(--accent)">para escalar?</span>
+    </h2>
+    <a href="https://calendly.com/diegopuelles/30min" target="_blank" rel="noopener" class="fm hl" style="font-size:.8rem;color:var(--cream);border-bottom:1px solid var(--accent);padding-bottom:.5rem">Agendar Auditoría de Viabilidad →</a>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer style="border-top:1px solid var(--line);padding:3rem 0">
   <div class="cw">
     <div class="gf" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem">
-      <div><span class="wm" style="font-size:1rem;display:block;margin-bottom:1rem"><span>CLICKICLICK</span><span class="d">.</span><span class="s">studio</span></span><p style="color:#e8e8e8;font-size:.85rem;max-width:280px;line-height:1.6">Automatizacion e IA para clinicas de medicina estetica y odontologia en Latinoamerica.</p></div>
+      <div><span class="wm" style="font-size:1rem;display:block;margin-bottom:1rem"><span>CLICKICLICK</span><span class="d">.</span><span class="s">studio</span></span><p style="color:#e8e8e8;font-size:.85rem;max-width:280px;line-height:1.6">Automatización e IA para clínicas de medicina estética y odontología en Latinoamérica.</p></div>
       <div><h4 class="fm" style="color:#e8e8e8;margin-bottom:1.5rem">Sitio</h4><ul style="display:flex;flex-direction:column;gap:.75rem;font-size:.9rem"><li><a href="#services" class="hl" style="color:#e8e8e8">Servicios</a></li><li><a href="#results" class="hl" style="color:#e8e8e8">Resultados</a></li><li><a href="#process" class="hl" style="color:#e8e8e8">Proceso</a></li><li><a href="nosotros.html" class="hl" style="color:#e8e8e8">Nosotros</a></li><li><a href="faq-contacto.html" class="hl" style="color:#e8e8e8">FAQ</a></li></ul></div>
       <div><h4 class="fm" style="color:#e8e8e8;margin-bottom:1.5rem">Contacto</h4><ul style="display:flex;flex-direction:column;gap:.75rem;font-size:.9rem"><li><a href="mailto:clickiclickweb@gmail.com" class="hl" style="color:#e8e8e8">Email</a></li><li><a href="https://wa.me/34722753559" target="_blank" class="hl" style="color:#e8e8e8">WhatsApp</a></li><li><a href="https://calendly.com/diegopuelles/30min" target="_blank" class="hl" style="color:#e8e8e8">Calendly</a></li></ul></div>
       <div><h4 class="fm" style="color:#e8e8e8;margin-bottom:1.5rem">Legal</h4><ul style="display:flex;flex-direction:column;gap:.75rem;font-size:.9rem"><li><a href="privacidad.html" class="hl" style="color:#e8e8e8">Privacidad</a></li><li><a href="terminos.html" class="hl" style="color:#e8e8e8">Terminos</a></li></ul><p class="fm" style="color:#e8e8e8;margin-top:2rem;font-size:.6rem">&copy; 2026 CLICKICLICK</p></div>
@@ -379,24 +901,130 @@ input,select,textarea{font-family:var(--fs)}input::placeholder,textarea::placeho
 
 <a href="https://wa.me/34722753559?text=Hola%2C%20quiero%20informacion%20sobre%20automatizacion%20para%20mi%20clinica" target="_blank" rel="noopener" class="wa" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 <script>
-// Nav
-const nh=document.getElementById('nh');
-window.addEventListener('scroll',()=>{const s=window.scrollY>32;nh.style.background=s?'rgba(10,9,8,.88)':'rgba(10,9,8,.05)';nh.style.backdropFilter=s?'blur(14px)':'blur(2px)';nh.style.borderBottomColor=s?'var(--line)':'rgba(243,236,222,.04)';},{passive:true});
+// === Hero split entrance ===
+(function heroSplit() {
+  document.querySelectorAll('[data-split="words"]').forEach(el => {
+    const words = el.textContent.trim().split(/\s+/);
+    el.innerHTML = words.map(w => '<span class="split-word">' + w + '</span>').join('');
+  });
+
+  document.querySelectorAll('[data-split="chars"]').forEach(el => {
+    const text = el.textContent;
+    el.innerHTML = [...text].map(c =>
+      c === ' ' ? '<span class="split-char">&nbsp;</span>' : '<span class="split-char">' + c + '</span>'
+    ).join('');
+  });
+
+  const eyebrow = document.querySelector('[data-split="chars"]');
+  if (eyebrow) {
+    eyebrow.querySelectorAll('.split-char').forEach((c, i) => {
+      setTimeout(() => c.classList.add('in'), 200 + i * 18);
+    });
+  }
+
+  const heroLines = document.querySelectorAll('#hero .split-line[data-split="words"], #hero p[data-split="words"]');
+  const lineDelays = [350, 800, 1200];
+  const lineStaggers = [90, 90, 35];
+
+  heroLines.forEach((line, lineIdx) => {
+    const baseDelay = lineDelays[lineIdx] || 1200;
+    const stagger = lineStaggers[lineIdx] || 50;
+    line.querySelectorAll('.split-word').forEach((w, i) => {
+      setTimeout(() => w.classList.add('in'), baseDelay + i * stagger);
+    });
+  });
+
+  document.querySelectorAll('#hero .hero-block').forEach(el => {
+    const delay = parseInt(el.dataset.heroDelay) || 1500;
+    setTimeout(() => el.classList.add('in'), delay);
+  });
+})();
+
+// Lenis smooth scroll
+const lenis = new Lenis({
+  duration: 1.4,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+  smoothTouch: false,
+  wheelMultiplier: 0.85,
+  touchMultiplier: 1.5,
+  lerp: 0.08
+});
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+
+// Reveal on scroll
+const revealIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      revealIO.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+// Line reveal separators
+const lineIO = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      lineIO.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.line-reveal').forEach(el => lineIO.observe(el));
+
+// Nav — fixed gradient, no scroll handler needed
 
 // FS Menu
-const burger=document.getElementById('burger'),fsm=document.getElementById('fsm'),b1=document.getElementById('b1'),b2=document.getElementById('b2');
+const fsm=document.getElementById('fsm');
 let mo=false;
-burger.addEventListener('click',()=>{mo=!mo;fsm.classList.toggle('open',mo);document.documentElement.style.overflow=mo?'hidden':'';b1.style.transform=mo?'translateY(4px) rotate(45deg)':'';b2.style.transform=mo?'translateY(-4px) rotate(-45deg)':'';});
-document.querySelectorAll('[data-ml]').forEach(l=>l.addEventListener('click',()=>{mo=false;fsm.classList.remove('open');document.documentElement.style.overflow='';b1.style.transform='';b2.style.transform='';}));
+function openMenu(){mo=true;fsm.classList.add('open');document.documentElement.style.overflow='hidden';}
+function closeMenu(){mo=false;fsm.classList.remove('open');document.documentElement.style.overflow='';}
+document.querySelector('.nav-toggle')?.addEventListener('click',()=>{mo?closeMenu():openMenu();});
+document.querySelector('.fsm-close')?.addEventListener('click',closeMenu);
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&mo)closeMenu();});
+document.querySelectorAll('.fsm-l, .fsm-aside a, [data-ml]').forEach(l=>l.addEventListener('click',closeMenu));
 
-// Fade
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll('.fi-a').forEach(e=>obs.observe(e));
+// Toggle WhatsApp visibility with menu (Safari :has fallback)
+const waBtn=document.querySelector('.wa');
+if(waBtn&&fsm){const mo2=new MutationObserver(()=>{const isOpen=fsm.classList.contains('open');waBtn.style.opacity=isOpen?'0':'1';waBtn.style.pointerEvents=isOpen?'none':'auto';waBtn.style.transition='opacity 240ms ease';});mo2.observe(fsm,{attributes:true,attributeFilter:['class']});}
 
-// Counters
-const co=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.hc').forEach(c=>{if(c.dataset.d)return;const t=+c.dataset.t,s=performance.now();(function u(n){const p=Math.min((n-s)/2000,1);c.textContent=Math.round(t*(1-Math.pow(1-p,3)));p<1?requestAnimationFrame(u):(c.textContent=t,c.dataset.d='1');})(performance.now());});co.unobserve(e.target);}});},{threshold:.3});
-const hc=document.querySelector('.hc');if(hc)co.observe(hc.parentElement.parentElement);
+
+// (fi-a observer removed — was dead code, no CSS rule for .fi-a.v)
+
+// === Stats count-up — separado de la entrada, visible y dramático ===
+function animateCount(el, target, duration) {
+  duration = duration || 2500;
+  var start = performance.now();
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+  function update(now) {
+    var elapsed = now - start;
+    var progress = Math.min(elapsed / duration, 1);
+    var current = Math.round(target * easeOut(progress));
+    el.textContent = current;
+    if (progress < 1) { requestAnimationFrame(update); }
+    else { el.textContent = target; el.classList.add('counted'); }
+  }
+  el.textContent = '0';
+  el.classList.add('counting');
+  requestAnimationFrame(update);
+}
+
+(function initStatsCounter() {
+  var stats = document.querySelectorAll('#hero [data-t]');
+  if (!stats.length) return;
+  stats.forEach(function(s) { s.textContent = '0'; });
+  setTimeout(function() {
+    stats.forEach(function(stat) {
+      var target = parseInt(stat.dataset.t);
+      animateCount(stat, target, 2500);
+    });
+  }, 2600);
+})();
 
 // Testimonials
 (function(){const sl=document.querySelectorAll('.ts'),dt=document.querySelectorAll('.td');let c=0,p=false;
@@ -410,8 +1038,13 @@ if(cf)cf.addEventListener('submit',async e=>{e.preventDefault();const btn=cf.que
 try{const r=await fetch(cf.action,{method:'POST',body:new FormData(cf)});if(r.ok)cf.innerHTML='<div style="text-align:center;padding:2rem 0"><h3 class="fd" style="font-size:1.75rem;margin-bottom:.75rem">Mensaje enviado</h3><p style="color:#fff">Te contactaremos en menos de 24 horas.</p></div>';else throw 0;}
 catch{btn.textContent='Error';btn.disabled=false;setTimeout(()=>btn.textContent=o,3e3);}});
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#'||h==='#hero'){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});return;}const t=document.querySelector(h);if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-80,behavior:'smooth'});}}));
+// Smooth scroll with Lenis
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const h=a.getAttribute('href');
+  if(h==='#'||h==='#hero'){e.preventDefault();lenis.scrollTo(0);return;}
+  const t=document.querySelector(h);
+  if(t){e.preventDefault();lenis.scrollTo(t,{offset:-80});}
+}));
 </script>
 </body>
 </html>
